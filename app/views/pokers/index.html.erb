@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Planning Poker</h1>
+
+<table>
+  <thead>
+    <tr>
+      <!--th>Valor</th-->
+      <th>Pontos</th>
+      <th>Apagar</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @pokers.each do |poker| %>
+        <tr>
+          <td><%= poker.name || poker.value %></td>
+          <td><%= link_to 'Apagar Tudo', poker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Jogar', new_poker_path %><br>
+<%= link_to 'Atualizar', pokers_path %>

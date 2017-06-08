@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<!--p>
+  <strong>Name:</strong>
+  <%= @poker.name %>
+</p-->
+
+<p>
+  <strong>Pontos:</strong>
+  <%= @poker.value %>
+</p>
+
+<%= link_to 'Jogar Novamente', new_poker_path %><br>
+<%= link_to 'Back', pokers_path %>
