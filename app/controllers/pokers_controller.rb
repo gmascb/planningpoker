@@ -28,7 +28,7 @@ class PokersController < ApplicationController
     #@poker.value = 1
     respond_to do |format|
       if @poker.save
-        format.html { redirect_to @poker, notice: 'Carta Registrada com Sucesso!' }
+        format.html { redirect_to new_poker_path, notice: 'Carta ' + @poker.value.to_s + ' Registrada com Sucesso!' }
         format.json { render :show, status: :created, location: @poker }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@ class PokersController < ApplicationController
       format.html { redirect_to pokers_url, notice: 'Reinicilização realizada!' }
       format.json { head :no_content }
     end
-  end
+  end 
 
 
   private

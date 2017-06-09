@@ -1,15 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<!--p>
-  <strong>Name:</strong>
-  <%= @poker.name %>
-</p-->
-
-<p>
-  <strong>Pontos:</strong>
-  <%= @poker.value || @poker.name %>
-</p>
-<table>
-<td><%= button_to 'Jogar Novamente', new_poker_path, method: :get  %></td>
-<td><%= button_to 'Inicio', pokers_path, method: :get  %></td>
-</table>
+<html>
+  <head>
+      <%= javascript_include_tag 'show'%>
+  </head>
+  <body>
+    <p id="notice"><%= notice %></p>
+    <!--p>
+      <strong>Name:</strong>
+      <%= @poker.name %>
+    </p-->
+    <p>
+      <strong>Pontos:</strong>
+      <%= @poker.value || @poker.name %>
+    </p>
+    <table>
+    <td><%= button_to 'Jogar Novamente', new_poker_path, method: :get  %></td>
+    <td><%= button_to 'Inicio', pokers_path, method: :get  %></td>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+
+head{
+}
+
+body { 
+    background: #004d00; 
+    position: relative;
+    padding-left: 34%;
+}
+
+h1, p, notice{
+    color:white;
+    position: relative;
+    /*background-image: url("https://images.images4us.com/888poker/br/TS-19585-SEO-PokerStrategy_600x338-NewTeaserImage_1448283814836_tcm1530-264504.jpg");*/
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 20;
+    position:relative;
+}
+
+td, th {
+color:black;
+}
+
+
+a:link, a:visited {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #9b0005;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+
+a:hover, a:active {
+    background-color: #4d0000;
+}
+
+a:link:active {
+  background-color: #4d0000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
