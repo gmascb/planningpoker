@@ -1,20 +1,22 @@
-<table border=1 bgcolor=#d6d6c2 width=200 height=200 >
+
+<br>
+<% carta = "https://s-media-cache-ak0.pinimg.com/236x/3f/55/78/3f5578fc2b894931b22ddf02bb961c3f.jpg" %>
+
+<table border=0 bgcolor=#ebfafa width=200 height=200 >
   <tr>
-    <td  align=center><%= button_to '0.5', pokers_create_path(:poker => {:value => 0.5} ) , method: :post%></td>
-    <td  align=center><%= button_to '1', pokers_create_path(:poker => {:value => 1} ) , method: :post%></td>
-    <td  align=center><%= button_to '2', pokers_create_path(:poker => {:value => 2} ) , method: :post%></td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 0.5 } ) , method: :post)%>0.5</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 1 } ) , method: :post)%>1</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 2 } ) , method: :post)%>2</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 3 } ) , method: :post)%>3</td>
   </tr>
   <tr>
-    <td  align=center><%= button_to '3', pokers_create_path(:poker => {:value => 3} ) , method: :post%></td>
-    <td  align=center><%= button_to '5', pokers_create_path(:poker => {:value => 5} ) , method: :post%></td>
-    <td  align=center><%= button_to '8', pokers_create_path(:poker => {:value => 8} ) , method: :post%></td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 5 } ) , method: :post)%>5</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 8 } ) , method: :post)%>8</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 13 } ) , method: :post)%>13</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 20 } ) , method: :post)%>20</td>
   </tr>
-    <td  align=center><%= button_to '13', pokers_create_path(:poker => {:value => 13} ) , method: :post%></td>
-    <td  align=center><%= button_to '20', pokers_create_path(:poker => {:value => 20} ) , method: :post%></td>
-    <td  align=center><%= button_to '40', pokers_create_path(:poker => {:value => 40} ) , method: :post%></td>
-  <tr>
-    <td  align=center><%= button_to '99', pokers_create_path(:poker => {:value => 99} ) , method: :post%></td>
-    <td  align=center><%= button_to 'Pausa', pokers_create_path(:poker => {:name => 'Pausa'} ) , method: :post%></td>
-    <td  align=center><%= button_to 'Não Entendi', pokers_create_path(:poker => {:name => 'Não Entendi'} ) , method: :post%></td>
-  </tr>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 40 } ) , method: :post)%>40</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 99 } ) , method: :post)%>99</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:name => 'Pausa' } ) , method: :post)%>Pausa</td>
+    <td align=center><%= link_to_image(carta, pokers_create_path(:poker => {:value => 'Nao Entendi' } ) , method: :post)%>Nao Entendi</td>
 </table>

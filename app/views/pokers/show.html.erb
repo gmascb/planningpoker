@@ -7,8 +7,9 @@
 
 <p>
   <strong>Pontos:</strong>
-  <%= @poker.value %>
+  <%= @poker.value || @poker.name %>
 </p>
-
-<%= link_to 'Jogar Novamente', new_poker_path %><br>
-<%= link_to 'Back', pokers_path %>
+<table>
+<td><%= button_to 'Jogar Novamente', new_poker_path, method: :get  %></td>
+<td><%= button_to 'Inicio', pokers_path, method: :get  %></td>
+</table>

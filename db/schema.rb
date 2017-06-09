@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170608041910) do
 
   create_table "pokers", force: :cascade do |t|
     t.string   "name"
-    t.integer  "value"
+    t.decimal  "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

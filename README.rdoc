@@ -1,3 +1,6 @@
+Before Action run
+sudo pg_ctlcluster 9.3 main start
+
 == README
 
 This README would normally document whatever steps are necessary to get the
