@@ -26,7 +26,7 @@
     </table>
     <% end %>
     
-    <%pokerDelete = Poker.new(:value => 534, :name =>'AAAAAAAAAAAAAAAAaa')%>
+    <%pokerDelete = Poker.new(:value => 6, :name =>'AAAAAAAAAAAAAAAAaa')%>
     <p><%pokerDelete.value%></p>
     <p><%pokerDelete.name%></p>
     <% pokerDelete.save %>
@@ -52,41 +52,50 @@
     <%varPausa = @pokers.where(name: 'Pausa').size%>
     <%varNEnt = @pokers.where(name: 'Nao Entendi').size%>
     
-    <%if var05 > 0%>
-    <p>Quantidade de 0.5: <%= var05 %></p>
-    <% end %>
-    <%if var1 > 0%>
-    <p>Quantidade de 1: <%= var1 %></p>
-    <% end %>
-    <%if var2 > 0%>
-    <p>Quantidade de 2: <%= var2 %></p>
-    <% end %>
-    <%if var3 > 0%>
-    <p>Quantidade de 3: <%= var3 %></p>
-    <% end %>
-    <%if var5 > 0%>
-    <p>Quantidade de 5: <%= var5 %><p>
-    <% end %>
-    <%if var8 > 0%>
-    <p>Quantidade de 8: <%= var8 %><p>
-    <% end %>
-    <%if var13 > 0%>
-    <p>Quantidade de 13: <%= var13 %><p>
-    <% end %>
-    <%if var20 > 0%>
-    <p>Quantidade de 20: <%= var20 %><p>
-    <% end %>
-    <%if var40 > 0%>
-    <p>Quantidade de 40: <%= var40 %><p>
-    <% end %>
-    <%if var99 > 0%>
-    <p>Quantidade de 99: <%= var99 %><p>
-    <% end %>
-    <%if varPausa > 0%>
-    <p>Quantidade de Pausa: <%= varPausa %><p>
-    <% end %>
-    <%if varNEnt > 0%>
-    <p>Quantidade de Nao Entendi: <%= varNEnt %><p>
-    <% end %>
+    <% media = ((var05*0.5)+(var1*1)+(var2*2)+(var3*3)+(var5*5)+(var8*8)+(var13*13)+(var20*20)+(var40*40)) %>
+    <!--p>Valor Médio: <%= media %></p-->
+    
+    <h3>
+      <%if var05 > 0%>
+      <p>Quantidade de cartas 0.5: <%= var05 %></p>
+      <% end %>
+      <%if var1 > 0%>
+      <p>Quantidade de cartas 1: <%= var1 %></p>
+      <% end %>
+      <%if var2 > 0%>
+      <p>Quantidade de cartas 2: <%= var2 %></p>
+      <% end %>
+      <%if var3 > 0%>
+      <p>Quantidade de cartas 3: <%= var3 %></p>
+      <% end %>
+      <%if var5 > 0%>
+      <p>Quantidade de cartas 5: <%= var5 %><p>
+      <% end %>
+      <%if var8 > 0%>
+      <p>Quantidade de cartas 8: <%= var8 %><p>
+      <% end %>
+      <%if var13 > 0%>
+      <p>Quantidade de cartas 13: <%= var13 %><p>
+      <% end %>
+      <%if var20 > 0%>
+      <p>Quantidade de cartas 20: <%= var20 %><p>
+      <% end %>
+      <%if var40 > 0%>
+      <p>Quantidade de cartas 40: <%= var40 %><p>
+      <% end %>
+      <%if var99 > 0%>
+      <p>Quantidade de cartas 99: <%= var99 %><p>
+      <% end %>
+      <%if varPausa > 0%>
+      <p>Quantidade de cartas 'Pausa': <%= varPausa %><p>
+      <% end %>
+      <%if varNEnt > 0%>
+      <p>Quantidade de cartas 'Nao Entendi': <%= varNEnt %><p>
+      <% end %>
+    </h3>
+    
+    
+    
+    
   </body>
 </html>

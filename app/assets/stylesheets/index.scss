@@ -3,13 +3,13 @@ head{
 }
 
 body { 
-    background: #004d00; 
+    background: url("https://http2.mlstatic.com/tecido-verde-mesa-de-sinuca-bilhar-snooker-pano-o-metro-D_NQ_NP_723721-MLB20835125211_072016-O.jpg"); 
     position: relative;
     padding-left: 34%;
 }
 
-h1, p, notice{
-    color:white;
+h1, notice{
+    color:white ; /* For Safari 5.1 to 6.0 */;
     position: relative;
     /*background-image: url("https://images.images4us.com/888poker/br/TS-19585-SEO-PokerStrategy_600x338-NewTeaserImage_1448283814836_tcm1530-264504.jpg");*/
 }
@@ -36,18 +36,18 @@ a:link, a:visited {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #9b0005;
+  background-color: black;
   border: none;
   border-radius: 15px;
   box-shadow: 0 5px #999;
 }
 
 a:hover, a:active {
-    background-color: #4d0000;
+    background-color: #2d2e30;
 }
 
 a:link:active {
-  background-color: #4d0000;
+  background-color: #2d2e30;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }

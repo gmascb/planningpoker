@@ -25,10 +25,18 @@ class PokersController < ApplicationController
   # POST /pokers.json
   def create
     @poker = Poker.new(poker_params)
-    #@poker.value = 1
+    
+    if @poker.name == 'Pausa'
+      valor = @poker.name
+    elsif @poker.name == 'Nao Entendi'
+      valor = @poker.name
+    else
+      valor = @poker.value
+    end
+  
     respond_to do |format|
       if @poker.save
-        format.html { redirect_to new_poker_path, notice: 'Carta ' + @poker.value.to_s + ' Registrada com Sucesso!' }
+        format.html { redirect_to new_poker_path, notice: 'Carta ' + valor.to_s  + ' Registrada com Sucesso!' }
         format.json { render :show, status: :created, location: @poker }
       else
         format.html { render :new }
