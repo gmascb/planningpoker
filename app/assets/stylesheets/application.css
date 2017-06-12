@@ -1,0 +1,23 @@
+footer{
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+}
+
+.container {
+    position: relative;
+}
+
+.bottomright {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+}
+
+img { 
+    width: 100%;
+    height: auto;
+    opacity: 0.3;
+}

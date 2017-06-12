@@ -12,4 +12,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( _form.scss
                                                   index.scss
                                                   show.scss
+                                                  notifyjs/notify.js
                                                   application.css)

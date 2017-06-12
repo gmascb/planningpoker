@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TechPoker</title>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>TechPoker</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'notifyjs/notify', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  
+  <%= yield %>
+  
+  </body>
+  <footer>
+    <!-- by gmascb-->
+  </footer>
 </html>
