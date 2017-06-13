@@ -5,6 +5,7 @@ class PokersController < ApplicationController
   # GET /pokers.json
   def index
     @pokers = Poker.all
+    #find_by_sql("SELECT VALUE, NAME FROM POKERS WHERE VALUE <> 6")
   end
 
   # GET /pokers/1

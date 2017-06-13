@@ -4,9 +4,13 @@ h1, p, notice{
     /*background-image: url("https://images.images4us.com/888poker/br/TS-19585-SEO-PokerStrategy_600x338-NewTeaserImage_1448283814836_tcm1530-264504.jpg");*/
 }
 
+h2{
+    color:white;
+}
 h4{
   color:white;
   position:center;
+  
 }
 
 
@@ -14,18 +18,15 @@ head{
 }
 
 body { 
-    background: url("https://http2.mlstatic.com/tecido-verde-mesa-de-sinuca-bilhar-snooker-pano-o-metro-D_NQ_NP_723721-MLB20835125211_072016-O.jpg"); 
+    background: url("tecido-verde.jpg"); 
     position: relative;
-    padding-left: 34%;
+    padding-left: 29%;
 }
-table {
-    font-family: arial, sans-serif;
-    background: url("https://http2.mlstatic.com/tecido-verde-mesa-de-sinuca-bilhar-snooker-pano-o-metro-D_NQ_NP_723721-MLB20835125211_072016-O.jpg"); 
 
-}
 
 td, th {
-color:black;
+    color:black;
+    position:relative;
 }
 
 tr:nth-child(even) {
@@ -33,7 +34,7 @@ tr:nth-child(even) {
 }
 
 
-a:link, a:visited {
+a:link {
     background-color: #003300;
     color: #003300;
     padding: 7px 7px;
@@ -45,23 +46,17 @@ a:hover, a:active {
 }
 
 img{
-width: 90px;
-height: 120px;
+width: 110px; /*Largura*/
+height: 160px; /*Altura*/
 }
 
 a:link, a:visited {
-  display: inline-block;
-  padding: 10px 15px;
+  padding: 12px 15px;
   font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
+  color: White;
   background-color: black;
-  border: none;
   border-radius: 15px;
-  box-shadow: 0 5px #999;
+  box-shadow: 0 3px #888;
 }
 
 a:hover, a:active {
