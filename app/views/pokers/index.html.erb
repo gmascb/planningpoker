@@ -4,6 +4,15 @@
   </head>
   <body>
     <h1>Planning Poker</h1>
+        
+        <div id="user-widget">
+          <% if current_user %>
+            <%= link_to "Sair", signout_path, id: "sign_out" %>
+            <h3><strong><%= current_user.name %></strong></h3>
+          <% else %>
+            <%= link_to "Entrar com Facebook", "/auth/facebook", id: "sign_in" %>
+          <% end %>
+        </div>
     
     <h4 id="notice"><%= notice %></h4>
     
@@ -12,11 +21,13 @@
     <p><%pokerDelete.name%></p>
     <% pokerDelete.save %>
     
+
+    
     
     <table>
-    <td><%= link_to 'Jogar',  new_poker_path, method: :get%></td>
-    <td><%= link_to 'Atualizar', pokers_path %></td>
-    <td><%= link_to 'Apagar Tudo', pokerDelete, method: :delete, data: { confirm: 'Deseja Reiniciar?' } %></td>
+      <td><%= link_to 'Jogar',  new_poker_path, method: :get%></td>
+      <td><%= link_to 'Atualizar', pokers_path %></td>
+      <td><%= link_to 'Apagar Tudo', pokerDelete, method: :delete, data: { confirm: 'Deseja Reiniciar?' } %></td>
     </table>
     
       
@@ -102,5 +113,6 @@
         </tbody>
       </table>
   <% end %>
+
   </body>
 </html>
