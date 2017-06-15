@@ -18,6 +18,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'omniauth'
 gem 'omniauth-facebook', '4.0.0'
 
+#Autenticação com Google+ Api
+gem "omniauth-google-oauth2"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

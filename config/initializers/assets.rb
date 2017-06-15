@@ -13,4 +13,5 @@ Rails.application.config.assets.precompile += %w( _form.scss
                                                   index.scss
                                                   show.scss
                                                   notifyjs/notify.js
+                                                  home.scss
                                                   application.css)

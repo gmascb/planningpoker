@@ -1,16 +1,34 @@
 Rails.application.routes.draw do
   resources :pokers
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pokers#index'
-  
   post 'pokers/create'
+  
+  root to: "homes#show"
+  
+  
+  #get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-  match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  resources :sessions, only: [:create, :destroy]
+  resource :home, only: [:show]
+  
+  #google routes
+  match 'auth/google_oauth2/callback', to: 'sessions#create', via: [:get, :post]
+  #get 'auth/google_oauth2/callback', to: 'sessions#create'
+  #get 'auth/failure', to: redirect('/')
+  #get 'signout', to: 'sessions#destroy', as: 'signoutg'
+
+  #facebook routes
+  match 'auth/facebook/callback', to: 'sessions#create', via: [:get, :post]
+  #match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  #match 'signout', to: 'sessions#destroy', as: 'signoutfb', via: [:get, :post]
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

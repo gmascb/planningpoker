@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <div>
+      <strong>
+        <div id="user-widgetGoogle">  
+          <% if !current_user %>
+            <%= link_to "Google+", "/auth/google_oauth2", id: "sign_ing" %>
+          <% end %>
+        </div>
+        <br>
+        <div id="user-widgetFB">
+          <% if !current_user %>
+            <%= link_to "Facebook", "/auth/facebook", id: "sign_infb" %>
+          <% end %>
+        </div>
+        <br>      
+        <div id="user-widget">
+          <% if !current_user %>
+            <%= link_to "Entrar sem Login", pokers_path, id: "sign_in" %>
+          <% end %>
+        </div>
+      </strong>
+      
+    </div>
+  </body>
+</html>

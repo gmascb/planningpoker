@@ -1,0 +1,34 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body { 
+    background: url("tecido-verde.jpg"); 
+    padding-left: 30%;
+    /*background: url("https://http2.mlstatic.com/tecido-verde-mesa-de-sinuca-bilhar-snooker-pano-o-metro-D_NQ_NP_723721-MLB20835125211_072016-O.jpg");*/
+}
+
+#user-widgetGoogle a {
+  background-color:#cc0000;
+  color:white;
+  
+}
+
+#user-widgetFB a {
+  background-color:#3b5998;
+  color:white;
+}
+
+a:link, a:visited {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px #888;
+}
