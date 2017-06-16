@@ -117,13 +117,5 @@
       </table>
   <% end %>
   <br>
-  <h2>
-    <div id="user-widget">
-      <% if current_user %>
-        <%= current_user.name %><br>
-        <%= link_to "Sair", signout_path, id: "sign_out" %>
-      <% end %>
-    </div>
-  </h2>
   </body>
 </html>
