@@ -79,7 +79,7 @@ class PokersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poker_params
-      params.require(:poker).permit(:name, :value)
+      params.require(:poker).permit(:name, :value, :user)
       #params.permit(:name, :value)
     end
 end

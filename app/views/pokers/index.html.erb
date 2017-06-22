@@ -3,29 +3,17 @@
     <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
-    <h1>Planning Poker</h1>
-        
-        
-        <!-- div id="user-widget">
-          <% if current_user %>
-            <%= link_to "Sair", signout_path, id: "sign_out" %>
-            <h3><strong><%= current_user.name %></strong></h3>
-          <% else %>
-            <%= link_to "Entrar com Facebook", "/auth/facebook", id: "sign_in" %>
-          <% end %>
-        </div-->
-        
+    <h1>SCRUM - Planning Poker</h1>
         
     <h4 id="notice"><%= notice %></h4>
     
-    <%pokerDelete = Poker.new(:value => 6, :name =>'temp')%>
+    <!--Criacao do PokerDelete para permitir exclusao de todos os registros-->
+    <%pokerDelete = Poker.new(:value => 6, :name =>'temp', :user => 'usuario')%>
     <p><%pokerDelete.value%></p>
     <p><%pokerDelete.name%></p>
     <% pokerDelete.save %>
     
-
-    
-    
+    <!--Botões da Tela-->
     <table>
       <td><%= link_to 'Jogar',  new_poker_path, method: :get%></td>
       <td><%= link_to 'Atualizar', pokers_path %></td>
@@ -34,6 +22,7 @@
     </table>
     
       
+    <!--Carrega quantidade de cartas de cada tipo-->
     <%var05 = @pokers.where(value: 0.5).size%>
     <%var1 = @pokers.where(value: 1).size%>
     <%var2 = @pokers.where(value: 2).size%>
@@ -47,18 +36,19 @@
     <%varPausa = @pokers.where(name: 'Pausa').size%>
     <%varNEnt = @pokers.where(name: 'Nao Entendi').size%>
     
+    <!--Calcula valores totais para apresentar na tela-->
     <% pontosTotais = ((var05*0.5)+(var1*1)+(var2*2)+(var3*3)+(var5*5)+(var8*8)+(var13*13)+(var20*20)+(var40*40)+(var100*100)) %>
     <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100%>
     
-    
+    <!--Calcular valor médio convertido para  inteiro-->
     <% if numCartas > 0%>      
-      <h3>Valor Médio: <%=  pontosTotais/numCartas %></h3>
+      <h3>Valor Médio: <%=  (pontosTotais/numCartas).to_i %></h3>
       <!-- h3>Pontos Totais: <%= pontosTotais %></h3-->
       <h3>Total de Cartas: <%= numCartas %></h3>
   ==============================================
       
+      <!--Mostra Número total de cada uma das cartas-->
       <h3>
-        
         Número Total de Cada Carta
         
         <%if var05 > 0%>
@@ -99,17 +89,23 @@
         <% end %>
       </h3>
   ==============================================
+      <br>
       <table>
         <thead>
+          <!--Traz uma listagem de todas as cartas com respectivos usuários-->
           <tr>
-            <th>Cartas Cadastradas</th>
+            <td>Cartas Cadastradas</td>
           </tr>
         </thead>
         <tbody>
             <% @pokers.each do |poker| %>
               <tr>
                 <%if poker.name != 'temp'%>
-                  <td>Carta: <%= poker.name || poker.value %></td>
+                  <% if !current_user %>
+                    <td>Carta: <%= poker.name || poker.value %> =>  Anônimo</td>
+                  <% else %>
+                    <td>Carta: <%= poker.name || poker.value %> => <%= poker.user %></td>
+                  <% end %>
                 <% end %>
               </tr>
             <% end %>

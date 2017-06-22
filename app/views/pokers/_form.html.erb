@@ -27,23 +27,29 @@
     <% cartaCoffee = "cardCoffee.jpg" %>
     <% cartaNEntendi = "cardNEntendi.jpg" %>
     
+    <% if !current_user %>
+      <% usuario = 'Anônimo' %>
+    <% else %>
+      <% usuario = current_user.name %>
+    <%end%>
+    
     <table border=0 width=200 height=200 col-span="1">
       <tr>
-        <td align=center><%= link_to_image(carta05, pokers_create_path(:poker => {:value => 0.5 }) , method: :post)%></td>
-        <td align=center><%= link_to_image(carta1, pokers_create_path(:poker => {:value => 1 } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(carta2, pokers_create_path(:poker => {:value => 2 } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(carta3, pokers_create_path(:poker => {:value => 3 } ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta05, pokers_create_path(:poker => {:value => 0.5, :user => usuario }) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta1, pokers_create_path(:poker => {:value => 1, :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta2, pokers_create_path(:poker => {:value => 2, :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta3, pokers_create_path(:poker => {:value => 3, :user => usuario} ) , method: :post)%></td>
       </tr>
       <tr>
-        <td align=center><%= link_to_image(carta5, pokers_create_path(:poker => {:value => 5 } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(carta8, pokers_create_path(:poker => {:value => 8 } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(carta13, pokers_create_path(:poker => {:value => 13 } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(carta20, pokers_create_path(:poker => {:value => 20 } ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta5, pokers_create_path(:poker => {:value => 5, :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta8, pokers_create_path(:poker => {:value => 8, :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta13, pokers_create_path(:poker => {:value => 13, :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta20, pokers_create_path(:poker => {:value => 20, :user => usuario} ) , method: :post)%></td>
       </tr>
-        <td align=center><%= link_to_image(carta40, pokers_create_path(:poker => {:value => 40 } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(carta100, pokers_create_path(:poker => {:value => 100 } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(cartaCoffee, pokers_create_path(:poker => {:name => 'Pausa' } ) , method: :post)%></td>
-        <td align=center><%= link_to_image(cartaNEntendi, pokers_create_path(:poker => {:name => 'Nao Entendi' } ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta40, pokers_create_path(:poker => {:value => 40, :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(carta100, pokers_create_path(:poker => {:value => 100, :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(cartaCoffee, pokers_create_path(:poker => {:name => 'Pausa', :user => usuario} ) , method: :post)%></td>
+        <td align=center><%= link_to_image(cartaNEntendi, pokers_create_path(:poker => {:name => 'Nao Entendi', :user => usuario} ) , method: :post)%></td>
     </table>
   </body>
 </html>
