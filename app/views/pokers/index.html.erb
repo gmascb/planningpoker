@@ -104,8 +104,7 @@
                   <% if !current_user %>
                     <td>Carta: <%=poker.name || poker.value%> => Nenhum </td>
                   <% else %>
-                    <td>Carta: <%=poker.name || poker.value%> =>
-                    <%= poker.user || current_user.name %></td>
+                    <td>Carta: <%=poker.name || poker.value%> => <%= poker.user %></td>
                   <% end %>
                 <% end %>
               </tr>
