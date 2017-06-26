@@ -101,10 +101,10 @@
             <% @pokers.each do |poker| %>
               <tr>
                 <%if poker.name != 'temp'%>
-                  <% if !current_user %>
-                    <td>Carta: <%=poker.name || poker.value%> => Nenhum </td>
+                  <% if poker.user == 'Sem Usuário' %>
+                    <td>Carta: <%=poker.name || poker.value%> => Sem Usuário </td>
                   <% else %>
-                    <td>Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s %></td>
+                    <td>Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %></td>
                   <% end %>
                 <% end %>
               </tr>
