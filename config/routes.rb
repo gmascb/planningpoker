@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rooms
   resources :pokers
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   post 'pokers/create'
+  post 'rooms/create'
   
   root to: "homes#show"
   

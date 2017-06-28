@@ -4,7 +4,14 @@ class PokersController < ApplicationController
   # GET /pokers
   # GET /pokers.json
   def index
-    @pokers = Poker.all
+    @pokers = Poker.where(room: params[:sala])
+    
+    if params.has_key?(:sala)
+      @sala = Room.find(params[:sala]).id
+    else
+      redirect_to rooms_path
+    end
+    
   end
 
   # GET /pokers/1
@@ -15,6 +22,7 @@ class PokersController < ApplicationController
   # GET /pokers/new
   def new
     @poker = Poker.new
+    @salaAtual = params[:sala]
   end
 
   # GET /pokers/1/edit
@@ -25,7 +33,8 @@ class PokersController < ApplicationController
   # POST /pokers.json
   def create
     @poker = Poker.new(poker_params)
-    
+    @salaAtual = params[:sala]
+
     if @poker.name == 'Pausa'
       valor = @poker.name
     elsif @poker.name == 'Nao Entendi'
@@ -36,7 +45,11 @@ class PokersController < ApplicationController
   
     respond_to do |format|
       if @poker.save
-        format.html { redirect_to new_poker_path, notice: 'Carta ' + valor.to_s  + ' Registrada com Sucesso!' }
+
+        format.html { 
+          redirect_to new_poker_path(sala: @salaAtual), notice: 'Carta ' + valor.to_s  + ' Registrada com Sucesso!' 
+        }
+
         format.json { render :show, status: :created, location: @poker }
       else
         format.html { render :new }
@@ -63,9 +76,11 @@ class PokersController < ApplicationController
   # DELETE /pokers/1.json
   def destroy
 #    @poker.destroy
-    Poker.destroy_all
+    @salaAtual = params[:sala]
+    #raise params[:sala].to_s
+    Poker.where(room: params[:sala]).destroy_all
     respond_to do |format|
-      format.html { redirect_to pokers_url, notice: 'Reinicilização realizada!' }
+      format.html { redirect_to pokers_path(sala: @salaAtual), notice: 'Reinicilização realizada!' }
       format.json { head :no_content }
     end
   end 
@@ -79,7 +94,6 @@ class PokersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poker_params
-      params.require(:poker).permit(:name, :value, :user)
-      #params.permit(:name, :value)
+      params.require(:poker).permit(:name, :value, :user, :room)
     end
 end

@@ -10,12 +10,15 @@
   <body>
   
   <%= yield %>
-  
+  <br>
+  <br>
+  <br>
+
     <h2>
       <div id="user-widgetLogout">
         <% if current_user %>
-          <%= current_user.name %><br>
-          <%= link_to "Sair", signout_path, id: "sign_out" %>
+          <%= link_to "Sair", signout_path, id: "sign_out" %><br>
+          <%= current_user.name %>
         <% end %>
       </div>
     </h2>

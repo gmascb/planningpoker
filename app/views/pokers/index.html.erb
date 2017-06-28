@@ -3,7 +3,8 @@
     <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
-    <h1>SCRUM - Planning Poker</h1>
+    <% salaAtual = @sala%>
+    <h1>SCRUM - Planning Poker - Sala <%= salaAtual %> </h1>
         
     <h4 id="notice"><%= notice %></h4>
     
@@ -15,13 +16,13 @@
     
     <!--Botões da Tela-->
     <table>
-      <td><%= link_to 'Jogar',  new_poker_path, method: :get%></td>
-      <td><%= link_to 'Atualizar', pokers_path %></td>
-      <td><%= link_to 'Apagar Tudo', pokerDelete, method: :delete, data: { confirm: 'Deseja Reiniciar?' } %></td>
-      <td><%= link_to 'Voltar para Home',  home_path, method: :get%></td>
+      <td><%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%></td>
+      <td><%= link_to 'Atualizar', pokers_path(sala: salaAtual) %></td>
+      <td><%= link_to 'Apagar Tudo', poker_path(:id => pokerDelete.id, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %></td>
+      <td><%= link_to 'Voltar para Salas',  rooms_path, method: :get%></td>
     </table>
     
-      
+
     <!--Carrega quantidade de cartas de cada tipo-->
     <%var05 = @pokers.where(value: 0.5).size%>
     <%var1 = @pokers.where(value: 1).size%>
