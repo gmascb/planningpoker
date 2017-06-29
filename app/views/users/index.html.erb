@@ -2,10 +2,22 @@
 
 <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
 
-<% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td><br>
-        </tr>
-<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Provider</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.provider %></td><br>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Voltar', home_path%>
