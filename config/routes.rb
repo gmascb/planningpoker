@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   #match 'signout', to: 'sessions#destroy', as: 'signoutfb', via: [:get, :post]
 
 
+  match 'users', to: 'users#index', via: [:get]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

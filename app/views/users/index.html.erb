@@ -1,0 +1,11 @@
+<h1>Lista de Usuários</h1>
+
+<%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
+
+<% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td><br>
+        </tr>
+<% end %>
+
+<%= link_to 'Voltar', home_path%>
