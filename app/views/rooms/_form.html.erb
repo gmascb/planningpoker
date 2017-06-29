@@ -1,5 +1,4 @@
 <html>
-  
   <head>
     <%= stylesheet_link_tag '_form', media: 'all', 'data-turbolinks-track' => true %>
     <%= form_for(@room) do |f| %>
@@ -20,7 +19,7 @@
     <div class="field">
       <%= f.label :Nome %>
       <%= f.text_field :name %>
-      <button type="submit" class="btn btn-success">Criar</button>
+      <button type="submit" class="btn btn-success">Salvar</button>
     </div>
     
     <% end %>

@@ -10,13 +10,14 @@ body {
     background: url("tecido-verde.jpg"); 
     background: url("https://http2.mlstatic.com/tecido-verde-mesa-de-sinuca-bilhar-snooker-pano-o-metro-D_NQ_NP_723721-MLB20835125211_072016-O.jpg");
     position: relative;
-    padding-left: 30%;
+    padding-left: 25%;
+    padding-top: 2%;
 }
 
 h1, notice{
     color:white ;
     position: relative;
-    padding-left: 90px;
+    padding-left: 10%;
 }
 
 h3{
@@ -66,9 +67,4 @@ a:link:active {
   background-color: #2d2e30;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
-
-footer{
-   position: relative;
-	 bottom: 0;
 }

@@ -8,6 +8,7 @@ class PokersController < ApplicationController
     
     if params.has_key?(:sala)
       @sala = Room.find(params[:sala]).id
+      @sala_nome = Room.find(params[:sala]).name
     else
       redirect_to rooms_path
     end
@@ -75,9 +76,7 @@ class PokersController < ApplicationController
   # DELETE /pokers/1
   # DELETE /pokers/1.json
   def destroy
-#    @poker.destroy
     @salaAtual = params[:sala]
-    #raise params[:sala].to_s
     Poker.where(room: params[:sala]).destroy_all
     respond_to do |format|
       format.html { redirect_to pokers_path(sala: @salaAtual), notice: 'Reinicilização realizada!' }
