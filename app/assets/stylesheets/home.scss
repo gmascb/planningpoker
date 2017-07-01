@@ -4,7 +4,7 @@
 body { 
     background: url("tecido-verde.jpg"); 
     background: url("https://http2.mlstatic.com/tecido-verde-mesa-de-sinuca-bilhar-snooker-pano-o-metro-D_NQ_NP_723721-MLB20835125211_072016-O.jpg");
-    padding-left: 30%;
+    padding-left: 20%;
 }
 
 #user-widgetGoogle a {
@@ -20,7 +20,7 @@ body {
 
 a:link, a:visited {
   display: inline-block;
-  padding: 10px 15px;
+  padding: 20px 30px;
   font-size: 24px;
   cursor: pointer;
   text-align: center;
@@ -31,4 +31,10 @@ a:link, a:visited {
   border: none;
   border-radius: 15px;
   box-shadow: 0 3px #888;
+}
+
+a:link:active {
+  background-color: #2d2e30;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
