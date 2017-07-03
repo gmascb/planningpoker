@@ -42,8 +42,13 @@
     <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100+varNEnt+varPausa %>
     
     <!--Calcular valor médio convertido para  inteiro-->
-    <% if numCartas > 0%>      
-      <h3>Valor Médio: <%=  (pontosTotais/(numCartas-varPausa-varNEnt)).to_i %></h3>
+    <% if numCartas > 0%>
+    
+      <% if (numCartas - varNEnt - varPausa) > 0%>
+        <h3>Valor Médio: <%=  (pontosTotais/numCartas).to_i %></h3>
+      <% else %> 
+        <h3>Valor Médio: <%= 0 %></h3>
+      <% end %>
       <!-- h3>Pontos Totais: <%= pontosTotais %></h3-->
       <h3>Total de Cartas: <%= numCartas %></h3>
   ==============================================
