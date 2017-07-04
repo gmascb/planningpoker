@@ -21,6 +21,10 @@ gem 'omniauth-facebook', '4.0.0'
 #Autenticação com Google+ Api
 gem "omniauth-google-oauth2"
 
+
+#Autenticação com GitHub
+gem 'omniauth-github'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

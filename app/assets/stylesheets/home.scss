@@ -7,15 +7,26 @@ body {
     padding-left: 20%;
 }
 
+h1{
+  color: white;
+}
+
 #user-widgetGoogle a {
   background-color:#cc0000;
   color:white;
-  
+    font-size: 45px;
 }
 
 #user-widgetFB a {
-  background-color:#3b5998;
+  background-color:#3B5998;
   color:white;
+  font-size: 65px;
+}
+
+#user-widgetGH a {
+  background-color: white;
+  color:white;
+  padding: 10px 10px;
 }
 
 a:link, a:visited {
