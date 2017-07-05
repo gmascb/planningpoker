@@ -30,7 +30,7 @@
     <% if !current_user %>
       <% usuario = 'Sem Usuário' %>
     <% else %>
-      <% usuario = current_user.name %>
+      <% usuario = current_user.name.to_s.force_encoding("UTF-8") %>
     <%end%>
     
     <div>

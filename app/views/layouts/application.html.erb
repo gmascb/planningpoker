@@ -20,7 +20,7 @@
       <div id="user-widgetLogout">
         <% if current_user %>
           <%= link_to "Sair", signout_path, id: "sign_out" %><br>
-          <%= current_user.name %>
+          <%= current_user.name.to_s.force_encoding("UTF-8") %>
         <% end %>
       </div>
     </h2>

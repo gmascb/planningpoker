@@ -13,8 +13,8 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.provider %></td><br>
+        <td><%= user.name.to_s.force_encoding("UTF-8") %></td>
+        <td><%= user.provider.to_s.force_encoding("UTF-8") %></td><br>
       </tr>
     <% end %>
   </tbody>
