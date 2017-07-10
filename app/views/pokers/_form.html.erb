@@ -4,7 +4,12 @@
   </head>
   <body>
     <p id="notice"><% notice %></p>
-    <% if notice%>
+    
+    <% if @cartarepetida.to_i == 1 %>
+      <script>
+        $.notify("Você já tem uma carta cadastrada! :(","error");    
+      </script>
+    <% elsif notice == 'CartaOk' %>
       <script>
         $.notify("Sua carta foi registrada com sucesso! :)","success");    
       </script>

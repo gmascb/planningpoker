@@ -24,6 +24,7 @@ class PokersController < ApplicationController
   def new
     @poker = Poker.new
     @salaAtual = params[:sala]
+    @cartarepetida= params[:cartarepetida]
   end
 
   # GET /pokers/1/edit
@@ -43,12 +44,18 @@ class PokersController < ApplicationController
     else
       valor = @poker.value
     end
+    
+    qtdCartasDoUsuario = Poker.where(user: current_user.name).size
+    if (qtdCartasDoUsuario >= 1)
+      @poker.user = 'usuarioRepetido'
+      @cartarepetida = 1
+    end
   
     respond_to do |format|
       if @poker.save
 
         format.html { 
-          redirect_to new_poker_path(sala: @salaAtual), notice: 'Carta ' + valor.to_s  + ' Registrada com Sucesso!' 
+          redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartarepetida), notice: 'CartaOk' 
         }
 
         format.json { render :show, status: :created, location: @poker }
