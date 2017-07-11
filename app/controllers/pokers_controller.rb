@@ -45,10 +45,12 @@ class PokersController < ApplicationController
       valor = @poker.value
     end
     
-    qtdCartasDoUsuario = Poker.where(user: current_user.name).size
-    if (qtdCartasDoUsuario >= 1)
-      @poker.user = 'usuarioRepetido'
-      @cartarepetida = 1
+    if current_user
+      qtdCartasDoUsuario = Poker.where(user: current_user.name).size
+      if (qtdCartasDoUsuario >= 1)
+        @poker.user = 'usuarioRepetido'
+        @cartarepetida = 1
+      end
     end
   
     respond_to do |format|
