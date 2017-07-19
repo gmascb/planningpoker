@@ -9,11 +9,12 @@
     <h4 id="notice"><%= notice %></h4>
     
     <!--Criacao do PokerDelete para permitir exclusao de todos os registros-->
-    <%pokerDelete = Poker.new(:value => 6, :name =>'temp', :user => 'usuario')%>
+    <%pokerDelete = Poker.new(:value => 6, :name =>'temp', :user => 'usuario', :room => salaAtual.to_i)%>
     <p><%pokerDelete.value%></p>
     <p><%pokerDelete.name%></p>
     <% pokerDelete.save %>
     
+    <!-- Apaga os registros de Usuário Repetido -->
     <% Poker.where(user: 'usuarioRepetido').destroy_all %>
     
     <!--Botões da Tela-->
@@ -23,7 +24,6 @@
       <td><%= link_to 'Apagar Tudo', poker_path(:id => pokerDelete.id, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %></td>
       <td><%= link_to 'Voltar para Salas',  rooms_path, method: :get%></td>
     </table>
-    
 
     <!--Carrega quantidade de cartas de cada tipo-->
     <%var05 = @pokers.where(value: 0.5).size%>
@@ -57,43 +57,44 @@
       
       <!--Mostra Número total de cada uma das cartas-->
       <h3>
+        <% textoTotalCarta = 'Carta '%>
         Número Total de Cada Carta
         
         <%if var05 > 0%>
-        <p>Quantidade de cartas 0.5: <%= var05 %></p>
+        <p><%= textoTotalCarta %> 0.5: <%= var05 %>x</p>
         <% end %>
         <%if var1 > 0%>
-        <p>Quantidade de cartas 1: <%= var1 %></p>
+        <p><%= textoTotalCarta %> 1: <%= var1 %>x</p>
         <% end %>
         <%if var2 > 0%>
-        <p>Quantidade de cartas 2: <%= var2 %></p>
+        <p><%= textoTotalCarta %> 2: <%= var2 %>x</p>
         <% end %>
         <%if var3 > 0%>
-        <p>Quantidade de cartas 3: <%= var3 %></p>
+        <p><%= textoTotalCarta %> 3: <%= var3 %>x</p>
         <% end %>
         <%if var5 > 0%>
-        <p>Quantidade de cartas 5: <%= var5 %><p>
+        <p><%= textoTotalCarta %> 5: <%= var5 %>x<p>
         <% end %>
         <%if var8 > 0%>
-        <p>Quantidade de cartas 8: <%= var8 %><p>
+        <p><%= textoTotalCarta %> 8: <%= var8 %>x<p>
         <% end %>
         <%if var13 > 0%>
-        <p>Quantidade de cartas 13: <%= var13 %><p>
+        <p><%= textoTotalCarta %> 13: <%= var13 %>x<p>
         <% end %>
         <%if var20 > 0%>
-        <p>Quantidade de cartas 20: <%= var20 %><p>
+        <p><%= textoTotalCarta %> 20: <%= var20 %>x<p>
         <% end %>
         <%if var40 > 0%>
-        <p>Quantidade de cartas 40: <%= var40 %><p>
+        <p><%= textoTotalCarta %> 40: <%= var40 %>x<p>
         <% end %>
         <%if var100 > 0%>
-        <p>Quantidade de cartas 100: <%= var100 %><p>
+        <p><%= textoTotalCarta %> 100: <%= var100 %>x<p>
         <% end %>
         <%if varPausa > 0%>
-        <p>Quantidade de cartas 'Pausa': <%= varPausa %><p>
+        <p><%= textoTotalCarta %> 'Pausa': <%= varPausa %>x<p>
         <% end %>
         <%if varNEnt > 0%>
-        <p>Quantidade de cartas 'Nao Entendi': <%= varNEnt %><p>
+        <p><%= textoTotalCarta %> 'Nao Entendi': <%= varNEnt %>x<p>
         <% end %>
       </h3>
   ==============================================

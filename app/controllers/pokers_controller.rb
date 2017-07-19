@@ -46,7 +46,7 @@ class PokersController < ApplicationController
     end
     
     if current_user
-      qtdCartasDoUsuario = Poker.where(user: current_user.name).size
+      qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     
       if (qtdCartasDoUsuario >= 1)
         @poker.user = 'usuarioRepetido'
         @cartarepetida = 1
