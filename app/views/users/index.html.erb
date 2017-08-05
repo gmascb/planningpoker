@@ -1,23 +1,26 @@
-<h1>Lista de Usuários</h1>
+<html>
 
-<%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Provider</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name.to_s.force_encoding("UTF-8") %></td>
-        <td><%= user.provider.to_s.force_encoding("UTF-8") %></td><br>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'Voltar', home_path%>
+  <head>
+    <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
+  </head>
+  <body>
+    <h1>Lista de Usuários</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Provider</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name.to_s.force_encoding("UTF-8") %></td>
+            <td><%= user.provider.to_s.force_encoding("UTF-8") %></td><br>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Voltar', home_path%>
+  </body>
+</html>

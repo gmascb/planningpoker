@@ -5,36 +5,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+  
+    
     <h1>Hello World!</h1>
     <div>
-      <strong>
-        <div id="user-widgetGoogle">  
-          <% if !current_user %>
-            <%= link_to "g+", "/auth/google_oauth2", id: "sign_ing" %>
-          <% end %>
-        </div>
-        <br>
-        <div id="user-widgetFB">
-          <% if !current_user %>
-            <%= link_to "f", "/auth/facebook", id: "sign_infb" %>
-          <% end %>
-        </div>
-        <br>
-        
-        <div id="user-widgetGH">
-        <% if !current_user %>
-          <%= link_to_image("github.jpg", '/auth/github') %>
-        <% end %>      
-        </div>
-        
-        <br>
-        
-        <div id="user-widget">
-          <%= link_to "Log-in", rooms_path, id: "sign_inX" %>
-        </div>
-        
-      </strong>
-      
-    </div>
+
   </body>
 </html>

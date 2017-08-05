@@ -11,6 +11,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( _form.scss
                                                   index.scss
+                                                  menu.scss
                                                   show.scss
                                                   notifyjs/notify.js
                                                   home.scss

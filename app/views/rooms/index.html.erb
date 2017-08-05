@@ -1,34 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
+  </head>
+  <body>
 <!-- p id="notice"><%= notice %></p-->
+    <h1>Salas Disponíveis</h1>
+      
+    <% if @rooms.size > 0 %>
+      <table>
+        <thead>
+        </thead>
+        <tbody>
+          <% @rooms.each do |room| %>
+            <tr>
+              <td><%= room.name %></td>
+              <td><%= link_to 'Entrar', pokers_path(sala: room.id) %></td>
+              <td><%= link_to 'Renomear', edit_room_path(room) %></td>
+              <td><%= link_to 'Excluir', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <% if !current_user %>
+      <%= link_to "Home", home_path  %>
+    <% end %>
+      <%= link_to 'Criar nova Sala', new_room_path %>
+  </body>
+</html>
 
-<h1>Salas Disponíveis</h1>
-
-<%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
-
-  <% if @rooms.size > 0 %>
-  <table>
-    <thead>
-    </thead>
-  
-    <tbody>
-      <% @rooms.each do |room| %>
-        <tr>
-          <td><%= room.name %></td>
-          <td><%= link_to 'Entrar', pokers_path(sala: room.id) %></td>
-          <td><%= link_to 'Renomear', edit_room_path(room) %></td>
-          <td><%= link_to 'Excluir', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
 
 
-<br>
-<br>
-<br>
-<br>
-
-<% if !current_user %>
-  <%= link_to "Home", home_path  %>
-<% end %>
-<%= link_to 'Criar nova Sala', new_room_path %>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<%= stylesheet_link_tag    "menu", media: "all", "data-turbolinks-track" => false %>
+</head>
+<body>
+
+<ul>
+    <% if !current_user%> 
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Log-in</a>
+        <div class="dropdown-content">
+    
+          <div id="user-widgetGoogle">  
+            <%= link_to "Google+", "/auth/google_oauth2", id: "sign_ing" %>
+          </div>
+          <div id="user-widgetFB">
+            <%= link_to "Facebook", "/auth/facebook", id: "sign_infb" %>
+          </div>
+          
+          <div id="user-widgetGH">
+            <%= link_to "GitHub", "/auth/github", id: "sign_infgh" %>
+            <!-- %= link_to_image("github.jpg", '/auth/github') %   -->
+          </div>
+        
+          <div id="user-widget">
+             <!--  %= link_to "Log-in", rooms_path, id: "sign_inX" %   -->
+          </div>
+    <% end %>
+      
+      <% if current_user %>
+        <li><%= link_to "Salas", rooms_path %></li>
+        <li><%= link_to "Sair", signout_path, id: "sign_out" %></li>
+      <% end %>
+      
+    </div>
+  </li>
+</ul>
+
+<br>
+
+<div style="color: black">
+  <% if current_user %>
+     <%=  "Bem Vindo " + current_user.name.to_s.force_encoding("UTF-8") %>
+  <% else %>
+    <%= "Faça seu Login"%>
+  <%end%>
+</div>
+</body>
+</html>

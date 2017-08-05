@@ -1,46 +1,32 @@
 h1, p, notice{
-    color:white;
+    color: black;
     position: relative;
     /*background-image: url("https://images.images4us.com/888poker/br/TS-19585-SEO-PokerStrategy_600x338-NewTeaserImage_1448283814836_tcm1530-264504.jpg");*/
 }
 
 h2{
-    color:white;
+    color: black;
 }
 h4{
-  color:white;
+  color: black;
   position:center;
-  
 }
-
-head{
-}
-
-body { 
-    background: url("tecido-verde.jpg"); 
-    background: url("https://http2.mlstatic.com/tecido-verde-mesa-de-sinuca-bilhar-snooker-pano-o-metro-D_NQ_NP_723721-MLB20835125211_072016-O.jpg");
-    position: relative;
-    padding-left: 20%;
-}
-
 
 td, th {
-    color:black;
+    color: black;
     position:relative;
 }
 
-tr:nth-child(even) {
-}
-
 label{
-  color: white;
+  color: black;
 }
 
 a:link {
-    background-color: black;
     color: black;
     display: inline-block;
-    padding: 20px 30px;
+    background-color: #001f4d;
+    border-radius: 5px;
+    
     
 }
 
@@ -49,7 +35,10 @@ div a:link{
 }
 
 a:hover, a:active {
+    /*
     background-color: black;
+*/
+    
 }
 
 img{
@@ -60,8 +49,10 @@ height: 160px; /*Altura*/
 a:link, a:visited {
   font-size: 24px;
   color: White;
-  border-radius: 15px;
+  border-radius: 5px;
+  /*
   box-shadow: 0 3px #888;
+  */
 }
 
 a:hover, a:active {
@@ -69,9 +60,13 @@ a:hover, a:active {
 }
 
 a:link:active {
-  background-color: #4d0000;
-  box-shadow: 0 5px #666;
+  background-color: #2d2e30;
   transform: translateY(4px);
+  /*
+  
+  box-shadow: 0 5px #666;
+  
+  */
 }
 
 
@@ -86,12 +81,11 @@ a:link:active {
 .btn {
     font-size: 24px;
     color: White;
-    background-color: black;
-    box-shadow: 0 3px #888;
-    border-radius: 15px;
+    background-color: #001f4d;
+    border-radius: 5px;
+    padding: 6px 12px;
     width: 93px; /*Largura*/
     height: 50px; /*Altura*/
-    padding: 6px 12px;
     margin-bottom: 0;
     text-align: center;
     vertical-align: middle;
@@ -110,8 +104,10 @@ a:link:active {
     transform: translateY(4px);
     background-image: none;
     outline: 0;
+    /*
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125)
+    */
 }
 .btn.disabled,
 .btn[disabled],
@@ -125,12 +121,12 @@ fieldset[disabled] .btn {
 
 .btn-success {
     color: #fff;
-    background-color: black;
+    background-color: #001f4d;
 }
 .btn-success.focus,
 .btn-success:focus {
     color: #fff;
-    background-color: black ;
+    background-color: #001f4d ;
 }
 .btn-success:hover {
     color: #fff;
@@ -168,7 +164,7 @@ fieldset[disabled] .btn {
 fieldset[disabled] .btn-success.focus,
 fieldset[disabled] .btn-success:focus,
 fieldset[disabled] .btn-success:hover {
-    background-color: black;
+    background-color: #2d2e30;
 }
 .btn-success .badge {
     color: black;
