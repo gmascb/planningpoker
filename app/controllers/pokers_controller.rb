@@ -1,9 +1,10 @@
 class PokersController < ApplicationController
   before_action :set_poker, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /pokers
   # GET /pokers.json
   def index
+    check_user
     @pokers = Poker.where(room: params[:sala])
     
     if params.has_key?(:sala)
@@ -22,6 +23,7 @@ class PokersController < ApplicationController
 
   # GET /pokers/new
   def new
+    check_user
     @poker = Poker.new
     @salaAtual = params[:sala]
     @cartarepetida= params[:cartarepetida]
@@ -29,6 +31,7 @@ class PokersController < ApplicationController
 
   # GET /pokers/1/edit
   def edit
+    check_user
   end
 
   # POST /pokers

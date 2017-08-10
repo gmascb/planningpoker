@@ -4,21 +4,25 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
+    check_user
     @rooms = Room.all
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    check_user
   end
 
   # GET /rooms/new
   def new
+    check_user
     @room = Room.new
   end
 
   # GET /rooms/1/edit
   def edit
+    check_user
   end
 
   # POST /rooms
