@@ -8,7 +8,10 @@ class PokersController < ApplicationController
     @pokers = Poker.where(room: params[:sala])
     @players = Room.find(params[:sala]).players
     
-    #raise @players.to_s
+    if @players == nil
+      @players = 0
+    end
+    
     
     if params.has_key?(:sala)
       @sala = Room.find(params[:sala]).id
