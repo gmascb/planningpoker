@@ -7,7 +7,7 @@
     
     <% if @cartarepetida.to_i == 1 %>
       <script>
-        $.notify("Você já tem uma carta cadastrada! :(","error");    
+        $.notify("Atualizamos sua carta! ;)","info");    
       </script>
     <% elsif notice == 'CartaOk' %>
       <script>
@@ -15,9 +15,6 @@
       </script>
     <% end %>
     <br>
-    
-    
-    <!--%= link_to image_tag("carta.jpg") + "0.5", pokers_create_path(:poker => {:value => 0.5 }), method: :post %-->
     
     <% carta05 = "card05.jpg" %>
     <% carta1 = "card1.jpg" %>
@@ -38,7 +35,7 @@
       <% usuario = current_user.name.to_s.force_encoding("UTF-8") %>
     <%end%>
     
-    <div>
+    <div></div>
       <table border=0 width=200 height=200 col-span="1" >
         <tr>
           <td align=center><%= link_to_image(carta05, pokers_create_path(:poker => {:value => 0.5, :user => usuario, :room => @salaAtual }, sala: @salaAtual) , method: :post)%></td>

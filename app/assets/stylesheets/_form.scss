@@ -1,6 +1,6 @@
 h1, p, notice{
     color: black;
-    position: relative;
+    position: center;
     /*background-image: url("https://images.images4us.com/888poker/br/TS-19585-SEO-PokerStrategy_600x338-NewTeaserImage_1448283814836_tcm1530-264504.jpg");*/
 }
 
@@ -9,12 +9,24 @@ h2{
 }
 h4{
   color: black;
-  position:center;
+  position: center;
+}
+
+table{
+    position: relative;
+    left: 0;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    /*
+    padding-left: 10%;
+    */
 }
 
 td, th {
     color: black;
-    position:relative;
+    position: relative;
 }
 
 label{
@@ -24,26 +36,24 @@ label{
 a:link {
     color: black;
     display: inline-block;
-    background-color: #001f4d;
+    background-color: #0C9ABE;
     border-radius: 5px;
-    
-    
 }
 
 div a:link{
-    padding: 10px 15px;
+    padding: 20px 30px;
 }
 
 a:hover, a:active {
     /*
     background-color: black;
-*/
+    */
     
 }
 
 img{
-width: 110px; /*Largura*/
-height: 160px; /*Altura*/
+    width: 140px; /*Largura*/
+    height: 200px; /*Altura*/
 }
 
 a:link, a:visited {
@@ -56,16 +66,14 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-    background-color: #2d2e30;
+    background-color: gray;
 }
 
 a:link:active {
-  background-color: #2d2e30;
+  background-color: gray;
   transform: translateY(4px);
   /*
-  
   box-shadow: 0 5px #666;
-  
   */
 }
 
@@ -81,7 +89,7 @@ a:link:active {
 .btn {
     font-size: 24px;
     color: White;
-    background-color: #001f4d;
+    background-color: #0C9ABE;
     border-radius: 5px;
     padding: 6px 12px;
     width: 93px; /*Largura*/
@@ -119,18 +127,22 @@ fieldset[disabled] .btn {
     opacity: .65
 }
 
+/*
+#0C9ABE
+*/
+
 .btn-success {
     color: #fff;
-    background-color: #001f4d;
+    background-color: #0C9ABE;
 }
 .btn-success.focus,
 .btn-success:focus {
     color: #fff;
-    background-color: #001f4d ;
+    background-color: #0C9ABE ;
 }
 .btn-success:hover {
     color: #fff;
-    background-color: #2d2e30;
+    background-color: gray;
 }
 .btn-success.active,
 .btn-success:active,
@@ -164,7 +176,7 @@ fieldset[disabled] .btn {
 fieldset[disabled] .btn-success.focus,
 fieldset[disabled] .btn-success:focus,
 fieldset[disabled] .btn-success:hover {
-    background-color: #2d2e30;
+    background-color: gray;
 }
 .btn-success .badge {
     color: black;

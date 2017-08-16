@@ -1,8 +1,16 @@
 <html>
   <head>
     <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "jquery-migrate-1.4.1.min" %>
   </head>
   <body>
+    
+    <script type='text/javascript'>
+      setTimeout("location.reload();", 8 * 1000);
+    </script>
+    
+    
+    
     <% salaAtual = @sala%>
     <h1>Planning Poker - Sala '<%= @sala_nome %>'</h1>
         
@@ -60,85 +68,124 @@
 
 
 
+<!-- TESTANDO JQUERY
+
+script type="text/javascript">
+	$(document).ready(function(){
+		atualiza();
+	});
+
+	function atualiza(){
+	
+	alert("teste")
+	
+	 $.get(<% pokers_path %> , function(index){
+	   
+		
+	   })
+	   
+	  <% #if @pokers.size >= @players %>
+	     setTimeout('atualiza()', 2000);
+	  <% #end %>
+	  
+	}
+</script -->
 
 
-    <!--Calcular valor médio convertido para  inteiro-->
-    <% if numCartas > 0%>      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <!--Calcular valor médio convertido para  inteiro-->
+    <% if numCartas > 0 && numCartas >= @players %>      
       <% if (numCartas - varNEnt - varPausa) > 0%>
         <h3>Valor Médio: <%=  (pontosTotais/numCartas).to_i %></h3>
       <% else %> 
         <h3>Valor Médio: <%= 0 %></h3>
       <% end %>
-      <!-- h3>Pontos Totais: <%= pontosTotais %></h3-->
+        <!-- h3>Pontos Totais: <%= pontosTotais %></h3-->
       <h3>Total de Cartas: <%= numCartas %></h3>
-  ==============================================
-      
-      <!--Mostra Número total de cada uma das cartas-->
-      <h3>
-        <% textoTotalCarta = 'Carta '%>
-        Número Total de Cada Carta
-        
-        <%if var05 > 0%>
-        <p><%= textoTotalCarta %> 0.5: <%= var05 %>x</p>
-        <% end %>
-        <%if var1 > 0%>
-        <p><%= textoTotalCarta %> 1: <%= var1 %>x</p>
-        <% end %>
-        <%if var2 > 0%>
-        <p><%= textoTotalCarta %> 2: <%= var2 %>x</p>
-        <% end %>
-        <%if var3 > 0%>
-        <p><%= textoTotalCarta %> 3: <%= var3 %>x</p>
-        <% end %>
-        <%if var5 > 0%>
-        <p><%= textoTotalCarta %> 5: <%= var5 %>x<p>
-        <% end %>
-        <%if var8 > 0%>
-        <p><%= textoTotalCarta %> 8: <%= var8 %>x<p>
-        <% end %>
-        <%if var13 > 0%>
-        <p><%= textoTotalCarta %> 13: <%= var13 %>x<p>
-        <% end %>
-        <%if var20 > 0%>
-        <p><%= textoTotalCarta %> 20: <%= var20 %>x<p>
-        <% end %>
-        <%if var40 > 0%>
-        <p><%= textoTotalCarta %> 40: <%= var40 %>x<p>
-        <% end %>
-        <%if var100 > 0%>
-        <p><%= textoTotalCarta %> 100: <%= var100 %>x<p>
-        <% end %>
-        <%if varPausa > 0%>
-        <p><%= textoTotalCarta %> 'Pausa': <%= varPausa %>x<p>
-        <% end %>
-        <%if varNEnt > 0%>
-        <p><%= textoTotalCarta %> 'Nao Entendi': <%= varNEnt %>x<p>
-        <% end %>
-      </h3>
-  ==============================================
-      <br>
-      <table>
-        <thead>
-          <!--Traz uma listagem de todas as cartas com respectivos usuários-->
-          <tr>
-            <td>Cartas Cadastradas</td>
-          </tr>
-        </thead>
-        <tbody>
-            <% @pokers.each do |poker| %>
-              <tr>
-                <%if poker.name != 'temp'%>
-                  <% if poker.user == 'Sem Usuário' %>
-                    <td>Carta: <%=poker.name || poker.value%> => Sem Usuário </td>
-                  <% else %>
-                    <td>Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %></td>
+
+    ==============================================
+
+        <!--Mostra Número total de cada uma das cartas-->
+        <h3>
+          <% textoTotalCarta = 'Carta '%>
+          Número Total de Cada Carta
+          
+          <%if var05 > 0%>
+          <p><%= textoTotalCarta %> 0.5: <%= var05 %>x</p>
+          <% end %>
+          <%if var1 > 0%>
+          <p><%= textoTotalCarta %> 1: <%= var1 %>x</p>
+          <% end %>
+          <%if var2 > 0%>
+          <p><%= textoTotalCarta %> 2: <%= var2 %>x</p>
+          <% end %>
+          <%if var3 > 0%>
+          <p><%= textoTotalCarta %> 3: <%= var3 %>x</p>
+          <% end %>
+          <%if var5 > 0%>
+          <p><%= textoTotalCarta %> 5: <%= var5 %>x<p>
+          <% end %>
+          <%if var8 > 0%>
+          <p><%= textoTotalCarta %> 8: <%= var8 %>x<p>
+          <% end %>
+          <%if var13 > 0%>
+          <p><%= textoTotalCarta %> 13: <%= var13 %>x<p>
+          <% end %>
+          <%if var20 > 0%>
+          <p><%= textoTotalCarta %> 20: <%= var20 %>x<p>
+          <% end %>
+          <%if var40 > 0%>
+          <p><%= textoTotalCarta %> 40: <%= var40 %>x<p>
+          <% end %>
+          <%if var100 > 0%>
+          <p><%= textoTotalCarta %> 100: <%= var100 %>x<p>
+          <% end %>
+          <%if varPausa > 0%>
+          <p><%= textoTotalCarta %> 'Pausa': <%= varPausa %>x<p>
+          <% end %>
+          <%if varNEnt > 0%>
+          <p><%= textoTotalCarta %> 'Nao Entendi': <%= varNEnt %>x<p>
+          <% end %>
+        </h3>
+    ==============================================
+        <br>
+        <table>
+          <thead>
+            <!--Traz uma listagem de todas as cartas com respectivos usuários-->
+            <tr>
+              <td>Cartas Cadastradas</td>
+            </tr>
+          </thead>
+          <tbody>
+              <% @pokers.each do |poker| %>
+                <tr>
+                  <%if poker.name != 'temp'%>
+                    <% if poker.user == 'Sem Usuário' %>
+                      <td>Carta: <%=poker.name || poker.value%> => Sem Usuário </td>
+                    <% else %>
+                      <td>Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %></td>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </tr>
-            <% end %>
-        </tbody>
-      </table>
-  <% end %>
-  <br>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+    <% end %>
+    <br>
   </body>
 </html>

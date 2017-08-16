@@ -16,7 +16,7 @@
             <tr>
               <td><%= room.name %></td>
               <td><%= link_to 'Entrar', pokers_path(sala: room.id) %></td>
-              <td><%= link_to 'Renomear', edit_room_path(room) %></td>
+              <td><%= link_to 'Editar', edit_room_path(room) %></td>
               <td><%= link_to 'Excluir', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>

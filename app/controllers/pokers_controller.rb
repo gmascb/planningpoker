@@ -6,6 +6,9 @@ class PokersController < ApplicationController
   def index
     check_user
     @pokers = Poker.where(room: params[:sala])
+    @players = Room.find(params[:sala]).players
+    
+    #raise @players.to_s
     
     if params.has_key?(:sala)
       @sala = Room.find(params[:sala]).id
@@ -51,7 +54,8 @@ class PokersController < ApplicationController
     if current_user
       qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     
       if (qtdCartasDoUsuario >= 1)
-        @poker.user = 'usuarioRepetido'
+        Poker.where(user: current_user.name).where(room: @salaAtual).destroy_all
+        #@poker.user = 'usuarioRepetido'
         @cartarepetida = 1
       end
     end
