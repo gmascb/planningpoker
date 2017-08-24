@@ -5,7 +5,7 @@
   </head>
   <body>
 <!-- p id="notice"><%= notice %></p-->
-    <h1>Salas Disponíveis</h1>
+    <h3>Salas Disponíveis</h3>
       
     <% if @rooms.size > 0 %>
       <table>
@@ -23,16 +23,6 @@
         </tbody>
       </table>
     <% end %>
-    
-    <br>
-    <br>
-    <br>
-    <br>
-    
-    <% if !current_user %>
-      <%= link_to "Home", home_path  %>
-    <% end %>
-      <%= link_to 'Criar nova Sala', new_room_path %>
   </body>
 </html>
 

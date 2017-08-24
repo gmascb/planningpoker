@@ -4,18 +4,15 @@ class PokersController < ApplicationController
   # GET /pokers
   # GET /pokers.json
   def index
-    check_user
-    @pokers = Poker.where(room: params[:sala])
-    @players = Room.find(params[:sala]).players
-    
-    if @players == nil
-      @players = 0
-    end
-    
-    
     if params.has_key?(:sala)
       @sala = Room.find(params[:sala]).id
       @sala_nome = Room.find(params[:sala]).name
+      @pokers = Poker.where(room: params[:sala])
+      @players = Room.find(params[:sala]).players
+      
+      if @players == nil
+        @players = 0
+      end
     else
       redirect_to rooms_path
     end
@@ -43,33 +40,26 @@ class PokersController < ApplicationController
   # POST /pokers
   # POST /pokers.json
   def create
-    @poker = Poker.new(poker_params)
     @salaAtual = params[:sala]
+    @poker = Poker.new(poker_params)
 
-    if @poker.name == 'Pausa'
-      valor = @poker.name
-    elsif @poker.name == 'Nao Entendi'
-      valor = @poker.name
-    else
-      valor = @poker.value
-    end
-    
-    if current_user
+    valor = @poker.value
+    nome = @poker.name
+
+    if current_user.name != nil
       qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     
       if (qtdCartasDoUsuario >= 1)
-        Poker.where(user: current_user.name).where(room: @salaAtual).destroy_all
-        #@poker.user = 'usuarioRepetido'
-        @cartarepetida = 1
+        @poker = Poker.where(user: current_user.name).where(room: @salaAtual).first
+        @poker.name = nome
+        @poker.value = valor
+      else
+        @poker = Poker.new(poker_params)
       end
     end
-  
+
     respond_to do |format|
       if @poker.save
-
-        format.html { 
-          redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartarepetida), notice: 'CartaOk' 
-        }
-
+        format.html { redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartarepetida), notice: 'CartaOk' }
         format.json { render :show, status: :created, location: @poker }
       else
         format.html { render :new }
@@ -107,7 +97,10 @@ class PokersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_poker
-      @poker = Poker.find(params[:id])
+      begin
+        @poker = Poker.find(params[:id])
+      rescue
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

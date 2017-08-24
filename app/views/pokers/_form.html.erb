@@ -36,7 +36,7 @@
     <%end%>
     
     <div></div>
-      <table border=0 width=200 height=200 col-span="1" >
+      <table border=0 col-span="3" >
         <tr>
           <td align=center><%= link_to_image(carta05, pokers_create_path(:poker => {:value => 0.5, :user => usuario, :room => @salaAtual }, sala: @salaAtual) , method: :post)%></td>
           <td align=center><%= link_to_image(carta1, pokers_create_path(:poker => {:value => 1, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>

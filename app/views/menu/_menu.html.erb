@@ -6,34 +6,33 @@
 <body>
 
 <ul>
+    <li><%= link_to "Home", home_path %></li>
     <% if !current_user%> 
-    <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">Log-in</a>
-        <div class="dropdown-content">
-    
-          <div id="user-widgetGoogle">  
-            <%= link_to "Google+", "/auth/google_oauth2", id: "sign_ing" %>
-          </div>
-          <div id="user-widgetFB">
-            <%= link_to "Facebook", "/auth/facebook", id: "sign_infb" %>
-          </div>
-          
-          <div id="user-widgetGH">
-            <%= link_to "GitHub", "/auth/github", id: "sign_infgh" %>
-          </div>
+      <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Log-in</a>
+            <div class="dropdown-content">
         
-          <div id="user-widget">
-             <!--  %= link_to "Log-in", rooms_path, id: "sign_inX" %   -->
-          </div>
+              <div id="user-widgetGoogle">  
+                <%= link_to "Google+", "/auth/google_oauth2", id: "sign_ing" %>
+              </div>
+              <div id="user-widgetFB">
+                <%= link_to "Facebook", "/auth/facebook", id: "sign_infb" %>
+              </div>
+              
+              <div id="user-widgetGH">
+                <%= link_to "GitHub", "/auth/github", id: "sign_infgh" %>
+              </div>
+            
+              <div id="user-widget">
+                 <%= link_to "Log-in", rooms_path, id: "sign_inX" %>
+              </div>
+            </div>
+      </li>
     <% end %>
-      
-      <% if current_user %>
-        <li><%= link_to "Salas", rooms_path %></li>
-        <li><%= link_to "Sair", signout_path, id: "sign_out" %></li>
-      <% end %>
-      
-    </div>
-  </li>
+          <% if current_user %>
+            <li><%= link_to "Salas", rooms_path %></li>
+            <li><%= link_to "Sair", signout_path, id: "sign_out" %></li>
+          <% end %>
 </ul>
 
 <br>

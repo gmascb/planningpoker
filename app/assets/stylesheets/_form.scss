@@ -12,25 +12,26 @@ h4{
   position: center;
 }
 
+h3{
+  color: black;
+}
+
+
 table{
     position: relative;
-    left: 0;
-    top: 15%;
-    width: 100%;
+    left: 0%;
+    top: 0%;
     text-align: center;
-    font-size: 18px;
-    /*
-    padding-left: 10%;
-    */
+    left: center;
+    width: 50%;
+    
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td, th {
     color: black;
     position: relative;
-}
-
-label{
-  color: black;
 }
 
 a:link {
@@ -41,28 +42,17 @@ a:link {
 }
 
 div a:link{
-    padding: 20px 30px;
 }
 
-a:hover, a:active {
-    /*
-    background-color: black;
-    */
-    
-}
 
 img{
-    width: 140px; /*Largura*/
-    height: 200px; /*Altura*/
+    width: 50px; /*Largura*/
+    height: 80px; /*Altura*/
 }
 
 a:link, a:visited {
-  font-size: 24px;
   color: White;
   border-radius: 5px;
-  /*
-  box-shadow: 0 3px #888;
-  */
 }
 
 a:hover, a:active {
@@ -72,10 +62,19 @@ a:hover, a:active {
 a:link:active {
   background-color: gray;
   transform: translateY(4px);
-  /*
-  box-shadow: 0 5px #666;
-  */
 }
+
+
+input[type=text], select {
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 
 
 /*

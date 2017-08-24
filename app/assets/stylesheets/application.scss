@@ -46,7 +46,6 @@ body {
 
 a:link, a:visited {
   display: inline-block;
-  padding: 20px 30px;
   font-size: 24px;
   cursor: pointer;
   text-align: center;
@@ -54,6 +53,7 @@ a:link, a:visited {
   outline: none;
   color: #fff;
   border: none;
+  padding: 10px 15px;
   
   /*border-radius: 15px;
   box-shadow: 0 3px #888;*/

@@ -10,4 +10,23 @@ module PokersHelper
     return modes ? modes[1..modes.size] : modes
   end
   
+  
+  def reiniciar(sala)
+    Poker.where(room: sala).destroy_all
+  end
+  
+=begin  
+  def numTotalCartas(sala)
+    return Poker.where(room: sala).size.to_s
+  end
+  
+  def teste
+    return false
+  end
+  
+  def sayHello
+    return "HELLO"
+  end
+  
+=end
 end

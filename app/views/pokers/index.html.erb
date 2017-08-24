@@ -4,17 +4,9 @@
     <%= javascript_include_tag "jquery-migrate-1.4.1.min" %>
   </head>
   <body>
-    
-    <script type='text/javascript'>
-      setTimeout("location.reload();", 8 * 1000);
-    </script>
-    
-    
-    
-    <% salaAtual = @sala%>
-    <h1>Planning Poker - Sala '<%= @sala_nome %>'</h1>
-        
+    <h3>Planning Poker - Sala '<%= @sala_nome %>'</h3>
     <h4 id="notice"><%= notice %></h4>
+    <% salaAtual = @sala%>
     
     <!--Criacao do PokerDelete para permitir exclusao de todos os registros-->
     <%pokerDelete = Poker.new(:value => 6, :name =>'temp', :user => 'usuario', :room => salaAtual.to_i)%>
@@ -22,36 +14,15 @@
     <p><%pokerDelete.name%></p>
     <% pokerDelete.save %>
     
-    <!-- Apaga os registros de Usuário Repetido -->
-    <% Poker.where(user: 'usuarioRepetido').destroy_all %>
-    
     <!--Botões da Tela-->
     <table>
       <td><%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%></td>
-      <td><%= link_to 'Atualizar', pokers_path(sala: salaAtual) %></td>
-      <td><%= link_to 'Apagar Tudo', poker_path(:id => pokerDelete.id, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %></td>
-      <!--  td><%= link_to 'Voltar para Salas',  rooms_path, method: :get%></td -->
+      <td><%= link_to 'Atualizar', pokers_path(sala: salaAtual), remote: true %></td>
+      <td><%= link_to 'Reiniciar', poker_path(:id => pokerDelete.id, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %></td>
     </table>
-
-    <!--Carrega quantidade de cartas de cada tipo-->
-    <%var05 = @pokers.where(value: 0.5).size%>
-    <%var1 = @pokers.where(value: 1).size%>
-    <%var2 = @pokers.where(value: 2).size%>
-    <%var3 = @pokers.where(value: 3).size%>
-    <%var5 = @pokers.where(value: 5).size%>
-    <%var8 = @pokers.where(value: 8).size%>
-    <%var13 = @pokers.where(value: 13).size%>
-    <%var20 = @pokers.where(value: 20).size%>
-    <%var40 = @pokers.where(value: 40).size%>
-    <%var100 = @pokers.where(value: 100).size%>
-    <%varPausa = @pokers.where(name: 'Pausa').size%>
-    <%varNEnt = @pokers.where(name: 'Nao Entendi').size%>
     
-    <!--Calcula valores totais para apresentar na tela-->
-    <% pontosTotais = ((var05*0.5)+(var1*1)+(var2*2)+(var3*3)+(var5*5)+(var8*8)+(var13*13)+(var20*20)+(var40*40)+(var100*100)) %>
-    <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100+varNEnt+varPausa %>
-    
-
+    <!-- Apaga os registros de Usuário Repetido -->
+    <% Poker.where(user: 'usuarioRepetido').destroy_all %>
 
 
     <!-- Testes da Moda  -->
@@ -68,9 +39,35 @@
 
 
 
+
+
+
+<script>
+
+var atualiza = function(){
+    alert('teste')
+    
+    $.ajax({
+      url: <% pokers_path %>,
+      data: {
+        sala: <% @room %>
+      },
+      success: function( result ) {
+        $( "#resultadoCartas" ).html( "<%= j render partial: 'pokers/resultado'%>" );
+      }
+    })
+}
+
+
+setTimeout("atualiza();", 3000);
+
+
+//  setTimeout('atualiza();', 3000);
+
+/*
 <!-- TESTANDO JQUERY
 
-script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
 		atualiza();
 	});
@@ -88,104 +85,30 @@ script type="text/javascript">
 	     setTimeout('atualiza()', 2000);
 	  <% #end %>
 	  
+</scri>
 	}
-</script -->
 
 
+function CarregaNumeroTotalCartaSala(){
+  setTimeout('CarregaNumeroTotalCartaSala', 5000);
+  return <% Poker.where(room: @sala).size %>
+  <% #if CarregaNumeroTotalCartaSala(@room) >= @players%>
+    //alert('aaa')
+  <% #end %>
+//alert( <% @players %> )
 
+setTimeout( $('#resultadoCartas').html("<%= j render partial: 'pokers/resultado'%>") , 3000);
 
+//alert(""+CarregaNumeroTotalCartaSala())
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-        <!--Calcular valor médio convertido para  inteiro-->
-    <% if numCartas > 0 && numCartas >= @players %>      
-      <% if (numCartas - varNEnt - varPausa) > 0%>
-        <h3>Valor Médio: <%=  (pontosTotais/numCartas).to_i %></h3>
-      <% else %> 
-        <h3>Valor Médio: <%= 0 %></h3>
-      <% end %>
-        <!-- h3>Pontos Totais: <%= pontosTotais %></h3-->
-      <h3>Total de Cartas: <%= numCartas %></h3>
-
-    ==============================================
-
-        <!--Mostra Número total de cada uma das cartas-->
-        <h3>
-          <% textoTotalCarta = 'Carta '%>
-          Número Total de Cada Carta
-          
-          <%if var05 > 0%>
-          <p><%= textoTotalCarta %> 0.5: <%= var05 %>x</p>
-          <% end %>
-          <%if var1 > 0%>
-          <p><%= textoTotalCarta %> 1: <%= var1 %>x</p>
-          <% end %>
-          <%if var2 > 0%>
-          <p><%= textoTotalCarta %> 2: <%= var2 %>x</p>
-          <% end %>
-          <%if var3 > 0%>
-          <p><%= textoTotalCarta %> 3: <%= var3 %>x</p>
-          <% end %>
-          <%if var5 > 0%>
-          <p><%= textoTotalCarta %> 5: <%= var5 %>x<p>
-          <% end %>
-          <%if var8 > 0%>
-          <p><%= textoTotalCarta %> 8: <%= var8 %>x<p>
-          <% end %>
-          <%if var13 > 0%>
-          <p><%= textoTotalCarta %> 13: <%= var13 %>x<p>
-          <% end %>
-          <%if var20 > 0%>
-          <p><%= textoTotalCarta %> 20: <%= var20 %>x<p>
-          <% end %>
-          <%if var40 > 0%>
-          <p><%= textoTotalCarta %> 40: <%= var40 %>x<p>
-          <% end %>
-          <%if var100 > 0%>
-          <p><%= textoTotalCarta %> 100: <%= var100 %>x<p>
-          <% end %>
-          <%if varPausa > 0%>
-          <p><%= textoTotalCarta %> 'Pausa': <%= varPausa %>x<p>
-          <% end %>
-          <%if varNEnt > 0%>
-          <p><%= textoTotalCarta %> 'Nao Entendi': <%= varNEnt %>x<p>
-          <% end %>
-        </h3>
-    ==============================================
-        <br>
-        <table>
-          <thead>
-            <!--Traz uma listagem de todas as cartas com respectivos usuários-->
-            <tr>
-              <td>Cartas Cadastradas</td>
-            </tr>
-          </thead>
-          <tbody>
-              <% @pokers.each do |poker| %>
-                <tr>
-                  <%if poker.name != 'temp'%>
-                    <% if poker.user == 'Sem Usuário' %>
-                      <td>Carta: <%=poker.name || poker.value%> => Sem Usuário </td>
-                    <% else %>
-                      <td>Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %></td>
-                    <% end %>
-                  <% end %>
-                </tr>
-              <% end %>
-          </tbody>
-        </table>
-    <% end %>
-    <br>
+*/
+      
+            debugger;
+      </script>
+      
+    <div id="resultadoCartas" >
+      
+    </div>
   </body>
 </html>

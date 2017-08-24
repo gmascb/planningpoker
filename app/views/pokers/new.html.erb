@@ -1,10 +1,11 @@
 <html>
   <head>
-    <h1>Escolha uma carta</h1>
-    <%= link_to 'Voltar', pokers_path(sala: @salaAtual), method: :get%>
+    <h3>Escolha uma carta</h3>
     
   </head>
   <body>
     <%= render 'form' %>
+    <br/>
+    <%= link_to 'Voltar', pokers_path(sala: @salaAtual), method: :get%>
   </body>
 </html>

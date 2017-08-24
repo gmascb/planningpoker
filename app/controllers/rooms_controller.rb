@@ -4,7 +4,6 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    check_user
     @rooms = Room.all
   end
 
