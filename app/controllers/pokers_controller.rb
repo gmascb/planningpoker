@@ -52,6 +52,7 @@ class PokersController < ApplicationController
         @poker = Poker.where(user: current_user.name).where(room: @salaAtual).first
         @poker.name = nome
         @poker.value = valor
+        @cartarepetida = 1
       else
         @poker = Poker.new(poker_params)
       end
@@ -88,7 +89,7 @@ class PokersController < ApplicationController
     @salaAtual = params[:sala]
     Poker.where(room: params[:sala]).destroy_all
     respond_to do |format|
-      format.html { redirect_to pokers_path(sala: @salaAtual), notice: 'Reinicilização realizada!' }
+      format.html { redirect_to pokers_path(sala: @salaAtual) }
       format.json { head :no_content }
     end
   end 

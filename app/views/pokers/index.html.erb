@@ -7,18 +7,12 @@
     <h3>Planning Poker - Sala '<%= @sala_nome %>'</h3>
     <h4 id="notice"><%= notice %></h4>
     <% salaAtual = @sala%>
-    
-    <!--Criacao do PokerDelete para permitir exclusao de todos os registros-->
-    <%pokerDelete = Poker.new(:value => 6, :name =>'temp', :user => 'usuario', :room => salaAtual.to_i)%>
-    <p><%pokerDelete.value%></p>
-    <p><%pokerDelete.name%></p>
-    <% pokerDelete.save %>
-    
+
     <!--Botões da Tela-->
     <table>
       <td><%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%></td>
       <td><%= link_to 'Atualizar', pokers_path(sala: salaAtual), remote: true %></td>
-      <td><%= link_to 'Reiniciar', poker_path(:id => pokerDelete.id, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %></td>
+      <td><%= link_to 'Reiniciar', poker_path(:id => 1, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %></td>
     </table>
     
     <!-- Apaga os registros de Usuário Repetido -->
@@ -27,7 +21,7 @@
 
     <!-- Testes da Moda  -->
 
-      <!-- %
+    <!-- %
       
     #  modaCartas = [83];
     #  for item in Array(Poker.where(:room => salaAtual))

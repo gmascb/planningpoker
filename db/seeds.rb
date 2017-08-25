@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+poker = Poker.new()
+pokerdestroy = Poker.all
+pokerdestroy.destroy_all
+poker.id = 1
+poker.save
