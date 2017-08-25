@@ -16,7 +16,9 @@ class PokersController < ApplicationController
     else
       redirect_to rooms_path
     end
-    
+    #a = Array(Poker.where(:room => @sala))
+    #raise a[0].value.to_s
+    #raise Array(Poker.where(:room => @sala).where(:value2).value).to_s
   end
 
   # GET /pokers/1
@@ -52,7 +54,7 @@ class PokersController < ApplicationController
         @poker = Poker.where(user: current_user.name).where(room: @salaAtual).first
         @poker.name = nome
         @poker.value = valor
-        @cartarepetida = 1
+        @cartaAtualizada = 1
       else
         @poker = Poker.new(poker_params)
       end
@@ -60,7 +62,7 @@ class PokersController < ApplicationController
 
     respond_to do |format|
       if @poker.save
-        format.html { redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartarepetida), notice: 'CartaOk' }
+        format.html { redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada), notice: 'CartaOk' }
         format.json { render :show, status: :created, location: @poker }
       else
         format.html { render :new }

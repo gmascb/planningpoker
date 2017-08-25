@@ -1,108 +1,21 @@
 <html>
   <head>
     <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "jquery-migrate-1.4.1.min" %>
   </head>
   <body>
+    
     <h3>Planning Poker - Sala '<%= @sala_nome %>'</h3>
     <h4 id="notice"><%= notice %></h4>
     <% salaAtual = @sala%>
 
     <!--Botões da Tela-->
-    <table>
-      <td><%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%></td>
-      <td><%= link_to 'Atualizar', pokers_path(sala: salaAtual), remote: true %></td>
-      <td><%= link_to 'Reiniciar', poker_path(:id => 1, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %></td>
-    </table>
+  
+      <%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%>
+      <%= link_to 'Atualizar', pokers_path(sala: salaAtual), remote: true %>
+      <%= link_to 'Reiniciar', poker_path(:id => 1, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %>
+
+
+    <div id="resultadoCartas" ></div>
     
-    <!-- Apaga os registros de Usuário Repetido -->
-    <% Poker.where(user: 'usuarioRepetido').destroy_all %>
-
-
-    <!-- Testes da Moda  -->
-
-    <!-- %
-      
-    #  modaCartas = [83];
-    #  for item in Array(Poker.where(:room => salaAtual))
-    #    modaCartas << item.value
-    #  end
-      
-       #resultadoModa = moda(modaCartas) 
-       #resultadoModa[0].to_i -->
-
-
-
-
-
-
-<script>
-
-var atualiza = function(){
-    alert('teste')
-    
-    $.ajax({
-      url: <% pokers_path %>,
-      data: {
-        sala: <% @room %>
-      },
-      success: function( result ) {
-        $( "#resultadoCartas" ).html( "<%= j render partial: 'pokers/resultado'%>" );
-      }
-    })
-}
-
-
-setTimeout("atualiza();", 3000);
-
-
-//  setTimeout('atualiza();', 3000);
-
-/*
-<!-- TESTANDO JQUERY
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		atualiza();
-	});
-
-	function atualiza(){
-	
-	alert("teste")
-	
-	 $.get(<% pokers_path %> , function(index){
-	   
-		
-	   })
-	   
-	  <% #if @pokers.size >= @players %>
-	     setTimeout('atualiza()', 2000);
-	  <% #end %>
-	  
-</scri>
-	}
-
-
-function CarregaNumeroTotalCartaSala(){
-  setTimeout('CarregaNumeroTotalCartaSala', 5000);
-  return <% Poker.where(room: @sala).size %>
-  <% #if CarregaNumeroTotalCartaSala(@room) >= @players%>
-    //alert('aaa')
-  <% #end %>
-//alert( <% @players %> )
-
-setTimeout( $('#resultadoCartas').html("<%= j render partial: 'pokers/resultado'%>") , 3000);
-
-//alert(""+CarregaNumeroTotalCartaSala())
-}
-
-*/
-      
-            debugger;
-      </script>
-      
-    <div id="resultadoCartas" >
-      
-    </div>
   </body>
 </html>
