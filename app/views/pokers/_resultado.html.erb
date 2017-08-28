@@ -36,16 +36,20 @@
   <style>
 table {
     border-collapse: collapse;
-    width: 30%;
+    width: 38%;
+    left: 31%;
 }
 
 th, td {
     border: 1px solid darkgray;
     text-align: center;
-    padding: 8px;
+    padding: 5px;
 }
 
-tr:nth-child(even){background-color: white}
+tr:nth-child(even){
+  background-color: white
+  
+}
 
 th {
     background-color: #0C9ABE;
@@ -56,28 +60,25 @@ th {
   
   <table>
     <tr>
+      <th>Num Cartas</th>
       <th>Valor Médio</th>
-      <th>Total de Cartas</th>
       <th>Moda</th>
     </tr>
     <tr>
-      <td><%= (pontosTotais/numCartas).to_i %></td>
       <td><%= numCartas %></td>
+      <td><%= (pontosTotais/numCartas).to_i %></td>
       <td><%= arrayModa.max_by { |i| arrayModa.count(i) } %></td>
     </tr>
   </table>
   <br/>
   
-
-
-
 =====================================================================
 
     <!--Mostra Número total de cada uma das cartas-->
     <h3>
       <table>
       <% textoTotalCarta = 'Carta '%>
-      Número Total de Cada Carta
+      Número Total de Cada Carta <br/><br/>
       <tr>
         <%if var05 > 0%>
           <th>

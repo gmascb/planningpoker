@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<%= stylesheet_link_tag    "menu", media: "all", "data-turbolinks-track" => false %>
-</head>
-<body>
-
 <ul>
     <li><%= link_to "Home", home_path %></li>
     <% if !current_user%> 
@@ -44,5 +37,3 @@
     <%= "Faça seu Login"%>
   <%end%>
 </div>
-</body>
-</html>

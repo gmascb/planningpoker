@@ -4,6 +4,9 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #0C9ABE;
+    /*
+    background-color: #2A3F54;
+    */
 }
 
 li {
@@ -30,14 +33,17 @@ li.dropdown {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #0C9ABE;
-    min-width: 160px;
+    min-width: 120px;
     z-index: 1;
+    background-color: #0C9ABE;
+    /*
+    background-color: #2A3F54;
+    */
 }
 
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 8px 10px;
     text-decoration: none;
     display: block;
     text-align: left;
