@@ -1,9 +1,43 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <h2>Sala '<%= @room.name %>'</h2>
+</p>
+<br>
+
+<%= stylesheet_link_tag '_form', media: 'all', 'data-turbolinks-track' => true %>
+
 
 <p>
   <strong>Name:</strong>
   <%= @room.name %>
 </p>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<p>
+  <strong>Jogadores:</strong>
+  <%= @room.players %>
+</p>
+
+<p>
+  <strong>Usuário Criador:</strong>
+  <%= @room.user %>
+</p>
+
+
+<!-- Carregando o campo de um text field e enviando para URL -->
+<!--
+
+  <div id = "meuPass" class="field">
+    <  %= f.password_field :password, autocomplete: "off", :placeholder => "Senha" %>
+  </div>
+<script>
+    function myFunction() {
+      var url = window.location.href
+      var param_senha ='/pokers?password=' + document.getElementById("room_password").value + '&sala=' + url.charAt(url.length - 1)
+      var link_to  = document.getElementById("link_to");
+      link_to.setAttribute('href', param_senha);
+    }
+</script>
+<a onclick="myFunction()" id="link_to" href="/pokers">Entrar</a -->
+
+
+  <br>
+  <br>

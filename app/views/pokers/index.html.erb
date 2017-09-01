@@ -9,13 +9,13 @@
     <% salaAtual = @sala%>
 
     <!--Botões da Tela-->
-  
-      <%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%>
-      <%= link_to 'Atualizar', pokers_path(sala: salaAtual), remote: true %>
-      <%= link_to 'Reiniciar', poker_path(:id => 1, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %>
-
-
-    <div id="resultadoCartas" ></div>
+    <%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%>
+    <%= link_to 'Atualizar', pokers_path(sala: salaAtual), remote: true %>
+    <%= link_to 'Reiniciar', poker_path(:id => 1, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %>
     
+      
+      <!-- Resultado -->
+      <div id="resultadoCartas" ></div>
+
   </body>
 </html>

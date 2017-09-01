@@ -4,18 +4,25 @@ class PokersController < ApplicationController
   # GET /pokers
   # GET /pokers.json
   def index
+    
     if params.has_key?(:sala)
+      
+      #region Variaveis para Index.Html
       @sala = Room.find(params[:sala]).id
       @sala_nome = Room.find(params[:sala]).name
       @pokers = Poker.where(room: params[:sala])
-      @players = Room.find(params[:sala]).players
+      #endregion
+      
+      @players = Room.find(params[:sala]).players #usa no Client e Server
       
       if @players == nil
         @players = 0
       end
+      
     else
       redirect_to rooms_path
     end
+    
     #a = Array(Poker.where(:room => @sala))
     #raise a[0].value.to_s
     #raise Array(Poker.where(:room => @sala).where(:value2).value).to_s

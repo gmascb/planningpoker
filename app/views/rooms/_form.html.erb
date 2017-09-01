@@ -17,16 +17,19 @@
     <% end %>
     
     <div class="field">
-      <%= f.label :Nome %>
       <%= f.text_field :name, placeholder: 'Nome'%>
     </div>
     <br>
     <div class="field">
-      <%= f.label :Jogadores %>
       <%= f.text_field :players, placeholder: 'Número de Jogadores' %>
     </div>
+    
+  <p>
+    <strong>Usuário Criador:</strong>
+    <%= @room.user || 'Sem Usuário' %>
+  </p>
+    
     <br>
-
     <button type="submit" class="btn btn-success">Salvar</button>
     <br>
     <br>
