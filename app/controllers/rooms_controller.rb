@@ -20,7 +20,10 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1/edit
   def edit
-    check_user
+    room = Room.find(params[:id])
+    if (current_user != nil && room.user != nil)
+      check_user
+    end
   end
 
   # POST /rooms
@@ -79,6 +82,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :players, :user)
+      params.require(:room).permit(:name, :players, :user, :playersname)
     end
 end

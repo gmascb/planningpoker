@@ -10,21 +10,9 @@ Things you may want to cover:
 
 * Ruby version ~> ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
 
-* System dependencies
+* Database: postgresql 
 
-* Configuration
-
-* Database creation 
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* See us in techpoker.herokuapp.com
 
 
 Please feel free to use a different markup language if you do not plan to run

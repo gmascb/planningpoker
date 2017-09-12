@@ -7,7 +7,7 @@
 <!-- p id="notice"><%= notice %></p-->
     <h3>Salas Disponíveis</h3>
     
-    <h4 id="notice"><%= notice %></h4>
+    <h4 id="notice" style="color: green;"><%= notice %></h4>
     
     <% if @rooms.size > 0 %>
       <table>
@@ -18,12 +18,14 @@
             <tr>
               <td><%= room.name %></td>
               <td><%= link_to 'Entrar', pokers_path(sala: room.id) %></td>
+              
               <%if current_user != nil %> 
                 <% if room.user == current_user.name  %> 
                   <td><%= link_to 'Editar', edit_room_path(room) %></td>
                   <td><%= link_to 'Excluir', room, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
                 <% end %> 
               <% end %>
+              
               <% if room.user == nil%>
                 <td><%= link_to 'Editar', edit_room_path(room) %></td>
                 <td><%= link_to 'Excluir', room, method: :delete, data: { confirm: 'Tem certeza?' } %></td>

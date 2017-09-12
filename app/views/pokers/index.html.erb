@@ -4,9 +4,9 @@
   </head>
   <body>
     
-    <h3>Planning Poker - Sala '<%= @sala_nome %>'</h3>
+    <h3>Planning Poker - Sala '<%= @sala.name %>'</h3>
     <h4 id="notice"><%= notice %></h4>
-    <% salaAtual = @sala%>
+    <% salaAtual = @sala.id %>
 
     <!--Botões da Tela-->
     <%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%>

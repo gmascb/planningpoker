@@ -23,10 +23,10 @@
 
 
   <!--Calcula a Moda das Cartas-->
-  <% arrayDeCartas = Array(Poker.where(:room => @sala))%>
+  <% arrayDeCartas = Array(Poker.where(:room => @sala.id))%>
   <% arrayDeCartas[0].value %>
   <% arrayModa = Array.new%>
-  <% for item in Array(Poker.where(:room => @sala))%>
+  <% for item in Array(Poker.where(:room => @sala.id))%>
   <% arrayModa << item.value%>
   <% end %>
 

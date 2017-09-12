@@ -6,10 +6,8 @@ class PokersController < ApplicationController
   def index
     
     if params.has_key?(:sala)
-      
       #region Variaveis para Index.Html
-      @sala = Room.find(params[:sala]).id
-      @sala_nome = Room.find(params[:sala]).name
+      @sala = Room.find(params[:sala])
       @pokers = Poker.where(room: params[:sala])
       #endregion
       
@@ -22,10 +20,6 @@ class PokersController < ApplicationController
     else
       redirect_to rooms_path
     end
-    
-    #a = Array(Poker.where(:room => @sala))
-    #raise a[0].value.to_s
-    #raise Array(Poker.where(:room => @sala).where(:value2).value).to_s
   end
 
   # GET /pokers/1
@@ -35,10 +29,32 @@ class PokersController < ApplicationController
 
   # GET /pokers/new
   def new
-    check_user
+    
     @poker = Poker.new
     @salaAtual = params[:sala]
+    @sala = Room.find(@salaAtual)
     @cartarepetida= params[:cartarepetida]
+    
+    #(!@sala.playersname.nil? || !@sala.playersname.empty?)
+    
+    if(current_user) #estou logado
+      if (@sala.user) #alguem logado criou a sala
+        if(current_user.name != @sala.user) #nao criei a sala
+          if(!@sala.playersname.empty?) #tem nome dos jogadores
+            if (!@sala.playersname.include? current_user.name) # Meu Nome nao esta na lista
+              redirect_to rooms_path, notice: 'Voce não está na lista de jogadores desta sala' #sai da sala
+            end
+          end
+        end
+      end
+    else #nao estou logado
+      if (@sala.user != nil) #Sala criada Sem Login
+        redirect_to rooms_path, notice: 'Voce precisa efetuar o login' #sai da sala
+      end
+    end
+    
+    
+    
   end
 
   # GET /pokers/1/edit
@@ -55,7 +71,7 @@ class PokersController < ApplicationController
     valor = @poker.value
     nome = @poker.name
 
-    if current_user.name != nil
+    if current_user != nil
       qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     
       if (qtdCartasDoUsuario >= 1)
         @poker = Poker.where(user: current_user.name).where(room: @salaAtual).first
@@ -65,6 +81,8 @@ class PokersController < ApplicationController
       else
         @poker = Poker.new(poker_params)
       end
+    else
+      @poker.user == 'Sem Usuario'
     end
 
     respond_to do |format|

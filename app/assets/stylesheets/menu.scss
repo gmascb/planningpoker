@@ -35,8 +35,8 @@ li.dropdown {
     position: absolute;
     min-width: 120px;
     z-index: 1;
-    background-color: #0C9ABE;
     /*
+    background-color: #0C9ABE;
     background-color: #2A3F54;
     */
 }
@@ -56,4 +56,10 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+#user-widget a{
+  background-color: gray;
+  color: black;
+  font-size: 30px;
 }
