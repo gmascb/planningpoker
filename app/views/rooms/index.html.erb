@@ -5,40 +5,47 @@
   </head>
   <body>
 <!-- p id="notice"><%= notice %></p-->
-    <h3>Salas Disponíveis</h3>
-    
-    <h4 id="notice" style="color: green;"><%= notice %></h4>
-    
-    <% if @rooms.size > 0 %>
-      <table>
-        <thead>
-        </thead>
-        <tbody>
-          <% @rooms.each do |room| %>
-            <tr>
-              <td><%= room.name %></td>
-              <td><%= link_to 'Entrar', pokers_path(sala: room.id) %></td>
-              
-              <%if current_user != nil %> 
-                <% if room.user == current_user.name  %> 
-                  <td><%= link_to 'Editar', edit_room_path(room) %></td>
-                  <td><%= link_to 'Excluir', room, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
-                <% end %> 
-              <% end %>
-              
-              <% if room.user == nil%>
-                <td><%= link_to 'Editar', edit_room_path(room) %></td>
-                <td><%= link_to 'Excluir', room, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
-    <br/>
-    <br/>
-    <br/>
-    <%= link_to 'Nova Sala', new_room_path %>
+    <div style="padding-left: 20px;">
+      <h3>Salas Disponíveis</h3>
+      
+      <h4 id="notice" style="color: green;"><%= notice %></h4>
+      
+      <% if @rooms.size > 0 %>
+        <table class="w3-card w3-hoverable w3-striped w3-border">
+          <thead class="w3-gray">
+            <td> Nome </td>
+            <td> Jogadores </td>
+            <td> Criador </td>
+            <td colspan=3> Ações </td>
+          </thead>
+          <tbody>
+            <% @rooms.each do |room| %>
+              <tr>
+                <td><%= room.name %></td>
+                <td><%= room.players %></td>
+                <td><%= room.user || 'Pública' %></td>
+                <td><%= link_to pokers_path(sala: room.id) do %><i class="fa fa-arrow-circle-right"></i> <% end %></td>
+                <%if current_user != nil %> 
+                  <% if room.user == current_user.name  %> 
+                    <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
+                    <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
+                  <% end %> 
+                <% end %>
+                
+                <% if room.user == nil%>
+                    <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
+                    <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <br/>
+      <br/>
+      <br/>
+      <%= link_to 'Nova Sala', new_room_path %>
+    </div>
   </body>
 </html>
 

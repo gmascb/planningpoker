@@ -4,14 +4,14 @@
   </head>
   <body>
     
-    <h3>Planning Poker - Sala '<%= @sala.name %>'</h3>
+    <h3> Sala '<%= @sala.name %>'</h3>
     <h4 id="notice"><%= notice %></h4>
     <% salaAtual = @sala.id %>
 
     <!--Botões da Tela-->
-    <%= link_to 'Jogar',  new_poker_path(sala: salaAtual), method: :get%>
-    <%= link_to 'Atualizar', pokers_path(sala: salaAtual), remote: true %>
-    <%= link_to 'Reiniciar', poker_path(:id => 1, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  %>
+    <%= link_to new_poker_path(sala: salaAtual), method: :get do %><i class="fa fa-hand-o-up"></i><% end %>
+    <%= link_to pokers_path(sala: salaAtual), remote: true do %><i class="fa fa-refresh"></i><% end %>
+    <%= link_to poker_path(:id => 1, :sala => salaAtual), :method => :delete, data: { confirm: 'Deseja Reiniciar?' }  do %><i class="fa fa-recycle"></i><% end %>
     
       
       <!-- Resultado -->

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <%= stylesheet_link_tag    'menu', media: "all", "data-turbolinks-track" => false %>
+
+  <body>
+    
+  <!--    http://fontawesome.io/icons/   -->
+    <div class="w3-sidebar w3-bar-block w3-blue w3-xxlarge" style="width:83px; background-color:#0C9ABE;">
+      <!-- DROPDOWN MENU LOGIN
+      div class="w3-dropdown-click">
+        <button class="w3-button" onclick="myDropFunc()">
+          <i class="fa fa-sign-in"></i>
+        </button>
+        <div id="demoDrop" class="w3-dropdown-content w3-bar-block w3-white w3-card-2">
+          <a id="sign_ing" href="/auth/google_oauth2" class="w3-bar-item w3-button"><i class="fa fa-google-plus"></i></a> 
+          <a id="sign_infb" href="/auth/facebook" class="w3-bar-item w3-button"><i class="fa fa-facebook"></i></a> 
+          <a id="sign_infgh" href="/auth/github" class="w3-bar-item w3-button"><i class="fa fa-github"></i></a> 
+          <a id="sign_inX" href="/rooms" class="w3-bar-item w3-button"><i class="fa fa-user-circle"></i></a>
+        </div>
+      </div-->
+      <a href="/home" class="w3-bar-item w3-blue"><i class="fa fa-home"></i></a>
+      <% if current_user == nil %>
+        <button class="w3-button w3-block w3-blue w3-left-align" onclick="myAccFunc()"> <i class="fa fa-sign-in"></i>
+        </button>
+          <div id="demoAcc" class="w3-hide w3-white w3-card-2">
+            <a id="sign_ing"   href="/auth/google_oauth2" class="w3-bar-item w3-button" style="background-color:#cc0000;"><i class="fa fa-google-plus"></i></a> 
+            <a id="sign_infb"  href="/auth/facebook" class="w3-bar-item w3-button"      style="background-color:#3B5998;"><i class="fa fa-facebook"></i></a> 
+            <a id="sign_infgh" href="/auth/github" class="w3-bar-item w3-button"        style="background-color: gray;"><i   class="fa fa-github"></i></a> 
+            <a id="sign_inX"   href="/rooms" class="w3-bar-item w3-button"              style="background-color: blue;"><i   class="fa fa-user-circle"></i></a>
+          </div>
+      <% else %>
+        <a href="/rooms" class="w3-bar-item w3-button" >Sala</a>
+        <a href="/signout" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i></a>
+      <% end %>
+      
+      <script>
+        function myAccFunc() {
+            var x = document.getElementById("demoAcc");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-green";
+            } else { 
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace(" w3-green", "");
+            }
+        }
+        
+        function myDropFunc() {
+            var x = document.getElementById("demoDrop");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-green";
+            } else { 
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className = 
+                x.previousElementSibling.className.replace(" w3-green", "");
+            }
+        }
+      </script>
+    </div>
+    <br>
+    <br>
+    <div style="color: black; padding-left: 30px; ">
+      <% if current_user %>
+         <%=  "Bem Vindo " + current_user.name.to_s.force_encoding("UTF-8") %>
+      <% else %>
+        <%= "Faça seu Login"%>
+      <%end%>
+    </div>
+    
+  </body>
+</html>

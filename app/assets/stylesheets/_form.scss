@@ -37,7 +37,13 @@ td, th {
 a:link {
     color: black;
     display: inline-block;
+    
+    background-color: #2196F3;
+    /*
+    background-color: black;
     background-color: #0C9ABE;
+    background-color: #2A3F54;
+    */
     border-radius: 5px;
 }
 
@@ -97,7 +103,12 @@ input[type=password], select {
 .btn {
     font-size: 24px;
     color: White;
+    background-color: #2196F3;
+    /*
+    background-color: black;
     background-color: #0C9ABE;
+    background-color: #2A3F54;
+    */
     border-radius: 5px;
     padding: 6px 12px;
     width: 93px; /*Largura*/
@@ -141,12 +152,22 @@ fieldset[disabled] .btn {
 
 .btn-success {
     color: #fff;
+    background-color: #2196F3;
+    /*
+    background-color: black;
     background-color: #0C9ABE;
+    background-color: #2A3F54;
+    */
 }
 .btn-success.focus,
 .btn-success:focus {
     color: #fff;
-    background-color: #0C9ABE ;
+    background-color: #2196F3;
+    /*
+    background-color: black;
+    background-color: #0C9ABE;
+    background-color: #2A3F54;
+    */
 }
 .btn-success:hover {
     color: #fff;
@@ -188,5 +209,10 @@ fieldset[disabled] .btn-success:hover {
 }
 .btn-success .badge {
     color: black;
-    background-color: #fff
+        background-color: #2196F3;
+    /*
+    background-color: black;
+    background-color: #0C9ABE;
+    background-color: #2A3F54;
+    */
 }

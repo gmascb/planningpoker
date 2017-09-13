@@ -6,7 +6,8 @@
             <div class="dropdown-content">
         
               <div id="user-widgetGoogle">  
-                <%= link_to "Google+", "/auth/google_oauth2", id: "sign_ing" %>
+              <i class="fa fa-google-plus" aria-hidden="true"></i>
+              <%= link_to "Google+", "/auth/google_oauth2", id: "sign_ing" %>
               </div>
               <div id="user-widgetFB">
                 <%= link_to "Facebook", "/auth/facebook", id: "sign_infb" %>
@@ -27,7 +28,6 @@
             <li><%= link_to "Sair", signout_path, id: "sign_out" %></li>
           <% end %>
 </ul>
-
 <br>
 
 <div style="color: black">

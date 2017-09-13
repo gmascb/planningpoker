@@ -1,12 +1,9 @@
-#user-widget a{
- background-color:#3B5998; 
-}
-
-
 h1, notice{
     color: black;
     position: relative;
 }
+
+
 
 h3{
   color: black;
@@ -16,9 +13,8 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 20;
-    left: 34%;
+    left: 20%;
     position: relative;
-    
 }
 
 td, th {
@@ -34,5 +30,9 @@ h4{
 }
 
 a:link, a:visited {
+  background-color: #2196F3;
+  /*
+  background-color: black;
   background-color: #0C9ABE;
+  */
 }
