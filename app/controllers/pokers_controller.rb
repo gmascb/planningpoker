@@ -32,6 +32,7 @@ class PokersController < ApplicationController
     
     @poker = Poker.new
     @salaAtual = params[:sala]
+    @jogando = 1
     @sala = Room.find(@salaAtual)
     @cartarepetida= params[:cartarepetida]
     

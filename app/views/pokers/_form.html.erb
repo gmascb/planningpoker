@@ -3,6 +3,7 @@
     <%= stylesheet_link_tag '_form', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
+    
     <p id="notice"><% notice %></p>
     
     <% if @cartarepetida.to_i == 1 %>
@@ -35,7 +36,7 @@
       <% usuario = current_user.name.to_s.force_encoding("UTF-8") %>
     <%end%>
     
-    <div></div>
+    <center>
       <table border=0 col-span="3" style="padding-left: 70px">
         <tr>
           <td align=center><%= link_to_image(carta05, pokers_create_path(:poker => {:value => 0.5, :user => usuario, :room => @salaAtual }, sala: @salaAtual) , method: :post)%></td>
@@ -56,6 +57,11 @@
           <td align=center><%= link_to_image(cartaNEntendi, pokers_create_path(:poker => {:name => 'Nao Entendi', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
         </tr>
       </table>
-    </div>
+      </center>
+    <br/>
+    <br/>
+
+          <%= link_to 'Voltar', pokers_path(sala: @salaAtual), method: :get%>
+    
   </body>
 </html>

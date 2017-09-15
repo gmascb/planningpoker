@@ -17,20 +17,7 @@ h3{
 }
 
 
-table{
-    position: relative;
-    left: 0%;
-    top: 0%;
-    text-align: center;
-    left: center;
-    width: 50%;
-    
-    margin-left: auto;
-    margin-right: auto;
-}
-
 td, th {
-    color: black;
     position: relative;
 }
 
@@ -72,7 +59,7 @@ a:link:active {
 
 
 input[type=text], select {
-    width: 25%;
+    width: 40%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -82,7 +69,7 @@ input[type=text], select {
 }
 
 input[type=password], select {
-    width: 25%;
+    width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;

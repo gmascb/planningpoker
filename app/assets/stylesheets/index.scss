@@ -10,11 +10,8 @@ h3{
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 20;
-    left: 20%;
-    position: relative;
+    width: 100% ;
 }
 
 td, th {
@@ -31,6 +28,7 @@ h4{
 
 a:link, a:visited {
   background-color: #2196F3;
+  border-radius: 5px;
   /*
   background-color: black;
   background-color: #0C9ABE;
