@@ -10,9 +10,20 @@
 
     <!--Botões da Tela-->
     <%= link_to new_poker_path(sala: salaAtual), method: :get do %><i class="fa fa-play-circle"></i> Jogar<% end %>
-    <%= link_to pokers_path(sala: salaAtual), remote: true do %><i class="fa fa-refresh"></i><% end %>
+    <%= link_to pokers_path(sala: salaAtual), :class => "atualiza" , remote: true do %><i class="fa fa-refresh"></i><% end %>
     <%= link_to poker_path(:id => 1, :sala => salaAtual), :method => :delete  do %><i class="fa fa-trash"></i><% end %>
     
+    
+      <% if @sala.refreshauto %>
+        <script>
+        
+        setInterval(function() {
+          document.getElementsByClassName("atualiza")[0].click();
+        }, 4000);
+        
+        
+        </script>
+      <% end %>
       
       <!-- Resultado -->
       

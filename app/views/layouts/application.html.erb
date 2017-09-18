@@ -15,7 +15,18 @@
     <%= render "/menu/sidemenu"%>  
     <%= yield %>
   </body>
+  
+  <br/>
+  <br/>
+  <br/>
   <footer>
+    <div style="color: black; padding-left: 30px; float: right; ">
+      <% if current_user %>
+         <%=  "Bem Vindo " + current_user.name.to_s.force_encoding("UTF-8") %>
+      <% else %>
+        <%= "Faça seu Login"%>
+      <%end%>
+    </div>
     <!-- by gmascb-->
   </footer>
 </html>

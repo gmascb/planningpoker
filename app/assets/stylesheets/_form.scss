@@ -25,12 +25,7 @@ a:link {
     color: black;
     display: inline-block;
     
-    background-color: #2196F3;
-    /*
-    background-color: black;
-    background-color: #0C9ABE;
-    background-color: #2A3F54;
-    */
+    background-color: #034f84; /* Cor dos Links/Botoes */
     border-radius: 5px;
 }
 
@@ -90,12 +85,7 @@ input[type=password], select {
 .btn {
     font-size: 24px;
     color: White;
-    background-color: #2196F3;
-    /*
-    background-color: black;
-    background-color: #0C9ABE;
-    background-color: #2A3F54;
-    */
+    background-color: #034f84; /* Cor dos Links/Botoes */
     border-radius: 5px;
     padding: 6px 12px;
     width: 93px; /*Largura*/
@@ -133,28 +123,17 @@ fieldset[disabled] .btn {
     opacity: .65
 }
 
-/*
-#0C9ABE
-*/
 
 .btn-success {
     color: #fff;
-    background-color: #2196F3;
-    /*
-    background-color: black;
-    background-color: #0C9ABE;
-    background-color: #2A3F54;
-    */
+    background-color: #034f84; /* Cor dos Links/Botoes */
+
 }
 .btn-success.focus,
 .btn-success:focus {
     color: #fff;
     background-color: #2196F3;
-    /*
-    background-color: black;
-    background-color: #0C9ABE;
-    background-color: #2A3F54;
-    */
+
 }
 .btn-success:hover {
     color: #fff;
@@ -162,10 +141,7 @@ fieldset[disabled] .btn {
 }
 .btn-success.active,
 .btn-success:active,
-.open>.dropdown-toggle.btn-success {
-    color: #fff;
-    background-color: #449d44;
-}
+
 .btn-success.active.focus,
 .btn-success.active:focus,
 .btn-success.active:hover,
@@ -177,29 +153,4 @@ fieldset[disabled] .btn {
 .open>.dropdown-toggle.btn-success:hover {
     color: #fff;
     background-color: #001a00;
-}
-.btn-success.active,
-.btn-success:active,
-.open>.dropdown-toggle.btn-success {
-    background-image: none
-}
-.btn-success.disabled.focus,
-.btn-success.disabled:focus,
-.btn-success.disabled:hover,
-.btn-success[disabled].focus,
-.btn-success[disabled]:focus,
-.btn-success[disabled]:hover,
-fieldset[disabled] .btn-success.focus,
-fieldset[disabled] .btn-success:focus,
-fieldset[disabled] .btn-success:hover {
-    background-color: gray;
-}
-.btn-success .badge {
-    color: black;
-        background-color: #2196F3;
-    /*
-    background-color: black;
-    background-color: #0C9ABE;
-    background-color: #2A3F54;
-    */
 }

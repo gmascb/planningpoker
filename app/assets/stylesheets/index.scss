@@ -1,3 +1,39 @@
+table {
+    border-collapse: collapse;
+    border-collapse: collapse;
+    float: center;
+    
+    /*
+    width: 50%;
+    left: 31%;
+    #center {
+  position: relative;
+  left: 150px;
+  top: 50%;
+  width: 83%;
+  font-size: 18px;
+}
+    
+    */
+}
+
+th, td {
+    border: 1px solid darkgray;
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even){
+  background-color: white;
+  
+}
+
+th {
+    background-color: #012641;
+    color: white;
+}
+
+
 h1, notice{
     color: black;
     position: relative;
@@ -9,16 +45,11 @@ h3{
   color: black;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100% ;
-}
+
 
 td, th {
   padding: 7px;
-  color: black;
   font-size: 18px;
-  /*padding-right: 20px;*/
 }
 
 
@@ -27,10 +58,16 @@ h4{
 }
 
 a:link, a:visited {
-  background-color: #2196F3;
   border-radius: 5px;
-  /*
-  background-color: black;
-  background-color: #0C9ABE;
-  */
+  background-color: #022e4e; /* Cor dos Links/Botoes */
+}
+
+
+
+#cabecalho{
+  background-color: #012641;
+}
+
+thead td{
+  color: white;
 }

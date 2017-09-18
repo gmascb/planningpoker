@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
+Room.create(user: nil, name: 'SALA 1', players: 1)
+Room.create(user: nil, name: 'SALA 2', players: 0, refreshauto: true)
 Poker.create(user: 'A', value: 5, room: 2)
 Poker.create(user: 'B', value: 1, room: 2)
 Poker.create(user: 'C', value: 2, room: 2)
@@ -16,4 +17,3 @@ Poker.create(user: 'F', value: 5, room: 2)
 Poker.create(user: 'G', value: 1, room: 2)
 Poker.create(user: 'H', value: 2, room: 2)
 Poker.create(user: 'I', value: 5, room: 2)
-Room.create(user: nil, name: 'SALAUSUARIO', players: 1)

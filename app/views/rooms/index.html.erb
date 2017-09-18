@@ -1,33 +1,19 @@
-<!DOCTYPE html>
 <html>
   <head>
     <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
-<!-- p id="notice"><%= notice %></p-->
-    <div style="padding-left: 20px;">
+    <div>
       <h3>Salas Disponíveis</h3>
       
+      <br>
+      
       <h4 id="notice" style="color: green;"><%= notice %></h4>
-      
-      
-      <style>
-        #center {
-          position: relative;
-          left: 150px;
-          top: 50%;
-          width: 83%;
-          font-size: 18px;
-        }
-        
-        
-      </style>
-      
       
         <center>
           <% if @rooms.size > 0 %>
             <table id="center" class="w3-card w3-hoverable w3-striped w3-border">
-              <thead class="w3-gray">
+              <thead id="cabecalho">
                 <td> Nome </td>
                 <td> Jogadores </td>
                 <td> Criador </td>
@@ -57,9 +43,6 @@
             </table>
           <% end %>
         </center>
-        
-        
-        
       <br/>
       <br/>
       <br/>
