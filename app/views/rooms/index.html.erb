@@ -16,6 +16,7 @@
               <thead id="cabecalho">
                 <td> Nome </td>
                 <td> Jogadores </td>
+                <td> Refresh </td>
                 <td> Criador </td>
                 <td colspan=3> Ações </td>
               </thead>
@@ -24,6 +25,13 @@
                   <tr>
                     <td><%= room.name %></td>
                     <td><%= room.players %></td>
+                    <td>
+                      <% if (room.refreshauto) %>
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                      <% else %>
+                        <i class="fa fa-square-o" aria-hidden="true"></i>
+                      <% end %>
+                    </td>
                     <td><%= room.user || 'Pública' %></td>
                     <td><%= link_to pokers_path(sala: room.id) do %><i class="fa fa-arrow-circle-right"></i> <% end %></td>
                     <%if current_user != nil %> 

@@ -3,10 +3,14 @@
     <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
+
     
     <h3> Sala '<%= @sala.name %>'</h3>
-    <h4 id="notice"><%= notice %></h4>
+    
+    <% if (@sala.refreshauto)%> <p style="font-size: 12px; color: green;">Refresh Automático</p> <% end %>
+    
     <% salaAtual = @sala.id %>
+    
 
     <!--Botões da Tela-->
     <%= link_to new_poker_path(sala: salaAtual), method: :get do %><i class="fa fa-play-circle"></i> Jogar<% end %>
