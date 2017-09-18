@@ -20,7 +20,7 @@
   <br/>
   <br/>
   <footer>
-    <div style="color: black; padding-left: 30px; float: right; ">
+    <div style="font-size: 12px; position:fixed; padding:7px; bottom:0; right:0; z-index:999; "> 
       <% if current_user %>
          <%=  "Bem Vindo " + current_user.name.to_s.force_encoding("UTF-8") %>
       <% else %>
