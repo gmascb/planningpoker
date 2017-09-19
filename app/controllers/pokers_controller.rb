@@ -114,14 +114,33 @@ class PokersController < ApplicationController
   # DELETE /pokers/1
   # DELETE /pokers/1.json
   def destroy
-    @salaAtual = params[:sala]
-    Poker.where(room: params[:sala]).destroy_all
-    respond_to do |format|
-      format.html { redirect_to pokers_path(sala: @salaAtual) }
-      format.json { head :no_content }
+    
+    apaga = true
+    
+    @sala = Room.find(params[:sala])
+    if(current_user) #estou logado
+      if (@sala.user) #alguem logado criou a sala
+        if(current_user.name != @sala.user) #nao criei a sala
+          if(!@sala.playersname.empty?) #tem nome dos jogadores
+            if (!@sala.playersname.to_s.force_encoding("UTF-8").include? current_user.name.to_s.force_encoding("UTF-8")) # Meu Nome nao esta na lista
+              redirect_to rooms_path, notice: 'Voce não está na lista de jogadores desta sala' #sai da sala
+              apaga = false
+            end
+          end
+        end
+      end
+    else #nao estou logado
+      if (@sala.user != nil) #Sala criada Sem Login
+        redirect_to rooms_path, notice: 'Voce precisa efetuar o login' #sai da sala
+        apaga = false;
+      end
+    end
+    
+    if (apaga)
+      Poker.where(room: @sala.id).destroy_all
+      redirect_to pokers_path(sala: @sala.id)
     end
   end 
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
