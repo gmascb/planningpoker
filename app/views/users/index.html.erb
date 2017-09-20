@@ -5,18 +5,21 @@
   <body>
     <h1>Lista de Usuários</h1>
     
-    <table>
-      <tr>
-        <th>User</th>
-        <th>Provider</th>
-      </tr>
-      <tr>
+    <center>
+      <table>
+        <tr>
+          <th>User</th>
+          <th>Provider</th>
+        </tr>
         <% @users.each do |user| %>
-          <td><%= user.name.to_s.force_encoding("UTF-8") %></td>
-          <td><%= user.provider.to_s.force_encoding("UTF-8") %></td><br>
+          <tr>
+            <td><%= user.name.to_s.force_encoding("UTF-8") %></td>
+            <td><%= user.provider.to_s.force_encoding("UTF-8") %></td>
+          </tr>
         <% end %>
-      </tr>
-    </table>
+      </table>
+    </center>
+    <br/>
     <%= link_to 'Voltar', home_path%>
   </body>
 </html>
