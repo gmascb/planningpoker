@@ -1,25 +1,21 @@
 <html>
-
   <head>
     <%= stylesheet_link_tag    'index', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
     <h1>Lista de Usuários</h1>
+    
     <table>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Provider</th>
-        </tr>
-      </thead>
-      <tbody>
+      <tr>
+        <th>User</th>
+        <th>Provider</th>
+      </tr>
+      <tr>
         <% @users.each do |user| %>
-          <tr>
-            <td><%= user.name.to_s.force_encoding("UTF-8") %></td>
-            <td><%= user.provider.to_s.force_encoding("UTF-8") %></td><br>
-          </tr>
+          <td><%= user.name.to_s.force_encoding("UTF-8") %></td>
+          <td><%= user.provider.to_s.force_encoding("UTF-8") %></td><br>
         <% end %>
-      </tbody>
+      </tr>
     </table>
     <%= link_to 'Voltar', home_path%>
   </body>

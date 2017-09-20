@@ -1,5 +1,5 @@
 class Room < ActiveRecord::Base
    validates :name, presence: true
    validates :players, :numericality => {:only_integer => true}
-   validates :playersname, :allow_blank => true, :allow_nil => true,  format: { with: /\A[a-zA-Z ,çÇáéíóúÁÉÍÓÚ]+\z/, message: ": Apenas letras." }
+   validates :playersname, :allow_blank => true, :allow_nil => true,  format: { with: /\A[a-zA-Z ,çÇàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚ]+\z/, message: ": Apenas letras." }
 end
