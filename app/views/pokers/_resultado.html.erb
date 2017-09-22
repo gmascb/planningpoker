@@ -16,7 +16,7 @@
 <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100+varNEnt+varPausa %>
 
 <!--Calcular valor médio convertido para  inteiro-->
-<% if numCartas > 0 && numCartas >= @players %>
+<% if numCartas > 0 && numCartas >= @sala.players %>
   
   <!--Calcula valores totais para apresentar na tela-->
   <% pontosTotais = ((var05*0.5)+(var1*1)+(var2*2)+(var3*3)+(var5*5)+(var8*8)+(var13*13)+(var20*20)+(var40*40)+(var100*100)) %>
@@ -47,13 +47,23 @@
   </table>
   <br/>
   
-=====================================================================
+===================================================================================
+<br>
+
+
+
 
     <!--Mostra Número total de cada uma das cartas-->
-    <h3>
+      <div style=" width: 100%; ">
+        <h1>Número Total de Cada Carta <br/><br/></h1>
+        <div style="margin-left: 20%; float: left;"> <%= pie_chart @chartdataValue %> </div>
+        <div style="margin-right: 20%; float: right"> <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> </div>
+      </div>
+      
+    <!-- h3>
       <table>
-      <% textoTotalCarta = 'Carta '%>
-      Número Total de Cada Carta <br/><br/>
+      <%= textoTotalCarta = 'Carta '%>
+      <h3>Número Total de Cada Carta <br/></h3>
       <tr>
         <%if var05 > 0%>
           <th>
@@ -166,9 +176,12 @@
         <% end %>
       </tr>
     </table>
-    </h3>
-=====================================================================
+    </h3 -->
+===================================================================================
     <br>
+          <br>
+      <br>
+      <br>
     
 
         <!--Traz uma listagem de todas as cartas com respectivos usuários-->

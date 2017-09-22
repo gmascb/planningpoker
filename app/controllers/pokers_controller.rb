@@ -4,14 +4,12 @@ class PokersController < ApplicationController
   # GET /pokers
   # GET /pokers.json
   def index
-    
     if params.has_key?(:sala)
       #region Variaveis para Index.Html
       @sala = Room.find(params[:sala])
-      @pokers = Poker.where(room: params[:sala])
+      @pokers = Poker.where(room: @sala.id)
       #endregion
-      
-      @players = Room.find(params[:sala]).players #usa no Client e Server
+      @chartdataValue = Poker.where(room: @sala).group(:value).count.sort
       
       if @players == nil
         @players = 0
@@ -71,6 +69,10 @@ class PokersController < ApplicationController
 
     valor = @poker.value
     nome = @poker.name
+    
+    if (@poker.name && @poker.name.size > 0)
+      @poker.value = 0
+    end
 
     if current_user != nil
       qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     

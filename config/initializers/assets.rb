@@ -17,3 +17,8 @@ Rails.application.config.assets.precompile += %w( _form.scss
                                                   jquery-migrate-1.4.1.min.js
                                                   home.scss
                                                   application.scss)
+                                                  
+                                                  
+Rails.application.config.assets.precompile += %w(
+                                                  charts.js  
+  )
