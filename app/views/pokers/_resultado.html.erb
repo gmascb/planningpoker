@@ -10,7 +10,7 @@
 <%var40 = @pokers.where(value: 40).size%>
 <%var100 = @pokers.where(value: 100).size%>
 <%varPausa = @pokers.where(name: 'Pausa').size%>
-<%varNEnt = @pokers.where(name: 'Nao Entendi').size%>
+<%varNEnt = @pokers.where(name: 'Não Entendi').size%>
 
 
 <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100+varNEnt+varPausa %>
@@ -46,22 +46,34 @@
     </tr>
   </table>
   <br/>
-  
-===================================================================================
-<br>
+  <br>
 
 
 
 
-    <!--Mostra Número total de cada uma das cartas-->
+    <!--Resultado-->
       <div style=" width: 100%; ">
-        <h1>Número Total de Cada Carta <br/><br/></h1>
         <div style="margin-left: 20%; float: left;"> <%= pie_chart @chartdataValue %> </div>
-        <div style="margin-right: 20%; float: right"> <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> </div>
-      </div>
+        <div style="margin-right: 20%; float: right;"> <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> </div><br/>
+            <!--Traz uma listagem de todas as cartas com respectivos usuários-->
+        <div style="color: black; float: center;">
+          <h3>Cartas Cadastradas</h3>
+            <% @pokers.each do |poker| %>
+                <%if poker.name != 'temp' %>
+                  <%if poker.user == 'usuario'%>
+                    Carta: <%=poker.name || poker.value%> => Sem Usuário<br/>
+                  <% else %>
+                    Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %><br/>
+                  <% end %>
+                <% end %>
+            <% end %>
+          </center>
+        </div>
       
-    <!-- h3>
-      <table>
+      
+      
+      <!-- h3 style="margin-left: 20%; margin-right: 20%; float: right;">
+        <table>
       <%= textoTotalCarta = 'Carta '%>
       <h3>Número Total de Cada Carta <br/></h3>
       <tr>
@@ -176,25 +188,9 @@
         <% end %>
       </tr>
     </table>
-    </h3 -->
-===================================================================================
-    <br>
-          <br>
-      <br>
-      <br>
-    
+      </h3 -->
+      
+      </div>
+      
 
-        <!--Traz uma listagem de todas as cartas com respectivos usuários-->
-    <div style="color: black;">
-      <h3>Cartas Cadastradas</h3>
-        <% @pokers.each do |poker| %>
-            <%if poker.name != 'temp' %>
-              <%if poker.user == 'usuario'%>
-                Carta: <%=poker.name || poker.value%> => Sem Usuário<br/>
-              <% else %>
-                Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %><br/>
-              <% end %>
-            <% end %>
-        <% end %>
-    </div>
 <% end %>

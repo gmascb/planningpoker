@@ -6,13 +6,19 @@
     
     <p id="notice"><% notice %></p>
     
-    <% if @cartarepetida.to_i == 1 %>
+    <% if (@sala.bloqcartarepet)%> <p style="font-size: 12px; color: red;">Você não tem permissão para atualizar cartas, jogue consciente!</p> <% end %>
+    
+    <% if @cartarepetida.to_i == 1 && @sala.bloqcartarepet == false %>
       <script>
-        $.notify("Atualizamos sua carta! ;)","info");    
+        $.notify("Atualizamos sua carta!","info");    
       </script>
     <% elsif notice == 'CartaOk' %>
       <script>
-        $.notify("Sua carta foi registrada com sucesso! :)","success");    
+        $.notify("Sua carta foi registrada com sucesso!","success");    
+      </script>
+    <% elsif @cartarepetida.to_i == -1 %>
+      <script>
+        $.notify("Você já tem uma carta cadastrada!","error");    
       </script>
     <% end %>
     <br>
@@ -54,7 +60,7 @@
           <td align=center><%= link_to_image(carta40, pokers_create_path(:poker => {:value => 40, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
           <td align=center><%= link_to_image(carta100, pokers_create_path(:poker => {:value => 100, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
           <td align=center><%= link_to_image(cartaCoffee, pokers_create_path(:poker => {:name => 'Pausa', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-          <td align=center><%= link_to_image(cartaNEntendi, pokers_create_path(:poker => {:name => 'Nao Entendi', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
+          <td align=center><%= link_to_image(cartaNEntendi, pokers_create_path(:poker => {:name => 'Não Entendi', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
         </tr>
       </table>
       </center>

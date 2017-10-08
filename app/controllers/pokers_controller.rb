@@ -39,7 +39,7 @@ class PokersController < ApplicationController
     if(current_user) #estou logado
       if (@sala.user) #alguem logado criou a sala
         if(current_user.name != @sala.user) #nao criei a sala
-          if(!@sala.playersname.empty?) #tem nome dos jogadores
+          if(@sala.playersname != nil && !@sala.playersname.empty?) #tem nome dos jogadores
             if (!@sala.playersname.to_s.force_encoding("UTF-8").include? current_user.name.to_s.force_encoding("UTF-8")) # Meu Nome nao esta na lista
               redirect_to rooms_path, notice: 'Voce não está na lista de jogadores desta sala' #sai da sala
             end
@@ -65,6 +65,7 @@ class PokersController < ApplicationController
   # POST /pokers.json
   def create
     @salaAtual = params[:sala]
+    @sala = Room.find(params[:sala])
     @poker = Poker.new(poker_params)
 
     valor = @poker.value
@@ -88,13 +89,18 @@ class PokersController < ApplicationController
       @poker.user == 'Sem Usuario'
     end
 
-    respond_to do |format|
-      if @poker.save
-        format.html { redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada), notice: 'CartaOk' }
-        format.json { render :show, status: :created, location: @poker }
-      else
-        format.html { render :new }
-        format.json { render json: @poker.errors, status: :unprocessable_entity }
+    if (@cartaAtualizada && @sala.bloqcartarepet)
+      @cartaAtualizada = -1
+      redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada )
+    else
+      respond_to do |format|
+        if @poker.save
+          format.html { redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada), notice: 'CartaOk' }
+          format.json { render :show, status: :created, location: @poker }
+        else
+          format.html { render :new }
+          format.json { render json: @poker.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
