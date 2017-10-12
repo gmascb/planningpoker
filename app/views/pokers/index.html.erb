@@ -15,7 +15,8 @@
     <%= link_to pokers_path(sala: @sala.id), :class => "atualiza" , remote: true do %><i class="fa fa-refresh"></i><% end %>
     <%= link_to poker_path(:id => 1, :sala => @sala.id), :method => :delete  do %><i class="fa fa-trash"></i><% end %>
     
-    
+    <br/>
+
       <% if @sala.refreshauto %>
         <script>
         

@@ -11,11 +11,27 @@ class PokersController < ApplicationController
       #endregion
       @chartdataValue = Poker.where(room: @sala).group(:value).count.sort
       
+      if @sala.playersname != nil
+        @playersRoom = @sala.playersname.split(", ")
+        #limpa espaços em branco. trim
+        @playersRoom.each do |jogador|
+          jogador = jogador.strip
+        end
+      end
+      
+      
+      @QuemJaJogou = Array.new
+      @pokers.each do |carta|
+        @QuemJaJogou << carta.user
+      end
+      
+      
       if @players == nil
         @players = 0
       end
       
     else
+      # se estiver sem parametro volta para tela de salas.
       redirect_to rooms_path
     end
   end

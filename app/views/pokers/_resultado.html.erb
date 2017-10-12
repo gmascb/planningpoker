@@ -30,8 +30,26 @@
   <% arrayModa << item.value%>
   <% end %>
 
-  <br/>
-  <br/>
+
+<br/>
+    <!-- Mostra quem ainda não jogou e está cadastrado na sala-->
+    <% if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 && @playersRoom.size - @QuemJaJogou.size <= 5 %>
+      <h3> Quem falta jogar </h3>
+      <% @playersRoom.each do |jogadoresDaSala| %>
+        <% if !@QuemJaJogou.include? jogadoresDaSala %>
+          <div class="quemNaoJogou" >
+             <%= jogadoresDaSala %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    
+    <br/>
+    <br/>
+    <br/>
+
+
+
   
   <table>
     <tr>
@@ -49,28 +67,18 @@
   <br>
 
 
-
-
     <!--Resultado-->
       <div style=" width: 100%; ">
-        <div style="margin-left: 20%; float: left;"> <%= pie_chart @chartdataValue %> </div>
-        <div style="margin-right: 20%; float: right;"> <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> </div><br/>
+        <!-- div style="margin-left: 20%; float: left;"> <%= pie_chart @chartdataValue %> </div -->
+        <div style="margin-left: 20%; float: left;"> <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> </div><br/>
             <!--Traz uma listagem de todas as cartas com respectivos usuários-->
-        <div style="color: black; float: center;">
-          <h3>Cartas Cadastradas</h3>
+        <div style="color: black; float: right; margin-right: 20%; ">
+          <h3>Listagem de cartas</h3> 
             <% @pokers.each do |poker| %>
-                <%if poker.name != 'temp' %>
-                  <%if poker.user == 'usuario'%>
-                    Carta: <%=poker.name || poker.value%> => Sem Usuário<br/>
-                  <% else %>
-                    Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %><br/>
-                  <% end %>
-                <% end %>
+              Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %><br/>
             <% end %>
           </center>
         </div>
-      
-      
       
       <!-- h3 style="margin-left: 20%; margin-right: 20%; float: right;">
         <table>

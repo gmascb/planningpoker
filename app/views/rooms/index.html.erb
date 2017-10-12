@@ -25,15 +25,10 @@
                     <td><%= room.user || 'Pública' %></td>
                     <td><%= link_to pokers_path(sala: room.id) do %><i class="fa fa-arrow-circle-right"></i> <% end %></td>
                     <%if current_user != nil %> 
-                      <% if room.user == current_user.name  %> 
+                      <% if room.user == current_user.name || room.user == nil %> 
                         <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
                         <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
                       <% end %> 
-                    <% end %>
-                    
-                    <% if room.user == nil%>
-                        <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
-                        <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
                     <% end %>
                   </tr>
                 <% end %>
@@ -44,7 +39,7 @@
       <br/>
       <br/>
       <br/>
-      <%= link_to 'Nova Sala', new_room_path %>
+      <div style="float:right; margin-right:5%"><%= link_to 'Nova Sala', new_room_path %></div>
     </div>
   </body>
 </html>

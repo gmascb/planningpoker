@@ -71,3 +71,18 @@ a:link, a:visited {
 thead td{
   color: white;
 }
+
+.quemNaoJogou {
+    float: center;
+    margin-right: 15%;
+    margin-left: 15%;
+    background-color: #012641; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
