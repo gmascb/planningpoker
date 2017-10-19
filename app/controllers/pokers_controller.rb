@@ -13,9 +13,12 @@ class PokersController < ApplicationController
       
       if @sala.playersname != nil
         @playersRoom = @sala.playersname.split(", ")
+        #@playersRoom = @playersRoom.split(",")
         #limpa espaços em branco. trim
         @playersRoom.each do |jogador|
-          jogador = jogador.strip
+          #if jogador.include? " "
+            jogador = jogador.strip
+          #end
         end
       end
       
@@ -49,6 +52,17 @@ class PokersController < ApplicationController
     @jogando = 1
     @sala = Room.find(@salaAtual)
     @cartarepetida= params[:cartarepetida]
+    
+    if current_user
+      @minhaCarta = Poker.where(user: current_user.name).where(room: @salaAtual).first
+      if @minhaCarta != nil
+        if @minhaCarta.value != nil
+          @minhaCarta = @minhaCarta.value
+        else
+          @minhaCarta = @minhaCarta.name
+        end
+      end
+    end
     
     #(!@sala.playersname.nil? || !@sala.playersname.empty?)
     

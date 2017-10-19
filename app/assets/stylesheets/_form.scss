@@ -1,3 +1,19 @@
+.cardAlta a:link{
+    background-color: #990000;
+}
+.card a:link{
+    background-color: #000066;
+}
+
+.cardNEntendi a:link{
+    background-color: #585858;
+}
+
+.cardPausa a:link{
+    background-color: #331100;
+}
+
+
 h1, p, notice{
     color: black;
     position: center;
@@ -28,9 +44,6 @@ a:link {
     border-radius: 5px;
 }
 
-div a:link{
-}
-
 
 img{
     width: 50px; /*Largura*/
@@ -42,7 +55,7 @@ a:link, a:visited {
   border-radius: 5px;
 }
 
-a:hover, a:active {
+a:hover {
     background-color: gray;
 }
 
@@ -72,6 +85,8 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+
 
 
 /*

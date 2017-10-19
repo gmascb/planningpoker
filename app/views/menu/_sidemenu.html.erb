@@ -6,28 +6,32 @@
   <%= stylesheet_link_tag    'menu', media: "all", "data-turbolinks-track" => false %>
   <body>
     
-       <div style="background-color: #022e4e;" class="w3-sidebar w3-bar-block w3-collapse w3-card-2" style="width:100px;" id="mySidebar">
-          <button style="background-color: #022e4e;" class="w3-bar-item w3-button w3-hide-large" onclick="w3_close()"> <h4 style="color: white;">&times; Close</h4> </button>
-          <a class="w3-bar-item w3-button" href="/home"><i class="fa fa-home"></i> Home </a>
-          
-          
-          <% if current_user == nil %>
+            
+
+      
+      
+      <!-- Side Bar -->
+      <div style="background-color: #022e4e;" class="w3-sidebar w3-bar-block w3-collapse w3-card-2" style="width:100px;" id="mySidebar">
+        <button style="background-color: #022e4e;" class="w3-bar-item w3-button w3-hide-large" onclick="w3_close()"> <h4 style="color: white;"><i class="fa fa-times"></i> Fechar</h4> </button>
+        <a class="w3-bar-item w3-button" href="/home"><i class="fa fa-home"></i> Home </a>
+
+        <% if current_user == nil %>
           <div class="w3-dropdown-hover">
             <button class="w3-button"> <h2 style="color: white;"><i class="fa fa-sign-in"></i>    Login</h2></button>
               <div class="w3-dropdown-content w3-bar-block">
-                <a id="sign_ing"   href="/auth/google_oauth2" class="w3-bar-item w3-button" style="border-radius: 0px; background-color:#cc0000;"><i class="fa fa-google-plus"></i> Google</a> 
-                <a id="sign_infb"  href="/auth/facebook" class="w3-bar-item w3-button"      style="border-radius: 0px; background-color:#3B5998;"><i class="fa fa-facebook"></i> Facebook</a> 
-                <a id="sign_infgh" href="/auth/github" class="w3-bar-item w3-button"        style="border-radius: 0px; background-color: gray;"><i   class="fa fa-github"></i> GitHub</a> 
-                <a id="sign_inX"   href="/rooms" class="w3-bar-item w3-button"              style="border-radius: 0px; background-color: blue;"><i   class="fa fa-user-circle"></i> Visitante</a>
+              <a id="sign_ing"   href="/auth/google_oauth2" class="w3-bar-item w3-button" style="border-radius: 0px; background-color:#cc0000;"><i class="fa fa-google-plus"></i> Google</a> 
+              <a id="sign_infb"  href="/auth/facebook"      class="w3-bar-item w3-button" style="border-radius: 0px; background-color:#3B5998;"><i class="fa fa-facebook"></i> Facebook</a> 
+              <a id="sign_infgh" href="/auth/github"        class="w3-bar-item w3-button" style="border-radius: 0px; background-color: gray;">  <i class="fa fa-github"></i> GitHub</a> 
+              <a id="sign_inX"   href="/rooms"              class="w3-bar-item w3-button" style="border-radius: 0px; background-color: blue;">  <i class="fa fa-user-circle"></i> Visitante</a>
               </div>
           </div>
-          <% else %>
+        <% else %> 
             <a class="w3-bar-item w3-button" href="/rooms"><i class="fa fa-users" aria-hidden="true"></i> Salas </a>
             <a class="w3-bar-item w3-button" href="/signout"><i class="fa fa-sign-out"></i> Sair </a>
-          <% end %>
-        </div>
+        <% end %>
+      </div>
         
-        
+        <!-- Barra Header -->
         <div style="background-color: #034f84 ; width: 100% ; "class="w3-container">
           <h1 style="color: white; ">
             <button style="float: left; background-color: #034f84 ;" class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
