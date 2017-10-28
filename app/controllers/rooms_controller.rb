@@ -37,7 +37,7 @@ class RoomsController < ApplicationController
     
     respond_to do |format|
       if @room.save
-        format.html { redirect_to rooms_path, notice: 'Sala criada com sucesso!' }
+        format.html { redirect_to rooms_path, notice: "Sala '" + @room.name + "' criada com sucesso!" }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to rooms_path, notice: 'Sala Atualizada com Sucesso!' }
+        format.html { redirect_to rooms_path, notice: "Sala '" + @room.name + "' atualizada com sucesso!" }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class RoomsController < ApplicationController
     @room.destroy
     
     respond_to do |format|
-      format.html { redirect_to rooms_url, notice: 'Sala foi apagada com sucesso!' }
+      format.html { redirect_to rooms_url, notice: "Sala '" + @room.name + "' foi apagada com sucesso!" }
       format.json { head :no_content }
     end
   end
@@ -82,6 +82,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :players, :user, :playersname, :refreshauto, :bloqcartarepet)
+      params.require(:room).permit(:name, :players, :user, :playersname, :refreshauto, :bloqcartarepet, :selectuser)
     end
 end

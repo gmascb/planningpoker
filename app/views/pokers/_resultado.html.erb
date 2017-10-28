@@ -1,40 +1,59 @@
-<!--Carrega quantidade de cartas de cada tipo-->
-<%var05 = @pokers.where(value: 0.5).size%>
-<%var1 = @pokers.where(value: 1).size%>
-<%var2 = @pokers.where(value: 2).size%>
-<%var3 = @pokers.where(value: 3).size%>
-<%var5 = @pokers.where(value: 5).size%>
-<%var8 = @pokers.where(value: 8).size%>
-<%var13 = @pokers.where(value: 13).size%>
-<%var20 = @pokers.where(value: 20).size%>
-<%var40 = @pokers.where(value: 40).size%>
-<%var100 = @pokers.where(value: 100).size%>
-<%varPausa = @pokers.where(name: 'Pausa').size%>
-<%varNEnt = @pokers.where(name: 'Não Entendi').size%>
+<br>
+<br>
+<!-- Manter no Inicio -->
+  <!--Carrega quantidade de cartas de cada tipo-->
+  <%var05 = @pokers.where(value: 0.5).size%>
+  <%var1 = @pokers.where(value: 1).size%>
+  <%var2 = @pokers.where(value: 2).size%>
+  <%var3 = @pokers.where(value: 3).size%>
+  <%var5 = @pokers.where(value: 5).size%>
+  <%var8 = @pokers.where(value: 8).size%>
+  <%var13 = @pokers.where(value: 13).size%>
+  <%var20 = @pokers.where(value: 20).size%>
+  <%var40 = @pokers.where(value: 40).size%>
+  <%var100 = @pokers.where(value: 100).size%>
+  <%varPausa = @pokers.where(name: 'Pausa').size%>
+  <%varNEnt = @pokers.where(name: 'Não Entendi').size%>
+  <!-- Soma o número de cartas jogadas -->
+  <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100+varNEnt+varPausa %>
+<!-- FIM Manter no Inicio -->
 
 
-<% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100+varNEnt+varPausa %>
 
-    <!-- Mostra quem ainda não jogou e está cadastrado na sala-->
-    <% if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 && @playersRoom.size - @QuemJaJogou.size <= 5 %>
-      <h3> Quem falta jogar </h3>
+<!--Traz uma listagem de todas as cartas com respectivos usuários-->
+<div style="width: 50%; color: black; float: center; margin-right: 0%; ">
+  <div style="float: center; margin-right: 0; ">
+    <% if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 %>
+      <br>
       <% @playersRoom.each do |jogadoresDaSala| %>
         <% if !@QuemJaJogou.include? jogadoresDaSala %>
-          <div class="quemNaoJogou" >
-             <%= jogadoresDaSala %>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
+          <div class="quemNaoJogou" ><%= jogadoresDaSala %></div>
+        <% else %>
+          <div class="quemJaJogou" >
+            <%= jogadoresDaSala %>
+            <% if numCartas >= @sala.players %>
+              <%= @pokers.where(user: jogadoresDaSala).first.value %>
+            <% else %>
+              <%= "?" %>
+            <% end %><!-- if numCartas >= @sala.players -->
+          </div><!-- quemNaoJogou X quemJaJogou -->
+        <% end %><!-- @QuemJaJogou.include? jogadoresDaSala -->
+      <% end %><!-- @playersRoom.each -->
+    <% end %><!-- if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 -->
+  </div><!-- style="margin-left: 20%; margin-right: 20%;" -->
+</div><!-- style="color: black; float: right; margin-right: 20%; -->
 
 
-<!--Calcular valor médio convertido para  inteiro-->
+<!-- Valida se pode mostrar as informações de acordo com o número de jogadores da sala -->
 <% if numCartas > 0 && numCartas >= @sala.players %>
   
-  <!--Calcula valores totais para apresentar na tela-->
+
+  
+
+
+  <!--Calcula pontos totais para fazer a Média -->
   <% pontosTotais = ((var05*0.5)+(var1*1)+(var2*2)+(var3*3)+(var5*5)+(var8*8)+(var13*13)+(var20*20)+(var40*40)+(var100*100)) %>
-
-
+  
   <!--Calcula a Moda das Cartas-->
   <% arrayDeCartas = Array(Poker.where(:room => @sala.id))%>
   <% arrayDeCartas[0].value %>
@@ -42,166 +61,34 @@
   <% for item in Array(Poker.where(:room => @sala.id))%>
   <% arrayModa << item.value%>
   <% end %>
-
-
-<br/>
-
-    
-    <br/>
-    <br/>
-    <br/>
-
-
+  
+  
+  <br/><br/><br/><br/>
 
   
-  <table>
-    <tr>
-      <th>Num Cartas</th>
-      <th>Valor Médio</th>
-      <th>Moda</th>
-    </tr>
-    <tr>
-      <td><%= numCartas %></td>
-      <td><%= (pontosTotais/numCartas).to_i %></td>
-      <td><%= arrayModa.max_by { |i| arrayModa.count(i) } %></td>
-    </tr>
-  </table>
-  <br/>
-  <br>
-
-
-    <!--Resultado-->
-      <div style=" width: 100%; ">
-        <!-- div style="margin-left: 20%; float: left;"> <%= pie_chart @chartdataValue %> </div -->
-        <div style="margin-left: 20%; float: left;"> <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> </div><br/>
-            <!--Traz uma listagem de todas as cartas com respectivos usuários-->
-        <div style="color: black; float: right; margin-right: 20%; ">
-          <h3>Listagem de cartas</h3> 
-            <% @pokers.each do |poker| %>
-              Carta: <%=poker.name || poker.value%> => <%= poker.user.to_s.force_encoding("UTF-8") %><br/>
-            <% end %>
-          </center>
-        </div>
-      
-      <!-- h3 style="margin-left: 20%; margin-right: 20%; float: right;">
-        <table>
-      <%= textoTotalCarta = 'Carta '%>
-      <h3>Número Total de Cada Carta <br/></h3>
-      <tr>
-        <%if var05 > 0%>
-          <th>
-            <%= textoTotalCarta %> 0.5
-          </th>
-        <% end %>
-        
-        <%if var1 > 0%>
-          <th>
-            <%= textoTotalCarta %> 1
-          </th>
-        <% end %>
-        
-        <%if var2 > 0%>
-          <th>
-            <%= textoTotalCarta %> 2
-          </th>
-        <% end %>
-        
-        <%if var3 > 0%>
-          <th>
-            <%= textoTotalCarta %> 3
-          </th>
-        <% end %>
-        
-        <%if var5 > 0%>
-          <th>
-            <%= textoTotalCarta %> 5
-          </th>
-        <% end %>
-        
-        <%if var8 > 0%>
-          <th>
-            <%= textoTotalCarta %> 8
-          </th>
-        <% end %>
-        
-        <%if var13 > 0%>
-          <th>
-              <%= textoTotalCarta %> 13
-          </th>
-        <% end %>
-      
-        <%if var20 > 0%>
-          <th>
-            <%= textoTotalCarta %> 20
-          </th>
-        <% end %>
-      
-        <%if var40 > 0%>
-          <th>
-            <%= textoTotalCarta %> 40
-          </th>
-        <% end %>
-        
-        <%if var100 > 0%>
-          <th>
-            <%= textoTotalCarta %> 100
-          </th>
-        <% end %>
-        
-        <%if varPausa > 0%>
-          <th>
-            <%= textoTotalCarta %> Pausa
-          </th>
-        <% end %>
-        
-        <%if varNEnt > 0%>
-          <th>
-            <%= textoTotalCarta %> N Entendi
-          </th>
-        <% end %>
-      </tr>
-      <tr>
-        <%if var05 > 0%>
-        <td><%= var05 %>x</td>
-        <% end %>
-        <%if var1 > 0%>
-        <td><%= var1 %>x</td>
-        <% end %>
-        <%if var2 > 0%>
-        <td><%= var2 %>x</td>
-        <% end %>
-        <%if var3 > 0%>
-        <td><%= var3 %>x</td>
-        <% end %>
-        <%if var5 > 0%>
-        <td><%= var5 %>x</td>
-        <% end %>
-        <%if var8 > 0%>
-        <td><%= var8 %>x</td>
-        <% end %>
-        <%if var13 > 0%>
-        <td><%= var13 %>x</td>
-        <% end %>
-        <%if var20 > 0%>
-        <td><%= var20 %>x</td>
-        <% end %>
-        <%if var40 > 0%>
-        <td><%= var40 %>x</td>
-        <% end %>
-        <%if var100 > 0%>
-        <td><%= var100 %>x</td>
-        <% end %>
-        <%if varPausa> 0%>
-        <td><%= varPausa %>x</td>
-        <% end %>
-        <%if varNEnt > 0%>
-        <td><%= varNEnt %>x</td>
-        <% end %>
-      </tr>
-    </table>
-      </h3 -->
-      
-      </div>
-      
-
+  <!-- Apresenta os resultados -->
+  <div style=" width: 100%; ">
+    <!-- Gráfico de Colunas -->
+    <div style="margin-left: 16%; float: left;"> 
+      <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> 
+    </div>
+    
+    <!-- Tabela Num Cartas, Média e Moda -->
+    <div style="margin-right: 16%; float: right;">
+      <table>
+        <tr>
+          <th>Num Cartas</th>
+          <th>Valor Médio</th>
+          <th>Moda</th>
+        </tr>
+        <tr>
+          <td><%= numCartas %></td>
+          <td><%= (pontosTotais/numCartas).to_i %></td>
+          <td><%= arrayModa.max_by { |i| arrayModa.count(i) } %></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+  </div>
+  
 <% end %>

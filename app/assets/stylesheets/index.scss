@@ -72,17 +72,27 @@ thead td{
   color: white;
 }
 
-.quemNaoJogou {
+.quemNaoJogou {    
     float: center;
-    margin-right: 15%;
-    margin-left: 15%;
-    background-color: #012641; /* Green */
-    border: none;
-    color: white;
-    padding: 12px 26px;
+    background-color: gray; /* Green */
+    color: black;
+    padding: 8px 18px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    border-radius: 5px;
+  
+}
+.quemJaJogou {
+    float: center;
+    background-color: #012641;
+    color: white;
+    padding: 8px 18px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

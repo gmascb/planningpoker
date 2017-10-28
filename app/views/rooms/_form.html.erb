@@ -26,31 +26,37 @@
     </div>
     
     <br>
-    <div class="field">
-      <%= f.text_area :playersname, placeholder: 'Nome dos Jogadores (a, b)', cols: 60, rows: 5%>
-    </div>
-    <br>
-    <div class="field">
-      <%= f.check_box :refreshauto %> Refresh Automatico
-    </div>
-    <div class="field">
-      <%= f.check_box :bloqcartarepet %> Bloqueia Atualização de Carta
-    </div>
     
+      <div class="field">
+        <%= f.check_box :refreshauto %> Refresh Automatico 
+        <%= f.check_box :bloqcartarepet %> Bloqueia Atualização de Carta
+      </div>
+      <br>
+      
+    <div class="w3-card-4" style="width: 50%; margin-left: 25.5%; background-color: #f1f1F1; ">
+      <br>
+      <div class="field">
+        <div id="playersname" class="field">
+          <%= f.text_area :playersname, disabled: true, placeholder: 'Selecione os jogadores abaixo', cols: 60, rows: 5, :id => 'textroom_playersname'%></div>
+          <%= f.select(:selectuser, User.all.collect {|p| [ p.name ]})%>
+          <button type="button" onclick="AddUsuarioSala()"><i class="fa fa-plus"></i></button>
+          <button type="button" onclick="RemoveUsuarioSala()"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+  
+
   <p>
     <strong>Usuário Criador:</strong>
     <%= @room.user || 'Sem Usuário' %>
   </p>
     
     <br>
-    <button type="submit" class="btn btn-success">Salvar</button>
+    <button type="submit" class="btn btn-success" onclick="AtivaCampo()">Salvar</button>
     <br>
     <br>
     <%= link_to 'Voltar', rooms_path %>
     <br>
     <br>
-    
-    
     <% end %>
   </body>
 </html>
