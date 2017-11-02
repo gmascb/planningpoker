@@ -38,3 +38,4 @@ var RemoveUsuarioSala = function(){
 var AtivaCampo = function(){
   document.getElementById("textroom_playersname").disabled = false;
 }
+

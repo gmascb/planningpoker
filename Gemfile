@@ -37,6 +37,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Gema para gráficos em JS
 gem "chartkick"
 
+#Gema para buscar usuários na tela de Rooms
+# https://github.com/argerim/select2-rails
+gem "select2-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

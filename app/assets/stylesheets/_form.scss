@@ -65,8 +65,11 @@ a:link:active {
 }
 
 
-#room_selectuser #textroom_playersname{
-    width: 33%;
+
+/* Muda o Fundo de Azul pra branco*/
+#select2-room_selectuser-results
+{
+  background-color: white;
 }
 
 input[type=text], select {
@@ -89,9 +92,6 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
-
-
 
 /*
 *

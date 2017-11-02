@@ -4,22 +4,20 @@ class PokersController < ApplicationController
   # GET /pokers
   # GET /pokers.json
   def index
+    
     if params.has_key?(:sala)
-      #region Variaveis para Index.Html
+      
       @sala = Room.find(params[:sala])
       @pokers = Poker.where(room: @sala.id)
-      #endregion
       @chartdataValue = Poker.where(room: @sala).group(:value).count.sort
       
       if @sala.playersname != nil
         @playersRoom = @sala.playersname.split(", ")
-        #@playersRoom = @playersRoom.split(",")
-        #limpa espaços em branco. trim
+
         @playersRoom.each do |jogador|
-          #if jogador.include? " "
-            jogador = jogador.strip
-          #end
+          jogador = jogador.strip
         end
+        
       end
       
       

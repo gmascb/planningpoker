@@ -4,6 +4,11 @@
     <%= form_for(@room) do |f| %>
   </head>
   <body>
+    
+    <script>
+      $(document).ready(function() { $("#room_selectuser").select2(); });
+    </script>
+    
     <% if @room.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
@@ -32,15 +37,18 @@
         <%= f.check_box :bloqcartarepet %> Bloqueia Atualização de Carta
       </div>
       <br>
-      
+
     <div class="w3-card-4" style="width: 50%; margin-left: 25.5%; background-color: #f1f1F1; ">
       <br>
       <div class="field">
         <div id="playersname" class="field">
           <%= f.text_area :playersname, disabled: true, placeholder: 'Selecione os jogadores abaixo', cols: 60, rows: 5, :id => 'textroom_playersname'%></div>
-          <%= f.select(:selectuser, User.all.collect {|p| [ p.name ]})%>
+          <%= f.select :selectuser, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
+
           <button type="button" onclick="AddUsuarioSala()"><i class="fa fa-plus"></i></button>
           <button type="button" onclick="RemoveUsuarioSala()"><i class="fa fa-minus"></i></button>
+          <br>
+          <br>
       </div>
     </div>
   
