@@ -62,24 +62,7 @@ class PokersController < ApplicationController
       end
     end
     
-    
-    if(current_user) #estou logado
-      if (@sala.user) #alguem logado criou a sala
-        if(current_user.name != @sala.user) #nao criei a sala
-          if(@sala.playersname != nil && !@sala.playersname.empty?) #tem nome dos jogadores
-            if (!@sala.playersname.to_s.force_encoding("UTF-8").include? current_user.name.to_s.force_encoding("UTF-8")) # Meu Nome nao esta na lista
-              redirect_to rooms_path, notice: 'Voce não está na lista de jogadores desta sala' #sai da sala
-            end
-          end
-        end
-      end
-    else #nao estou logado
-      if (@sala.user != nil) #Sala criada Sem Login
-        redirect_to rooms_path, notice: 'Voce precisa efetuar o login' #sai da sala
-      end
-    end
-    
-    
+    validarPermissao
     
   end
 
@@ -150,16 +133,30 @@ class PokersController < ApplicationController
   # DELETE /pokers/1.json
   def destroy
     
-    apaga = true
-    
+    @apaga = true
+ 
     @sala = Room.find(params[:sala])
+    
+    validarPermissao
+
+    if (@apaga)
+      Poker.where(room: @sala.id).destroy_all
+      redirect_to pokers_path(sala: @sala.id)
+    end
+    
+  end 
+  
+
+  private
+  
+  def validarPermissao
     if(current_user) #estou logado
       if (@sala.user) #alguem logado criou a sala
         if(current_user.name != @sala.user) #nao criei a sala
-          if(!@sala.playersname.empty?) #tem nome dos jogadores
+          if(@sala.playersname != nil && !@sala.playersname.empty?) #tem nome dos jogadores
             if (!@sala.playersname.to_s.force_encoding("UTF-8").include? current_user.name.to_s.force_encoding("UTF-8")) # Meu Nome nao esta na lista
               redirect_to rooms_path, notice: 'Voce não está na lista de jogadores desta sala' #sai da sala
-              apaga = false
+              @apaga = false
             end
           end
         end
@@ -167,27 +164,21 @@ class PokersController < ApplicationController
     else #nao estou logado
       if (@sala.user != nil) #Sala criada Sem Login
         redirect_to rooms_path, notice: 'Voce precisa efetuar o login' #sai da sala
-        apaga = false;
+        @apaga = false
       end
     end
-    
-    if (apaga)
-      Poker.where(room: @sala.id).destroy_all
-      redirect_to pokers_path(sala: @sala.id)
+  end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_poker
+    begin
+      @poker = Poker.find(params[:id])
+    rescue
     end
-  end 
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_poker
-      begin
-        @poker = Poker.find(params[:id])
-      rescue
-      end
-    end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def poker_params
-      params.require(:poker).permit(:name, :value, :user, :room)
-    end
+  def poker_params
+    params.require(:poker).permit(:name, :value, :user, :room)
+  end
 end
