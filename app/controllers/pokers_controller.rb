@@ -62,7 +62,6 @@ class PokersController < ApplicationController
       end
     end
     
-    #(!@sala.playersname.nil? || !@sala.playersname.empty?)
     
     if(current_user) #estou logado
       if (@sala.user) #alguem logado criou a sala
@@ -117,7 +116,7 @@ class PokersController < ApplicationController
       @poker.user == 'Sem Usuario'
     end
 
-    if (@cartaAtualizada && @sala.bloqcartarepet)
+    if (@cartaAtualizada && @sala.bloqcartarepet && @sala.players <= Poker.where(room: @salaAtual).size)
       @cartaAtualizada = -1
       redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada )
     else

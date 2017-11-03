@@ -2,19 +2,17 @@
     
     <p id="notice"><% notice %></p>
     
-    <% if (@sala.bloqcartarepet)%> <p style="font-size: 12px; color: red;">Você não tem permissão para atualizar cartas, jogue consciente!</p> <% end %>
-    
-    <% if @cartarepetida.to_i == 1 && @sala.bloqcartarepet == false %>
+    <% if @cartarepetida.to_i == 1 %>
       <script>
-        $.notify("Atualizamos sua carta!","info");    
+        $.notify("Sua carta foi atualizada!","info");    
       </script>
     <% elsif notice == 'CartaOk' %>
       <script>
-        $.notify("Sua carta foi registrada com sucesso!","success");    
+        $.notify("Sua carta foi registrada!","success");    
       </script>
     <% elsif @cartarepetida.to_i == -1 %>
       <script>
-        $.notify("Você já tem uma carta cadastrada!","error");    
+        $.notify("As cartas foram já foram viradas","error");    
       </script>
     <% end %>
     <br>

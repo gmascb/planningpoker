@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'help/index'
+
   resources :rooms
   resources :pokers
   
