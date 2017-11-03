@@ -30,6 +30,11 @@
                         <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
                         <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
                       <% end %> 
+                    <% else %>
+                      <% if room.user == nil && current_user == nil %>
+                        <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
+                        <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
+                      <% end %>
                     <% end %>
                   </tr>
                 <% end %>
@@ -44,6 +49,3 @@
     </div>
   </body>
 </html>
-
-
-
