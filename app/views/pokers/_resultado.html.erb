@@ -40,9 +40,22 @@
         <% end %><!-- @QuemJaJogou.include? jogadoresDaSala -->
       <% end %><!-- @playersRoom.each -->
     <% end %><!-- if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 -->
+  
+  <% if @sala.playersname.size == 0 %>
+    <% @QuemJaJogou.each do |jogadoresDaSala| %>
+      <div class="quemJaJogou" >
+        <%= jogadoresDaSala %>
+        <% if numCartas >= @sala.players %>
+          <%= @pokers.where(user: jogadoresDaSala).first.value %>
+        <% else %>
+          <%= "?" %>
+        <% end %><!-- if numCartas >= @sala.players -->
+      </div><!-- quemNaoJogou X quemJaJogou -->
+    <% end %>
+  <% end %>
+  
   </div><!-- style="margin-left: 20%; margin-right: 20%;" -->
 </div><!-- style="color: black; float: right; margin-right: 20%; -->
-
 
 <!-- Valida se pode mostrar as informações de acordo com o número de jogadores da sala -->
 <% if numCartas > 0 && numCartas >= @sala.players %>
