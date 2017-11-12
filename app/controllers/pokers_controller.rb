@@ -99,7 +99,7 @@ class PokersController < ApplicationController
       @poker.user == 'Sem Usuario'
     end
 
-    if (@cartaAtualizada && @sala.bloqcartarepet && @sala.players <= Poker.where(room: @salaAtual).size)
+    if (@cartaAtualizada && @sala.bloqcartarepet && @sala.players <= Poker.where(room: @salaAtual).size && @sala.players > 0)
       @cartaAtualizada = -1
       redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada )
     else

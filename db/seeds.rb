@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Room.create(user: nil, name: 'SALA 1', players: 0)
 
-Room.create(user: 'Guilherme Barbosa', name: 'SALA 2', players: 0, refreshauto: true, bloqcartarepet: true)
+Room.create(user: 'Guilherme Barbosa', name: 'Financeiro', players: 0, refreshauto: true, bloqcartarepet: true)
+Room.create(user: nil, name: 'Publica', players: 0)
 
-Poker.create(user: 'Guilherme Barbosa', value: 5, room: Room.first.id)
+Poker.create(user: 'Thales Alves Boa Sorte', value: 5, room: Room.first.id)
 Poker.create(user: 'Guilherme Mascarenhas', value: 1, room: Room.first.id)
 Poker.create(user: 'Thiago Alves', value: 2, room: Room.first.id)
 Poker.create(user: 'Helbert César', value: 3, room: Room.first.id)

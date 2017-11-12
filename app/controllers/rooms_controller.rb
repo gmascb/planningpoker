@@ -16,6 +16,8 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    @room.bloqcartarepet = true
+    @room.refreshauto = true
   end
 
   # GET /rooms/1/edit

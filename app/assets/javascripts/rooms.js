@@ -34,6 +34,10 @@ var RemoveUsuarioSala = function(){
   }
 }
 
+var RemoveTodos = function(){
+  document.getElementById("textroom_playersname").value = "";
+}
+
 
 var AtivaCampo = function(){
   document.getElementById("textroom_playersname").disabled = false;
