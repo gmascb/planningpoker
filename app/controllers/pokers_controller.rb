@@ -9,7 +9,7 @@ class PokersController < ApplicationController
       
       @sala = Room.find(params[:sala])
       @pokers = Poker.where(room: @sala.id)
-      @chartdataValue = Poker.where(room: @sala).group(:value).count.sort
+      @chartdataValue = Poker.where(room: @sala).group(:value).count
       
       if @sala.playersname != nil
         @playersRoom = @sala.playersname.split(", ")
