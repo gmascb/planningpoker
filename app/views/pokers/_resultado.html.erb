@@ -18,23 +18,23 @@
   <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var40+var100+varNEnt+varPausa %>
 <!-- FIM Manter no Inicio -->
 
-
-
 <!--Traz uma listagem de todas as cartas com respectivos usuários-->
 <div style="width: 70%; color: black; float: center; margin-right: 0%; ">
   <div style="float: center; margin-right: 0; ">
-    
-    
     <% if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 %>
       <br>
-      <% @playersRoom.each do |jogadoresDaSala| %>
-        <% if !@QuemJaJogou.include? jogadoresDaSala %>
-          <div class="quemNaoJogou" ><%= jogadoresDaSala %></div>
+      <% @playersRoom.each do |jogadorDaSala| %>
+        <% if !@QuemJaJogou.include? jogadorDaSala %>
+          <div class="quemNaoJogou" ><%= jogadorDaSala %></div>
         <% else %>
           <div class="quemJaJogou" >
-            <%= jogadoresDaSala %>
+            <%= jogadorDaSala %>
             <% if numCartas >= @sala.players %>
-              <%= @pokers.where(user: jogadoresDaSala).first.value %>
+              <% if @pokers.where(user: jogadorDaSala).first.value > 0%>
+                <%= @pokers.where(user: jogadorDaSala).first.value %>
+              <%else%>
+                '<%= @pokers.where(user: jogadorDaSala).first.name %>'
+              <%end%>
             <% else %>
               <%= "?" %>
             <% end %><!-- if numCartas >= @sala.players -->
@@ -43,18 +43,22 @@
       <% end %><!-- @playersRoom.each -->
     <% end %><!-- if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 -->
   
-  <%# if @sala.playersname.size == 0 %>
-    <% @QuemJaJogou.each do |jogadoresDaSala| %>
-      <div class="quemJaJogou" >
-        <%= jogadoresDaSala %>
-        <% if numCartas >= @sala.players %>
-          <%= @pokers.where(user: jogadoresDaSala).first.value %>
-        <% else %>
-          <%= "?" %>
-        <% end %><!-- if numCartas >= @sala.players -->
-      </div><!-- quemNaoJogou X quemJaJogou -->
+    <% if @sala.playersname.size == 0 %>
+      <% @QuemJaJogou.each do |jogadorDaSala| %>
+        <div class="quemJaJogou" >
+          <%= jogadorDaSala %>
+          <% if numCartas >= @sala.players %>
+            <% if @pokers.where(user: jogadorDaSala).first.value > 0%>
+              <%= @pokers.where(user: jogadorDaSala).first.value %>
+            <%else%>
+              '<%= @pokers.where(user: jogadorDaSala).first.name %>'
+            <%end%>
+          <% else %>
+            <%= "?" %>
+          <% end %><!-- if numCartas >= @sala.players -->
+        </div><!-- quemNaoJogou X quemJaJogou -->
+      <% end %>
     <% end %>
-  <%# end %>
   
   </div><!-- style="margin-left: 20%; margin-right: 20%;" -->
 </div><!-- style="color: black; float: right; margin-right: 20%; -->

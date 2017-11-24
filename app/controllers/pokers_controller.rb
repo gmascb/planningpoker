@@ -9,7 +9,9 @@ class PokersController < ApplicationController
       
       @sala = Room.find(params[:sala])
       @pokers = Poker.where(room: @sala.id)
-      @chartdataValue = Poker.where(room: @sala).group(:value).count
+      @chartdataValue = Poker.where(room: @sala).group(:value).count.sort
+      
+      @mostraBotaoRefresh = !@sala.refreshauto
       
       if @sala.playersname != nil
         @playersRoom = @sala.playersname.split(", ")
@@ -17,15 +19,12 @@ class PokersController < ApplicationController
         @playersRoom.each do |jogador|
           jogador = jogador.strip
         end
-        
       end
-      
-      
+
       @QuemJaJogou = Array.new
       @pokers.each do |carta|
         @QuemJaJogou << carta.user
       end
-      
       
       if @players == nil
         @players = 0
@@ -78,12 +77,13 @@ class PokersController < ApplicationController
     @sala = Room.find(params[:sala])
     @poker = Poker.new(poker_params)
 
-    valor = @poker.value
+    valor = @poker.value || 0
     nome = @poker.name
     
     if (@poker.name && @poker.name.size > 0)
       @poker.value = 0
     end
+
 
     if current_user != nil
       qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     
@@ -91,6 +91,7 @@ class PokersController < ApplicationController
         @poker = Poker.where(user: current_user.name).where(room: @salaAtual).first
         @poker.name = nome
         @poker.value = valor
+        byebug
         @cartaAtualizada = 1
       else
         @poker = Poker.new(poker_params)
