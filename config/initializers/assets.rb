@@ -13,6 +13,7 @@ Rails.application.config.assets.precompile += %w( _form.scss
                                                   index.scss
                                                   menu.scss
                                                   show.scss
+                                                  help.scss
                                                   notifyjs/notify.js
                                                   jquery-migrate-1.4.1.min.js
                                                   home.scss

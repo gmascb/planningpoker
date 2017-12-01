@@ -5,47 +5,46 @@
   <body>
     <div>
       <h3>Salas Disponíveis</h3>
-      
       <br>
-      
       <h4 id="notice" style="color: green;"><%= notice %></h4>
-      
-        <center>
-          <% if @rooms.size > 0 %>
-            <table id="center" class="w3-card w3-hoverable w3-striped" >
-              
-              <thead id="cabecalho">
-                <td> Nome </td>
-                <td> Criador </td>
-                <td colspan=3> Ações </td>
-            </thead>
-              <tbody>
-                <% @rooms.each do |room| %>
-                  <tr>
-                    <td><%= room.name %></td>
-                    <td><%= room.user || 'Pública' %></td>
-                    <td><%= link_to pokers_path(sala: room.id) do %>Entrar</i> <% end %></td>
-                    <%if current_user != nil %> 
-                      <% if room.user == current_user.name || room.user == nil %> 
-                        <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
-                        <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
-                      <% end %> 
-                    <% else %>
-                      <% if room.user == nil && current_user == nil %>
-                        <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
-                        <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
-                      <% end %>
+      <center>
+        <% if @rooms.size > 0 %>
+          <table id="center" class="w3-card w3-hoverable" >
+            
+            <thead id="cabecalho">
+              <td> Nome </td>
+              <td> Jogadores </td>
+              <td> Responsável </td>
+              <td colspan=3> Ações </td>
+          </thead>
+            <tbody>
+              <% @rooms.each do |room| %>
+                <tr>
+                  <td><%= room.name %></td>
+                  <td><%= room.players %></td>
+                  <td>
+                    <% if room.user == "" %>
+                      <%='Pública'%>
+                    <%else%>
+                      <%= room.user%>
                     <% end %>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          <% end %>
-        </center>
+                  </td>
+                  <td>
+                  <%= link_to pokers_path(sala: room.id) do %>Entrar</i> <% end %></td>
+                  <%if (current_user != nil && (room.user == current_user.name || room.user == "")) ||  room.user == "" %> 
+                    <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
+                    <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </center>
       <br/>
       <br/>
       <br/>
-      <div style="float:right; margin-right:5%"><%= link_to 'Nova Sala', new_room_path %></div>
+      <div style="float:left; margin-left:20%"><%= link_to 'Nova Sala', new_room_path %></div>
     </div>
   </body>
 </html>
