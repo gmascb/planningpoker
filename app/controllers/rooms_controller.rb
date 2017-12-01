@@ -33,10 +33,6 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     
-    if (current_user != nil)
-      @room.user = current_user.name
-    end
-    
     respond_to do |format|
       if @room.save
         format.html { redirect_to rooms_path, notice: "Sala '" + @room.name + "' criada com sucesso!" }

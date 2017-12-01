@@ -91,7 +91,6 @@ class PokersController < ApplicationController
         @poker = Poker.where(user: current_user.name).where(room: @salaAtual).first
         @poker.name = nome
         @poker.value = valor
-        byebug
         @cartaAtualizada = 1
       else
         @poker = Poker.new(poker_params)
