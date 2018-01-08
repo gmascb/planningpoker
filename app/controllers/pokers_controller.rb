@@ -9,7 +9,7 @@ class PokersController < ApplicationController
       
       @sala = Room.find(params[:sala])
       @pokers = Poker.where(room: @sala.id)
-      @chartdataValue = Poker.where(room: @sala).group(:value).count.sort
+      @chartdataValue = Poker.where(room: @sala).where("VALUE > 0").group(:value).count.sort
       
       @mostraBotaoRefresh = !@sala.refreshauto
       
@@ -83,7 +83,6 @@ class PokersController < ApplicationController
     if (@poker.name && @poker.name.size > 0)
       @poker.value = 0
     end
-
 
     if current_user != nil
       qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     
