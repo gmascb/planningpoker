@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Room.create(user: 'Guilherme Barbosa', name: 'Financeiro', players: 0, refreshauto: true, bloqcartarepet: true)
-Room.create(user: nil, name: 'Publica', players: 0)
+Room.create(user: 'Guilherme Mascarenhas', name: 'Financeiro', players: 0, refreshauto: true, bloqcartarepet: true)
+Room.create(user: "Guilherme Mascarenhas", name: 'Publica', players: 0)
 
 Poker.create(user: 'Thales Alves Boa Sorte', value: 5, room: Room.first.id)
 Poker.create(user: 'Guilherme Mascarenhas', value: 1, room: Room.first.id)

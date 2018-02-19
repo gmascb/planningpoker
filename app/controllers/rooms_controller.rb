@@ -22,8 +22,8 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1/edit
   def edit
-    room = Room.find(params[:id])
-    if (current_user != nil && room.user != nil)
+    # room = Room.find(params[:id])
+    if (current_user != nil && @room.user != nil)
       check_user
     end
   end
@@ -32,7 +32,6 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
-    
     respond_to do |format|
       if @room.save
         format.html { redirect_to rooms_path, notice: "Sala '" + @room.name + "' criada com sucesso!" }
@@ -76,10 +75,11 @@ class RoomsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_room
       @room = Room.find(params[:id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:name, :players, :user, :playersname, :refreshauto, :bloqcartarepet, :selectuser)
+      params.require(:room).permit(:name, :players, :user, :playersname, :refreshauto, :bloqcartarepet, :selectuser, :card)
     end
 end

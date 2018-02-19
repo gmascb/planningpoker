@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004170028) do
+ActiveRecord::Schema.define(version: 20180215221055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20171004170028) do
     t.string   "playersname"
     t.boolean  "refreshauto"
     t.boolean  "bloqcartarepet"
+    t.string   "card"
   end
 
   create_table "users", force: :cascade do |t|
