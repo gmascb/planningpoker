@@ -24,6 +24,8 @@
       <%= render "pokers/cards/fibonacci"%>
     <% elsif @sala.card == "T-Shirts" %>
       <%= render "pokers/cards/fibonacci2040100"%>
+    <%else%>
+      <%= render "pokers/cards/fibonacci2040100"%>
     <% end %>
     
     <%= link_to 'Voltar', pokers_path(sala: @salaAtual), method: :get%>
