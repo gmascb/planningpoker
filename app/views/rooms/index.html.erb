@@ -15,7 +15,7 @@
               <td> Nome </td>
               <td> Jogadores </td>
               <td> Responsável </td>
-              <td colspan=3> Ações </td>
+              <td colspan=4> Ações </td>
           </thead>
             <tbody>
               <% @rooms.each do |room| %>
@@ -33,7 +33,8 @@
                   <%= link_to pokers_path(sala: room.id) do %>Entrar</i> <% end %></td>
                   <%if (current_user != nil && (room.user == current_user.name || room.user == "")) ||  room.user == "" %> 
                     <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
-                    <td><%= link_to room, method: :delete, data:{confirm: "Apagar?"} do %><i class="fa fa-trash"></i><% end %></td>
+                    <td><%= link_to room, method: :delete, data:{confirm: "Apagar sala?"} do %><i class="fa fa-trash"></i><% end %></td>
+                    <td><%= link_to poker_path(:id => 1, :sala => room.id, :apagouPorFora => true), data:{confirm: "Apagar as Cartas de dentro da sala?"}, :method => :delete  do %><i class="fa fa-eraser"></i><% end %></td>
                   <% end %>
                 </tr>
               <% end %>

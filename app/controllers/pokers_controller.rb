@@ -139,8 +139,16 @@ class PokersController < ApplicationController
     validarPermissao
 
     if (@apaga)
-      Poker.where(room: @sala.id).destroy_all
-      redirect_to pokers_path(sala: @sala.id)
+      
+      if (params[:apagouPorFora])
+        Poker.where(room: @sala.id).destroy_all
+        redirect_to rooms_path
+      else
+        Poker.where(room: @sala.id).destroy_all
+        redirect_to pokers_path(sala: @sala.id)
+      end
+      
+      
     end
     
   end 
