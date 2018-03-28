@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to rooms_path
-    #redirect_to pokers_path
   end
 
   def destroy
