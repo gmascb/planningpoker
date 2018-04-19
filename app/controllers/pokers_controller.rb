@@ -131,15 +131,12 @@ class PokersController < ApplicationController
   # DELETE /pokers/1
   # DELETE /pokers/1.json
   def destroy
-    
     @apaga = true
- 
     @sala = Room.find(params[:sala])
     
     validarPermissao
 
     if (@apaga)
-      
       if (params[:apagouPorFora])
         Poker.where(room: @sala.id).destroy_all
         redirect_to rooms_path
@@ -147,10 +144,7 @@ class PokersController < ApplicationController
         Poker.where(room: @sala.id).destroy_all
         redirect_to pokers_path(sala: @sala.id)
       end
-      
-      
     end
-    
   end 
   
 

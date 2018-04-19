@@ -6,12 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Poker.destroy_all
+Room.destroy_all
 
-Room.create(user: 'Guilherme Mascarenhas', name: 'Financeiro', players: 0, refreshauto: true, bloqcartarepet: true)
-Room.create(user: "Guilherme Mascarenhas", name: 'Publica', players: 0)
+Room.create(user: 'Guilherme Mascarenhas Barbosa', name: 'Financeiro', players: 0, refreshauto: true, bloqcartarepet: true)
+Room.create(user: "Guilherme Mascarenhas Barbosa", name: 'Publica', players: 0)
 
-Poker.create(user: 'Thales Alves Boa Sorte', value: 5, room: Room.first.id)
-Poker.create(user: 'Guilherme Mascarenhas', value: 1, room: Room.first.id)
+Poker.create(user: 'Thales Alves Boa Sorte', name: 'Não Entendi', room: Room.first.id)
+Poker.create(user: 'Guilherme Mascarenhas', name: 'Pausa' , room: Room.first.id)
 Poker.create(user: 'Thiago Alves', value: 2, room: Room.first.id)
 Poker.create(user: 'Helbert César', value: 3, room: Room.first.id)
 Poker.create(user: 'Flavio Silva Lourenço', value: 5, room: Room.first.id)
