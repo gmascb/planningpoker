@@ -30,7 +30,7 @@
           <div class="quemJaJogou" >
             <%= jogadorDaSala %>
             <% if numCartas >= @sala.players %>
-              <% if @pokers.where(user: jogadorDaSala).first.value > 0%>
+              <% if @pokers.where(user: jogadorDaSala).first.value && @pokers.where(user: jogadorDaSala).first.value > 0%>
                 <%= @pokers.where(user: jogadorDaSala).first.value %>
               <%else%>
                 '<%= @pokers.where(user: jogadorDaSala).first.name %>'
