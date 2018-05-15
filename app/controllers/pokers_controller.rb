@@ -153,7 +153,7 @@ class PokersController < ApplicationController
   def validarPermissao
     if(current_user) #estou logado
       if (@sala.user) #alguem logado criou a sala
-        if(current_user.name != @sala.user) #nao criei a sala
+        if(!@sala.user.include?current_user.name) #nao criei a sala / não sou responsável
           if(@sala.playersname != nil && !@sala.playersname.empty?) #tem nome dos jogadores
             if (!@sala.playersname.to_s.force_encoding("UTF-8").include? current_user.name.to_s.force_encoding("UTF-8")) # Meu Nome nao esta na lista
               redirect_to rooms_path, notice: 'Voce não está na lista de jogadores desta sala' #sai da sala
