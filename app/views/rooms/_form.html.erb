@@ -1,12 +1,12 @@
 <html>
   <head>
     <%= stylesheet_link_tag '_form', media: 'all', 'data-turbolinks-track' => true %>
-    <%= form_for(@room) do |f| %>
   </head>
   <body>
     
+  <%= form_for(@room) do |f| %>
     <script>
-      $(document).ready(function() { $("#room_selectuser").select2(); });
+      $(document).ready(function() { $("#room_selectresponsavel, #room_selectuser").select2(); });
     </script>
     
     <% if @room.errors.any? %>
@@ -29,7 +29,7 @@
         
         <br>
         <div class="field">
-          <%= f.select(:players, ["Número de Jogadores" , 0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 ], {}) %>
+          <%= f.select(:players, ["Número de Jogadores" , 0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 ], {}) %>
         </div>
         <br>
         <div class="field">
@@ -57,6 +57,7 @@
           </div>
           <br>
     
+          <strong style="color: white;">Jogadores:</strong> <br><br>
         <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
           <br>
           <div class="field">
@@ -71,20 +72,38 @@
               <br>
           </div>
         </div>
-      
+        
     
       <p>
       <br>
-      <strong style="color: white;">Usuário Responsável:</strong>
-      <div class="responsavel">
-        <%= f.select(:user, User.all.collect {|p| [ p.name] }, { include_blank: 'Sem Usuário' }) %>
-      </div>
+      <strong style="color: white;">Usuários Responsáveis:</strong>
+      
+        <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
+          <br>
+          <div class="field">
+            <div id="user" class="field">
+              <%= f.text_area :user, disabled: true, placeholder: 'Selecione os responsaveis abaixo', cols: 60, rows: 2, :id => 'textroom_responsavel'%></div>
+              <%= f.select :selectresponsavel, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
+    
+              <button type="button" onclick="AddResponsavelSala()"><i class="fa fa-plus"></i></button>
+              <button type="button" onclick="RemoveResponsavelSala()"><i class="fa fa-minus"></i></button>
+              <button type="button" onclick="RemoveTodosResponsaveis()"><i class="fa fa-trash-o"></i></button>
+              <br>
+              <br>
+          </div>
+        </div>
+      
+      <!-- div class="responsavel">
+        < %= f.select(:user, User.all.collect {|p| [ p.name] }, { include_blank: 'Sem Usuário' }) %>
+      </div -->
+      
+      
       </p>
       <br>
     </div>
     
     <br>
-    <button type="submit" class="btn btn-success" onclick="AtivaCampo()">Salvar</button>
+    <button type="submit" class="btn btn-success" onclick="AtivaCampo(); AtivaCampoResponsavel();">Salvar</button>
     <br>
     <br>
     <%= link_to 'Voltar', rooms_path %>
