@@ -14,7 +14,6 @@
             <thead id="cabecalho">
               <td> Nome </td>
               <td> Jogadores </td>
-              <td> Responsável </td>
               <td colspan=4> Ações </td>
           </thead>
             <tbody>
@@ -22,15 +21,7 @@
                 <tr>
                   <td><%= room.name %></td>
                   <td><%= room.players %></td>
-                  <td>
-                    <% if room.user == "" %>
-                      <%='Pública'%>
-                    <%else%>
-                      <%= room.user%>
-                    <% end %>
-                  </td>
-                  <td>
-                  <%= link_to pokers_path(sala: room.id) do %>Entrar</i> <% end %></td>
+                  <td><%= link_to pokers_path(sala: room.id) do %>Entrar</i> <% end %></td>
                   <%if room.user == "" || (current_user != nil && (room.user.include?current_user.name))%> 
                     <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>
                     <td><%= link_to room, method: :delete, data:{confirm: "Apagar sala?"} do %><i class="fa fa-trash"></i><% end %></td>
