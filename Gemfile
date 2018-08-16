@@ -43,6 +43,7 @@ gem "select2-rails"
 
 #Sprockets
 gem 'sprockets', '~> 3.5', '>= 3.5.2'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
