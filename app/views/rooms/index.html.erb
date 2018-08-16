@@ -20,7 +20,7 @@
               <% @rooms.each do |room| %>
                 <tr>
                   <td><%= room.name %></td>
-                  <td><%= room.players %></td>
+                  <td><%= room.players %></td> 
                   <td><%= link_to pokers_path(sala: room.id) do %>Entrar</i> <% end %></td>
                   <%if room.user == "" || (current_user != nil && (room.user.include?current_user.name))%> 
                     <td><%= link_to edit_room_path(room) do %><i class="fa fa-pencil-square-o"></i><% end %></td>

@@ -41,6 +41,9 @@ gem "chartkick"
 # https://github.com/argerim/select2-rails
 gem "select2-rails"
 
+#Sprockets
+gem 'sprockets', '~> 3.5', '>= 3.5.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
