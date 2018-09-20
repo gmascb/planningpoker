@@ -4,7 +4,17 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    if params[:filtrado] == nil
+      @rooms = Room.all
+    else
+      @rooms = Room.all.
+      where("USER LIKE '%#{current_user.name}%' 
+      OR PLAYERSNAME LIKE '%#{current_user.name}%'
+      OR USER LIKE ''
+      OR PLAYERSNAME LIKE ''
+      OR USER IS NULL
+      OR PLAYERSNAME IS NULL ")
+    end
   end
 
   # GET /rooms/1

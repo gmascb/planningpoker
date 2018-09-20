@@ -36,6 +36,8 @@
       <br/>
       <br/>
       <br/>
+      <div style="float:left; margin-left:20%"><%= link_to 'Todas as Salas', rooms_path %></div>
+      <div style="float:left; margin-left:20%"><%= link_to 'Minhas Salas', rooms_path(:filtrado => 1)%></div>
       <div style="float:left; margin-left:20%"><%= link_to 'Nova Sala', new_room_path %></div>
     </div>
   </body>
