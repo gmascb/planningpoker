@@ -8,12 +8,12 @@ class RoomsController < ApplicationController
       @rooms = Room.all
     else
       @rooms = Room.all.
-      where("USER LIKE '%#{current_user.name}%' 
-      OR PLAYERSNAME LIKE '%#{current_user.name}%'
-      OR USER LIKE ''
-      OR PLAYERSNAME LIKE ''
-      OR USER IS NULL
-      OR PLAYERSNAME IS NULL ")
+      where("ROOMS.USER LIKE '%#{current_user.name}%' 
+      OR ROOMS.PLAYERSNAME LIKE '%#{current_user.name}%'
+      OR ROOMS.USER LIKE ''
+      OR ROOMS.PLAYERSNAME LIKE ''
+      OR ROOMS.USER IS NULL
+      OR ROOMS.PLAYERSNAME IS NULL ")
     end
   end
 
