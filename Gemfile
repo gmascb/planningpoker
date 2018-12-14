@@ -1,10 +1,18 @@
 source 'https://rubygems.org'
 
+ruby '2.3.5'
+
+#necessaria para rails 5
+gem 'actionpack', '5.0.0'
+gem 'activesupport', '5.0.0'
+gem 'activemodel', '5.0.0'
+#gem 'web-console', '~> 2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '5.0.0'
+
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
+gem 'pg', '~> 0.20'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -70,7 +78,8 @@ end
 group :production do
   
   #DB para Heroku deve ser PostgreSQL
-  gem 'pg', '~> 0.15'
+  # Já está do lado de fora do grupo do Gemfile.
+  # gem 'pg', '~> 0.15' 
   
   gem 'rails_12factor'
 
