@@ -45,20 +45,22 @@
   
     
     <!-- Apos Atualizacao foi necessario-->
-    <% @QuemJaJogou.each do |jogadorDaSala| %>
-      <div class="quemJaJogou" >
-        <%= jogadorDaSala %>
-        <% if numCartas >= @sala.players %>
-          <% if @pokers.where(user: jogadorDaSala).first.value && @pokers.where(user: jogadorDaSala).first.value > 0 %>
-            <%= @pokers.where(user: jogadorDaSala).first.value %>
-          <%else%>
-            '<%= @pokers.where(user: jogadorDaSala).first.name %>'
-          <%end%>
-        <% else %>
-          <%= "?" %>
-        <% end %><!-- if numCartas >= @sala.players -->
-      </div><!-- quemNaoJogou X quemJaJogou -->
-    <% end %>
+    <% if @sala.playersname == "" %>
+      <% @QuemJaJogou.each do |jogadorDaSala| %>
+        <div class="quemJaJogou" >
+          <%= jogadorDaSala %>
+          <% if numCartas >= @sala.players %>
+            <% if @pokers.where(user: jogadorDaSala).first.value && @pokers.where(user: jogadorDaSala).first.value > 0 %>
+              <%= @pokers.where(user: jogadorDaSala).first.value %>
+            <%else%>
+              '<%= @pokers.where(user: jogadorDaSala).first.name %>'
+            <%end%>
+          <% else %>
+            <%= "?" %>
+          <% end %><!-- if numCartas >= @sala.players -->
+        </div><!-- quemNaoJogou X quemJaJogou -->
+      <% end %> <!-- fim foreach -->
+  <% end %> <!-- fim validacaoNomes na sala-->
   
   </div><!-- style="margin-left: 20%; margin-right: 20%;" -->
 </div><!-- style="color: black; float: right; margin-right: 20%; -->
