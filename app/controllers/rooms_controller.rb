@@ -13,7 +13,9 @@ class RoomsController < ApplicationController
       OR ROOMS.USER LIKE ''
       OR ROOMS.PLAYERSNAME LIKE ''
       OR ROOMS.USER IS NULL
-      OR ROOMS.PLAYERSNAME IS NULL ")
+      OR ROOMS.PLAYERSNAME IS NULL 
+      OR ROOMS.USER LIKE '_%#{current_user.name}%_'
+      OR ROOMS.PLAYERSNAME LIKE '_%#{current_user.name}%_'")
     end
   end
 
