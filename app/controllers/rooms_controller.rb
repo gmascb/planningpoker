@@ -44,6 +44,11 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
+    
+    if @room.user == nil
+      room.user = ""
+    end
+    
     respond_to do |format|
       if @room.save
         format.html { redirect_to rooms_path, notice: "Sala '" + @room.name + "' criada com sucesso!" }
