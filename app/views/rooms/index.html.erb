@@ -4,11 +4,20 @@
   </head>
   <body>
     <div>
+      
+      <% if @requerLogin == 'Só é possível jogar se estiver logado.' %>
+        <script>
+          $.notify('Só é possível jogar se estiver logado.' ,"info");    
+        </script>
+      <% end %>
+      <br>
+      
       <h3>Salas Disponíveis</h3>
       <br>
       <h4 id="notice" style="color: green;"><%= notice %></h4>
       <center>
-        <% if @rooms.size > 0 %>
+        
+        <% if @rooms.first.present? %>
           <table id="center" class="w3-card w3-hoverable" >
             
             <thead id="cabecalho">

@@ -4,36 +4,9 @@ class PokersController < ApplicationController
   # GET /pokers
   # GET /pokers.json
   def index
+      
+    disable_gc
     
-    if params.has_key?(:sala)
-      
-      @sala = Room.find(params[:sala])
-      @pokers = Poker.where(room: @sala.id)
-      @chartdataValue = Poker.where(room: @sala).where("VALUE > 0").group(:value).count.sort
-      
-      @mostraBotaoRefresh = !@sala.refreshauto
-      
-      if @sala.playersname != nil
-        @playersRoom = @sala.playersname.split(", ")
-
-        @playersRoom.each do |jogador|
-          jogador = jogador.strip
-        end
-      end
-
-      @QuemJaJogou = Array.new
-      @pokers.each do |carta|
-        @QuemJaJogou << carta.user
-      end
-      
-      if @players == nil
-        @players = 0
-      end
-      
-    else
-      # se estiver sem parametro volta para tela de salas.
-      redirect_to rooms_path
-    end
   end
 
   # GET /pokers/1
@@ -169,6 +142,55 @@ class PokersController < ApplicationController
       end
     end
   end
+  
+  def disable_gc
+    GC.disable
+    begin
+      indexGC
+    ensure
+      GC.enable
+      GC.start
+    end
+  end
+  
+  
+  
+  def indexGC
+    
+    if params.has_key?(:sala)
+      
+      @sala = Room.find(params[:sala])
+      @pokers = Poker.where(room: @sala.id)
+      @chartdataValue = Poker.where(room: @sala).where("VALUE > 0").group(:value).count.sort
+      
+      @mostraBotaoRefresh = !@sala.refreshauto
+      
+      if @sala.playersname != nil
+        @playersRoom = @sala.playersname.split(", ")
+
+        @playersRoom.each do |jogador|
+          jogador = jogador.strip
+        end
+      end
+
+      @QuemJaJogou = Array.new
+      @pokers.each do |carta|
+        @QuemJaJogou << carta.user
+      end
+      
+      if @players == nil
+        @players = 0
+      end
+      
+    else
+      # se estiver sem parametro volta para tela de salas.
+      redirect_to rooms_path
+    end
+    
+  end
+  
+  
+  
   
   # Use callbacks to share common setup or constraints between actions.
   def set_poker

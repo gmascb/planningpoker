@@ -7,15 +7,17 @@ class RoomsController < ApplicationController
     if params[:filtrado] == nil
       @rooms = Room.all
     else
-      @rooms = Room.all.
-      where("ROOMS.USER LIKE '%#{current_user.name}%' 
-      OR ROOMS.PLAYERSNAME LIKE '%#{current_user.name}%'
-      OR ROOMS.USER LIKE ''
-      OR ROOMS.PLAYERSNAME LIKE ''
-      OR ROOMS.USER IS NULL
-      OR ROOMS.PLAYERSNAME IS NULL 
-      OR ROOMS.USER LIKE '_%#{current_user.name}%_'
-      OR ROOMS.PLAYERSNAME LIKE '_%#{current_user.name}%_'")
+      if (current_user != nil)
+       @rooms = Room.all.where("ROOMS.USER LIKE '_%#{current_user.name}%_'
+       OR ROOMS.USER LIKE ''
+       OR ROOMS.USER IS NULL
+       OR ROOMS.PLAYERSNAME LIKE '_%#{current_user.name}%_'
+       OR ROOMS.PLAYERSNAME LIKE ''
+       OR ROOMS.PLAYERSNAME IS NULL ")
+      else
+        @requerLogin ='Só é possível jogar se estiver logado.'
+        @rooms = Room.all
+      end
     end
   end
 

@@ -4,11 +4,9 @@
   </head>
   <body>
 
-    
     <h3> Sala '<%= @sala.name %>'</h3>
     
     <% if (@sala.refreshauto)%> <p style="font-size: 12px; color: green;">Refresh Automático</p> <% end %>
-    
     
     <!--Botões da Tela-->
     <%= link_to new_poker_path(sala: @sala.id), method: :get do %><i class="fa fa-play-circle"></i> Jogar<% end %>
@@ -22,10 +20,9 @@
         
         setInterval(function() {
           document.getElementsByClassName("atualiza")[0].click();
-        }, 3000);
-        
-        
+        }, 1600);
         </script>
+        
       <% end %>
       
       <!-- Resultado -->
