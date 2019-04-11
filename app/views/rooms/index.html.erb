@@ -5,9 +5,9 @@
   <body>
     <div>
       
-      <% if @requerLogin == 'Só é possível jogar se estiver logado.' %>
+      <% if @requerLogin == 1 %>
         <script>
-          $.notify('Só é possível jogar se estiver logado.' ,"info");    
+          $.notify('Só é possível jogar se estiver logado.' ,"info");
         </script>
       <% end %>
       <br>
