@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.5'
+ruby '2.4.9'
 
 #necessaria para rails 5
 gem 'actionpack', '5.0.0'
