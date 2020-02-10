@@ -1,7 +1,8 @@
 .cardAlta a:link{
     background-color: #990000;
 }
-.card a:link{
+.cardPoker a:link{
+    border-radius: 8px;
     background-color: #000066;
 }
 
@@ -39,27 +40,9 @@ h3{
 }
 
 
-td, th {
-    position: relative;
-}
-
-a:link {
-    color: black;
-    display: inline-block;
-    
-    background-color: #034f84; /* Cor dos Links/Botoes */
-    border-radius: 5px;
-}
-
-
 img{
     width: 50px; /*Largura*/
     height: 80px; /*Altura*/
-}
-
-a:link, a:visited {
-  color: White;
-  border-radius: 5px;
 }
 
 a:hover {
@@ -163,77 +146,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-
-/*
-*
-* CSS BOOTSTRAP COPIADO DE :
-* https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
-*
-*/
-
-
-.btn {
-    font-size: 24px;
-    color: White;
-    background-color: #034f84; /* Cor dos Links/Botoes */
-    border-radius: 5px;
-    padding: 6px 12px;
-    width: 100px; /*Largura*/
-    height: 50px; /*Altura*/
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid transparent; 
-    transform: translateY(4px);
-}
-
-.btn.focus,
-.btn:focus,
-.btn:hover {
-    color: white;
-}
-.btn.active,
-.btn:active {
-    transform: translateY(4px);
-    outline: 0;
-}
-.btn.disabled,
-.btn[disabled],
-fieldset[disabled] .btn {
-    cursor: not-allowed;
-    filter: alpha(opacity=65);
-    opacity: .65
-}
-
-
-.btn-success {
-    color: #fff;
-    background-color: #034f84; /* Cor dos Links/Botoes */
-
-}
-.btn-success.focus,
-.btn-success:focus {
-    color: #fff;
-    background-color: #2196F3;
-
-}
-.btn-success:hover {
-    color: #fff;
-    background-color: gray;
-}
-.btn-success.active,
-.btn-success:active,
-
-.btn-success.active.focus,
-.btn-success.active:focus,
-.btn-success.active:hover,
-.btn-success:active.focus,
-.btn-success:active:focus,
-.btn-success:active:hover,
-.open>.dropdown-toggle.btn-success.focus,
-.open>.dropdown-toggle.btn-success:focus,
-.open>.dropdown-toggle.btn-success:hover {
-    color: #fff;
-    background-color: #001a00;
 }

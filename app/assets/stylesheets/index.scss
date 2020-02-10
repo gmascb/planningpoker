@@ -3,34 +3,6 @@ table {
     border-collapse: collapse;
     float: center;
     
-    /*
-    width: 50%;
-    left: 31%;
-    #center {
-  position: relative;
-  left: 150px;
-  top: 50%;
-  width: 83%;
-  font-size: 18px;
-}
-    
-    */
-}
-
-th, td {
-    border: 1px solid darkgray;
-    text-align: center;
-    padding: 5px;
-}
-
-tr:nth-child(even){
-  background-color: white;
-  
-}
-
-th {
-    background-color: #012641;
-    color: white;
 }
 
 
@@ -39,37 +11,13 @@ h1, notice{
     position: relative;
 }
 
-
-
 h3{
   color: black;
 }
 
 
-
-td, th {
-  padding: 7px;
-  font-size: 18px;
-}
-
-
 h4{
   color: black;
-}
-
-a:link, a:visited {
-  border-radius: 5px;
-  background-color: #022e4e; /* Cor dos Links/Botoes */
-}
-
-
-
-#cabecalho{
-  background-color: #012641;
-}
-
-thead td{
-  color: white;
 }
 
 .quemNaoJogou {    

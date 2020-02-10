@@ -39,6 +39,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    autoprefixer-rails (9.7.4)
+      execjs
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
@@ -78,6 +80,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    material_icons (2.2.1)
+      railties (>= 3.2)
+    materialize-sass (1.0.0)
+      autoprefixer-rails (>= 6.0.3)
     method_source (0.9.2)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -218,6 +224,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1.1)
   jbuilder (~> 2.0)
   jquery-rails
+  material_icons
+  materialize-sass
   omniauth
   omniauth-facebook (= 4.0.0)
   omniauth-github

@@ -1,0 +1,162 @@
+<!-- Modal Structure -->
+<div id="nova_room" class="modal">
+  <div class="modal-content">
+    <!-- https://materializecss.com/icons.html -->
+    
+    <% @room = Room.new %>
+
+    <%= form_for(@room) do |f| %>
+        <script>
+          $(document).ready(function() { $("#room_selectresponsavel, #room_selectuser").select2(); });
+        </script>
+        
+        <% if @room.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+      
+            <ul>
+            <% @room.errors.full_messages.each do |message| %>
+              <center><%= message %></center>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+        <div class="w3-card-4 w3-round-large" style="width:70%; margin-left: 20%; ">
+          <br>
+
+            <div class="field">
+              <%= f.text_field :name, placeholder: 'Nome'%>
+            </div>
+            
+            <br>
+            
+            <div class="input-field col s12">
+              <select name="room[players]" id="room_players"><option value="Número de Jogadores">Número de Jogadores</option>
+                <option value="" disabled selected>Escolha sua opção...</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+              </select>
+              <label>Materialize Multiple Select</label>
+            </div>
+
+            <div class="input-field col s12">
+              <select multiple>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <label>Materialize Multiple Select</label>
+            </div>
+            
+            
+            <div class="field">
+              <%= f.select(:players, ["Número de Jogadores" , 0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 ], {}) %>
+            </div>
+
+
+
+            <br>
+            <div class="field">
+              <%= f.select(:card, ["Fibonacci 20,40,100", "Fibonacci"], {}) %>
+            </div>
+            
+            <br>
+            
+            <div class="field"  style="width: 35%; margin-left:30%; ">
+                
+                <p>
+                    <label>
+                        <input id="room[refreshauto]" type="checkbox" />
+                        <span>Refresh Automático:</span>
+                    </label>
+                </p>
+
+                <p>
+                    <label>
+                        <input id="room[bloqcartarepet]" type="checkbox" />
+                        <span>Bloqueia Atualização de Carta:</span>
+                    </label>
+                </p>
+                
+            </div>
+            <br>
+        
+            <div class="input-field col s12">
+              <select multiple>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            <label>Materialize Multiple Select</label>
+          </div>
+
+
+
+            <strong style="color: white;">Jogadores:</strong> <br><br>
+            <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
+              <br>
+              <div class="field">
+                <div id="playersname" class="field">
+                  <%= f.text_area :playersname, disabled: true, placeholder: 'Selecione os jogadores abaixo', cols: 60, rows: 5, :id => 'textroom_playersname'%></div>
+                  <%= f.select :selectuser, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
+        
+                  <button type="button" onclick="AddUsuarioSala()">+</button>
+                  <button type="button" onclick="RemoveUsuarioSala()"><i class="fa fa-minus"></i></button>
+                  <button type="button" onclick="RemoveTodos()"><i class="fa fa-trash-o"></i></button>
+                  <br>
+                  <br>
+              </div>
+            </div>
+            
+        
+          <p>
+          <br>
+          <strong style="color: white;">Usuários Responsáveis:</strong>
+          
+            <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
+              <br>
+              <div class="field">
+                <div id="user" class="field">
+                  <%= f.text_area :user, disabled: true, placeholder: 'Selecione os responsaveis abaixo', cols: 60, rows: 2, :id => 'textroom_responsavel'%></div>
+                  <%= f.select :selectresponsavel, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
+        
+                  <button type="button" onclick="AddResponsavelSala()"> + </button>
+                  <button type="button" onclick="RemoveResponsavelSala()"> - </button>
+                  <button type="button" onclick="RemoveTodosResponsaveis()">clear</button>
+                  <br>
+                  <br>
+              </div>
+            </div>
+          
+          </p>
+          <br>
+        </div>
+        
+        <button type="submit" class="btn btn-success" onclick="AtivaCampo(); AtivaCampoResponsavel();">Salvar</button>
+
+        <% end %>
+
+  </div>
+</div>

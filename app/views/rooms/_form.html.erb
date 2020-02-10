@@ -3,7 +3,7 @@
     <%= stylesheet_link_tag '_form', media: 'all', 'data-turbolinks-track' => true %>
   </head>
   <body>
-    
+
   <%= form_for(@room) do |f| %>
     <script>
       $(document).ready(function() { $("#room_selectresponsavel, #room_selectuser").select2(); });
@@ -21,94 +21,90 @@
       </div>
     <% end %>
     
-    <div class="w3-card-4 w3-round-large" style="width:70%; margin-left: 20%; background-color: #034F84; ">
-      <br>
-        <div class="field">
-          <%= f.text_field :name, placeholder: 'Nome'%>
+    <div class="width: 50%;">
+
+      <div style="margin-left: 15%;" class="row">
+        <div class="input-field col s9">
+          <input value="<%= @room.name %>" id="name" type="text" class="validate">
+          <label class="active" for="name">Nome</label>
         </div>
-        
-        <br>
-        <div class="field">
-          <%= f.select(:players, ["Número de Jogadores" , 0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 ], {}) %>
-        </div>
-        <br>
-        <div class="field">
-          <%= f.select(:card, ["Fibonacci 20,40,100", "Fibonacci"], {}) %>
-        </div>
-        
-        <br>
-        
-          <div class="field"  style="width: 35%; margin-left:30%; ">
-            
-            <div syle="float:right;">Refresh Automatico:
-              <label class="switch">
-              <%= f.check_box :refreshauto %> <span class="slider round"> </span>
-              </label>
-            </div>
-            
-            <div syle="float:left;">
-              Bloqueia Atualização de Carta:
-              <label class="switch">
-              <%= f.check_box :bloqcartarepet %> 
-              <span class="slider round"></span>
-              </label>
-            </div>
-            
-          </div>
-          <br>
-    
-          <strong style="color: white;">Jogadores:</strong> <br><br>
-        <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
-          <br>
-          <div class="field">
-            <div id="playersname" class="field">
-              <%= f.text_area :playersname, disabled: true, placeholder: 'Selecione os jogadores abaixo', cols: 60, rows: 5, :id => 'textroom_playersname'%></div>
-              <%= f.select :selectuser, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
-    
-              <button type="button" onclick="AddUsuarioSala()"><i class="fa fa-plus"></i></button>
-              <button type="button" onclick="RemoveUsuarioSala()"><i class="fa fa-minus"></i></button>
-              <button type="button" onclick="RemoveTodos()"><i class="fa fa-trash-o"></i></button>
-              <br>
-              <br>
-          </div>
-        </div>
-        
-    
+      </div>
+
+      <div class="field">
+        <%= f.select(:players, ["Número de Jogadores" , 0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 ], {}) %>
+      </div>
+
+      <div class="field">
+        <%= f.select(:card, ["Fibonacci 20,40,100", "Fibonacci"], {}) %>
+      </div>
+
       <p>
-      <br>
-      <strong style="color: white;">Usuários Responsáveis:</strong>
-      
-        <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
-          <br>
-          <div class="field">
-            <div id="user" class="field">
-              <%= f.text_area :user, disabled: true, placeholder: 'Selecione os responsaveis abaixo', cols: 60, rows: 2, :id => 'textroom_responsavel'%></div>
-              <%= f.select :selectresponsavel, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
-    
-              <button type="button" onclick="AddResponsavelSala()"><i class="fa fa-plus"></i></button>
-              <button type="button" onclick="RemoveResponsavelSala()"><i class="fa fa-minus"></i></button>
-              <button type="button" onclick="RemoveTodosResponsaveis()"><i class="fa fa-trash-o"></i></button>
-              <br>
-              <br>
-          </div>
-        </div>
-      
-      <!-- div class="responsavel">
-        < %= f.select(:user, User.all.collect {|p| [ p.name] }, { include_blank: 'Sem Usuário' }) %>
-      </div -->
-      
-      
+        <label>
+          <%= f.check_box :refreshauto %>
+          <span>Refresh Automatico</span>
+        </label>
       </p>
-      <br>
-    </div>
+
+      <p>
+        <label>
+          <%= f.check_box :bloqcartarepet %>
+          <span>Bloqueia Atualização de Carta</span>
+        </label>
+      </p>
+      
+      <strong style="color: black;">Jogadores:</strong> <br><br>
+      <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
+        <br>
+        <div class="field">
+          <div id="playersname" class="field">
+            <%= f.text_area :playersname, disabled: true, placeholder: 'Selecione os jogadores abaixo', cols: 60, rows: 5, :id => 'textroom_playersname'%></div>
+            <%= f.select :selectuser, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
+  
+            <a onclick="AddUsuarioSala()" class="btn-floating btn waves-effect waves-light blue">
+              <i class="material-icons">add</i>
+            </a>
+            <a onclick="RemoveUsuarioSala()" class="btn-floating btn waves-effect waves-light red">
+              <i class="material-icons">remove</i>
+            </a>
+            <a onclick="RemoveTodos()" class="btn-floating btn waves-effect waves-light gray">
+              <i class="material-icons">clear</i>
+            </a>
+
+        </div>
+      </div>
     
+
+      <br><br>  
+    <strong style="color: black;">Usuários Responsáveis:</strong> <br><br>
+    
+      <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
+        <br>
+        <div class="field">
+          <div id="user" class="field">
+            <%= f.text_area :user, disabled: true, placeholder: 'Selecione os responsaveis abaixo', cols: 60, rows: 2, :id => 'textroom_responsavel'%></div>
+            <%= f.select :selectresponsavel, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
+  
+            <a onclick="AddResponsavelSala()" class="btn-floating btn waves-effect waves-light blue">
+              <i class="material-icons">add</i>
+            </a>
+            <a onclick="RemoveResponsavelSala()" class="btn-floating btn waves-effect waves-light red">
+              <i class="material-icons">remove</i>
+            </a>
+            <a onclick="RemoveTodosResponsaveis()" class="btn-floating btn waves-effect waves-light gray">
+              <i class="material-icons">clear</i>
+            </a>
+
+        </div>
+      </div>
+
+    </p>
     <br>
-    <button type="submit" class="btn btn-success" onclick="AtivaCampo(); AtivaCampoResponsavel();">Salvar</button>
-    <br>
-    <br>
-    <%= link_to 'Voltar', rooms_path %>
-    <br>
-    <br>
+  </div>
+  
+  <button type="submit" , class="waves-effect waves-light btn" onclick="AtivaCampo(); AtivaCampoResponsavel();">Salvar</button>
+  <%= link_to 'Voltar', rooms_path, class: "waves-effect waves-light btn" %>
+  <br>
+  <br> 
     <% end %>
   </body>
 </html>

@@ -85,3 +85,8 @@ group :production do
   gem 'rails_12factor'
 
 end
+
+# Materialize
+gem 'materialize-sass'
+gem 'material_icons'
+

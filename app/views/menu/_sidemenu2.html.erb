@@ -1,0 +1,35 @@
+<div class="navbar-fixed">
+  <nav>
+    <div class="indigo darken-4 nav-wrapper">
+      <img border="2" src="/assets/icon.png" style="float: right; width: 50px; height: 50px;">
+      
+      <% if current_user == nil %>
+          <a class="waves-effect waves btn blue darken-4" href="/home" > Home</a> 
+          <a class='dropdown-trigger btn blue darken-4' href='#' data-target='dropdown_login'> Login </a>
+
+          <ul id='dropdown_login' class='item_dropdown dropdown-content'>
+            <a class="blue-text" id="sign_ing"   href="/auth/google_oauth2" > Google</a> 
+            <a class="blue-text" id="sign_infgh" href="/auth/github"        > GitHub</a>
+            <a class="blue-text" id="sign_inX"   href="/rooms"              > Visita</a>
+          </ul>
+      <% else %>
+        <a class="waves-effect waves btn blue darken-4" href="/rooms?filtrado=1"> Salas </a>
+        <a class="waves-effect waves btn blue darken-4" href="/signout">Sair </a>
+        <a class="waves-effect waves btn blue darken-4" href="/help/index"> Ajuda </a></li>
+      <% end %>
+
+    </div>
+  </nav>
+</div>
+  
+<style>
+
+ a {
+  margin-bottom: 9px;
+ }
+</style>
+
+<script>  
+  $('.dropdown-trigger').dropdown();
+</script>
+

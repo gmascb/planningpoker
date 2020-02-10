@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     if params[:filtrado] == nil
-      @rooms = Room.all
+      @rooms = Room.all.order(:name)
     else
       if (current_user != nil)
         @rooms = Room.all.where("ROOMS.USER LIKE '%#{current_user.name}%'
@@ -13,10 +13,10 @@ class RoomsController < ApplicationController
         OR ROOMS.USER IS NULL
         OR ROOMS.PLAYERSNAME LIKE '%#{current_user.name}%'
         OR ROOMS.PLAYERSNAME LIKE ''
-        OR ROOMS.PLAYERSNAME IS NULL ")
+        OR ROOMS.PLAYERSNAME IS NULL ").order(:name)
       else
         @requerLogin = 1
-        @rooms = Room.all
+        @rooms = Room.all.order(:name)
       end
     end
   end
