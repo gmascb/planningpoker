@@ -2,24 +2,46 @@
 <br>
 <!-- Manter no Inicio -->
   <!--Carrega quantidade de cartas de cada tipo-->
-  <%var05 = @pokers.where(value: 0.5).size%>
-  <%var1 = @pokers.where(value: 1).size%>
-  <%var2 = @pokers.where(value: 2).size%>
-  <%var3 = @pokers.where(value: 3).size%>
-  <%var5 = @pokers.where(value: 5).size%>
-  <%var8 = @pokers.where(value: 8).size%>
-  <%var13 = @pokers.where(value: 13).size%>
-  <%var20 = @pokers.where(value: 20).size%>
-  <%var21 = @pokers.where(value: 21).size%>
-  <%var34 = @pokers.where(value: 34).size%>
-  <%var40 = @pokers.where(value: 40).size%>
-  <%var55 = @pokers.where(value: 55).size%>
-  <%var89 = @pokers.where(value: 89).size%>
-  <%var100 = @pokers.where(value: 100).size%>
-  <%varPausa = @pokers.where(name: 'Pausa').size%>
-  <%varNEnt = @pokers.where(name: 'Não Entendi').size%>
+
+  <!-- Inicializa Valores -->
+  <%var0 = 0 %>
+  <%var05 = 0 %>
+  <%var1 = 0 %>
+  <%var2 = 0 %>
+  <%var3 = 0 %>
+  <%var5 = 0 %>
+  <%var8 = 0 %>
+  <%var13 = 0 %>
+  <%var20 = 0 %>
+  <%var21 = 0 %>
+  <%var34 = 0 %>
+  <%var40 = 0 %>
+  <%var55 = 0 %>
+  <%var89 = 0 %>
+  <%var100 = 0 %>
+  <%varPausa = 0 %>
+  <%varNEnt = 0 %>
+
+  <!-- Carga de acordo com card sala-->
+  <%var0 = @pokers.where(value: 0).size unless @sala.card.include?("20,40,10")%>
+  <%var05 = @pokers.where(value: 0.5).size if @sala.card.include?("20,40,10")%>
+  <%var1 = @pokers.where(value: 1).size %>
+  <%var2 = @pokers.where(value: 2).size %>
+  <%var3 = @pokers.where(value: 3).size %>
+  <%var5 = @pokers.where(value: 5).size %>
+  <%var8 = @pokers.where(value: 8).size %>
+  <%var13 = @pokers.where(value: 13).size %>
+  <%var20 = @pokers.where(value: 20).size if @sala.card.include?("20,40,10") %>
+  <%var21 = @pokers.where(value: 21).size unless @sala.card.include?("20,40,10")%>
+  <%var34 = @pokers.where(value: 34).size unless @sala.card.include?("20,40,10")%>
+  <%var40 = @pokers.where(value: 40).size if @sala.card.include?("20,40,10")%>
+  <%var55 = @pokers.where(value: 55).size unless @sala.card.include?("20,40,10")%>
+  <%var89 = @pokers.where(value: 89).size unless @sala.card.include?("20,40,10")%>
+  <%var100 = @pokers.where(value: 100).size if @sala.card.include?("20,40,10")%>
+  <%varPausa = @pokers.where(name: 'Pausa').size %>
+  <%varNEnt = @pokers.where(name: 'Não Entendi').size %>
   <!-- Soma o número de cartas jogadas -->
-  <% numCartas = var05+var1+var2+var3+var5+var8+var13+var20+var21+var34+var40+var55+var89+var100+varNEnt+varPausa %>
+  <% numCartas = var0+var05+var1+var2+var3+var5+var8+var13+var20+var21+var34+var40+var55+var89+var100+varNEnt+varPausa %>
 <!-- FIM Manter no Inicio -->
 
 <!--Traz uma listagem de todas as cartas com respectivos usuários-->
