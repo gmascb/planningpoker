@@ -147,3 +147,23 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+
+/* table das cartas */
+.div-table {
+  margin-left: 40%;
+  display: table;
+  width: auto;
+}
+
+.div-table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+.div-table-col {
+  float: left;
+  display: table-column;
+  border: 8px solid #1c154f;
+  border-radius: 5px;
+}

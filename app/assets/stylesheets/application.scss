@@ -44,21 +44,10 @@ body {
     
 }
 
-
-// a:link, a:visited {
-//   display: inline-block;
-//   font-size: 24px;
-//   cursor: pointer;
-//   text-align: center;
-//   text-decoration: none;
-//   outline: none;
-//   color: #fff;
-//   border: none;
-//   padding: 10px 15px;
-  
-//   /*border-radius: 15px;
-//   box-shadow: 0 3px #888;*/
-// }
+.turbolinks-progress-bar {
+    height: 2px;
+    background-color: #870000;
+  }
 
 a:hover, a:active {
     background-color: gray;

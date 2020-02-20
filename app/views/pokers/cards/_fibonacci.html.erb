@@ -18,34 +18,30 @@
     <% else %>
       <% usuario = current_user.name.to_s.force_encoding("UTF-8") %>
     <%end%>
-    
-      <div class="content-loader">
-        <table>
-          <tbody>
-            <tr>
-              <td class= "cardPoker" align=center><%= link_to_image(carta0, pokers_create_path(:poker => {:value => 0.5, :user => usuario, :room => @salaAtual }, sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta1, pokers_create_path(:poker => {:value => 1, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta2, pokers_create_path(:poker => {:value => 2, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta3, pokers_create_path(:poker => {:value => 3, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-            </tr>
-            <tr>
-              <td class= "cardPoker" align=center><%= link_to_image(carta5, pokers_create_path(:poker => {:value => 5, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta8, pokers_create_path(:poker => {:value => 8, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta13, pokers_create_path(:poker => {:value => 13, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta21, pokers_create_path(:poker => {:value => 21, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              </tr>
-            <tr>
-              <td class= "cardPoker" align=center><%= link_to_image(carta34, pokers_create_path(:poker => {:value => 34, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta55, pokers_create_path(:poker => {:value => 55, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(carta89, pokers_create_path(:poker => {:value => 89, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPoker" align=center><%= link_to_image(cartainf, pokers_create_path(:poker => {:name => 'Infinito - Epico', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-            </tr>
-            <tr>
-              <td class= "cardNEntendi"align=center><%= link_to_image(cartaNEntendi, pokers_create_path(:poker => {:name => 'Não Entendi', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-              <td class= "cardPausa" align=center><%= link_to_image(cartaCoffee, pokers_create_path(:poker => {:name => 'Pausa', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></td>
-            </tr>
-          </tbody>
-        </table>
+
+    <div class="div-table">
+      <div class="div-table-row">
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta0, pokers_create_path(:poker => {:value => 0.5, :user => usuario, :room => @salaAtual }, sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta1, pokers_create_path(:poker => {:value => 1, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta2, pokers_create_path(:poker => {:value => 2, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta3, pokers_create_path(:poker => {:value => 3, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
       </div>
+      <div class="rTableRow">
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta5, pokers_create_path(:poker => {:value => 5, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta8, pokers_create_path(:poker => {:value => 8, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta13, pokers_create_path(:poker => {:value => 13, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta21, pokers_create_path(:poker => {:value => 21, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        </div>
+      <div class="rTableRow">
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta34, pokers_create_path(:poker => {:value => 34, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta55, pokers_create_path(:poker => {:value => 55, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(carta89, pokers_create_path(:poker => {:value => 89, :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class="cardpoker div-table-col" ><%= link_to_image(cartainf, pokers_create_path(:poker => {:name => 'Infinito - Epico', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+      </div>
+      <div class="rTableRow">
+        <div class= "div-table-col cardNEntendi"><%= link_to_image(cartaNEntendi, pokers_create_path(:poker => {:name => 'Não Entendi', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+        <div class= "div-table-col cardPausa" ><%= link_to_image(cartaCoffee, pokers_create_path(:poker => {:name => 'Pausa', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
+      </div>
+    </div>
     <br/>
     <br/>
