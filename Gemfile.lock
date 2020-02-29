@@ -46,6 +46,7 @@ GEM
     builder (3.2.3)
     byebug (11.0.1)
     chartkick (3.3.0)
+    coderay (1.1.2)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -116,6 +117,12 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     pg (0.20.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.8.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     rack (2.0.7)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -231,6 +238,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-google-oauth2
   pg (~> 0.20)
+  pry-byebug
   rails (= 5.0.1)
   rails_12factor
   rspec-rails

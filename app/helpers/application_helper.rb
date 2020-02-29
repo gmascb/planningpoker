@@ -14,5 +14,28 @@ module ApplicationHelper
     User.where(id: session[:user_id]).first
   end
   
-  
+
+  def self.find_duplicates(array)
+    # array.select{ |item| array.count(item) > 1 }.uniq
+
+    array.select{ |item| ApplicationHelper.count_in_array(array, item) > 1 }.uniq
+
+  end
+
+
+  def self.count_duplicates(obj)
+    obj.to_s.downcase.split("").group_by(&:itself).map{ |k,v| [k, v.size] }.select{ |a| a[1] > 1 }.size
+  end
+
+  def self.count_in_array(array, element)
+    count = 0;
+
+    array.each do |item| 
+      count += 1 if item == element
+    end
+    
+    return count
+
+  end
+
 end

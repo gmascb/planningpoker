@@ -59,5 +59,87 @@ RSpec.describe Room, type: :model do
 
     end
 
+    it "Exercicio 1 - Find Duplicates" do
+
+      #arrange
+      array = [1, 2, 4, 4, 3, 3, 1, 5, 3, '5']
+
+      #act
+      result = ApplicationHelper.find_duplicates(array)
+      
+      #assert
+      expect(result).to eq [1,4,3]
+
+    end
+
+
+    it "Exercicio 2 - Count Duplicates" do
+
+      #arrange
+      obj = "indivisibility"
+
+      #act
+      result = ApplicationHelper.count_duplicates(obj)
+      
+      #assert
+      expect(result).to be == 1
+
+    end
+
+    it "Exercicio 2 - Count Duplicates teste 2" do
+
+      #arrange
+      obj = "Indivisibilities"
+
+      #act
+      result = ApplicationHelper.count_duplicates(obj)
+      
+      #assert
+      expect(result).to be == 2
+
+    end
+
+    it "Exercicio 2 - Count Duplicates teste 3" do
+
+      #arrange
+      obj = "AABB"
+
+      #act
+      result = ApplicationHelper.count_duplicates(obj)
+      
+      #assert
+      expect(result).to be == 2
+
+    end
+
+    it "Mock create do Active Record" do
+
+      #arrange
+      poker_card = Poker.new(name: "mockado", value: 2, user: "mockado", room: 1)
+      allow(Poker).to receive(:create).and_return(poker_card)
+      
+      #act
+      mock_card = Poker.create(name: "aaaa")
+      
+      #assert
+      expect(mock_card.name).to be == "mockado"
+
+    end
+
+    it "Stub example" do
+
+      # #arrange
+      # poker_card = Poker.new(name: "mockado", value: 2, user: "mockado", room: 1)
+      # allow(Poker).to receive(:create).and_return(poker_card)
+      
+      # #act
+      # mock_card = Poker.create(name: "aaaa")
+      
+      # #assert
+      # expect(mock_card.name).to be == "mockado"
+
+    end
+
+
   end
 end
