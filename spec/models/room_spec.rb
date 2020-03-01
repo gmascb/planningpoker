@@ -116,7 +116,7 @@ RSpec.describe Room, type: :model do
 
       #arrange
       poker_card = Poker.new(name: "mockado", value: 2, user: "mockado", room: 1)
-      allow(Poker).to receive(:create).and_return(poker_card)
+      allow(Poker).to(receive(:create).and_return(poker_card))
       
       #act
       mock_card = Poker.create(name: "aaaa")
