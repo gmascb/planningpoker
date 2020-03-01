@@ -126,20 +126,5 @@ RSpec.describe Room, type: :model do
 
     end
 
-    it "Stub example" do
-
-      # #arrange
-      # poker_card = Poker.new(name: "mockado", value: 2, user: "mockado", room: 1)
-      # allow(Poker).to receive(:create).and_return(poker_card)
-      
-      # #act
-      # mock_card = Poker.create(name: "aaaa")
-      
-      # #assert
-      # expect(mock_card.name).to be == "mockado"
-
-    end
-
-
   end
 end
