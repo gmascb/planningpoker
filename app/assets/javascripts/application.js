@@ -16,3 +16,7 @@
 //= require select2-full
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    console.log('JQuery is ready!!!')
+}) 

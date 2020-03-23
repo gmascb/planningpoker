@@ -10,23 +10,14 @@ class PokersController < ApplicationController
       @pokers = Poker.where(room: @sala.id)
       @chartdataValue = Poker.where(room: @sala).where("VALUE > 0").group(:value).count.sort
       
-      if @sala.playersname != nil
-        @playersRoom = @sala.playersname.split(", ")
-
-        @playersRoom.each do |jogador|
-          jogador = jogador.strip
-        end
-      end
+      @players = @players.to_i        
+      @playersRoom = @sala.playersname.split(',').each{ |i| i = i.strip } if @sala.playersname != nil
 
       @QuemJaJogou = Array.new
-      @pokers.each do |carta|
-        @QuemJaJogou << carta.user
-      end
+      @pokers.each{ |carta| @QuemJaJogou << carta.user }
       
-      if @players == nil
-        @players = 0
-      end
-      
+      ActionCable.server.broadcast 'poker_channel', content: "Bateu no poker index e veio de actioncable" #pokers: @pokers, quem_ja_jogou: @QuemJaJogou
+
     else
       # se estiver sem parametro volta para tela de salas.
       redirect_to rooms_path
@@ -44,7 +35,6 @@ class PokersController < ApplicationController
     
     @poker = Poker.new
     @salaAtual = params[:sala]
-    @jogando = 1
     @sala = Room.find(@salaAtual)
     @cartarepetida= params[:cartarepetida]
     
@@ -102,6 +92,9 @@ class PokersController < ApplicationController
     else
       respond_to do |format|
         if @poker.save
+          
+          ActionCable.server.broadcast 'poker_channel', content: "Bateu no poker create e veio de actioncable" #pokers: @pokers, quem_ja_jogou: @QuemJaJogou
+
           format.html { redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada), notice: 'CartaOk' }
           format.json { render :show, status: :created, location: @poker }
         else
