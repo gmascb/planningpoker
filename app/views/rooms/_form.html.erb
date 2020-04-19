@@ -1,9 +1,5 @@
-<html>
-  <head>
-    <%= stylesheet_link_tag '_form', media: 'all', 'data-turbolinks-track' => true %>
-  </head>
-  <body>
-
+<div class="width: 50%;">
+  <%= stylesheet_link_tag '_form', media: 'all', 'data-turbolinks-track' => true %>
   <%= form_for(@room) do |f| %>
     <script>
       $(document).ready(function() { $("#room_selectresponsavel, #room_selectuser").select2(); });
@@ -21,11 +17,10 @@
       </div>
     <% end %>
     
-    <div class="width: 50%;">
-
+    <div class="card" style="margin-left: 15%; width: 75%;">
       <div style="margin-left: 15%;" class="row">
-        <div class="input-field col s9">
-          <input name="room[name]" value="<%= @room.name %>" id="name" type="text" class="validate">
+        <div class="input-field col s10">
+          <input name="room[name]" value="<%= @room.name %>" id="name" type="text" class="validate"/>
           <label class="active" for="name">Nome</label>
         </div>
       </div>
@@ -38,28 +33,35 @@
         <%= f.select(:card, ["Fibonacci 20,40,100", "Fibonacci"], {}) %>
       </div>
 
-      <p>
-        <label>
-          <%= f.check_box :refreshauto %>
-          <span>Refresh Automatico</span>
-        </label>
-      </p>
+      <strong style="color: black;">Configurações:</strong>
+      <div class="card" style="background: #eeeeee; width: 70%; margin-left: 15%;">
+        <div style= "display: flex;  justify-content: space-around;">
+          <div> 
+            <p>
+              <label>
+                <%= f.check_box :refreshauto %>
+                <span>Refresh Automatico</span>
+              </label>
+            </p>
+          </div>
+          
+          <div> 
+            <p>
+              <label>
+                <%= f.check_box :bloqcartarepet %>
+                <span>Bloqueia Atualização de Carta</span>
+              </label>
+           </p>
+          </div>
+        </div>
+      </div>
 
-      <p>
-        <label>
-          <%= f.check_box :bloqcartarepet %>
-          <span>Bloqueia Atualização de Carta</span>
-        </label>
-      </p>
-      
-      <strong style="color: black;">Jogadores:</strong> <br><br>
-      <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
-        <br>
+      <strong style="color: black; ">Jogadores:</strong>
+      <div class="card" style="width: 70%; margin-left: 15%; background: #eeeeee; ">
         <div class="field">
           <div id="playersname" class="field">
             <%= f.text_area :playersname, disabled: true, placeholder: 'Selecione os jogadores abaixo', cols: 60, rows: 5, :id => 'textroom_playersname'%></div>
-            <%= f.select :selectuser, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]} %>
-  
+            <%= f.select :selectuser, User.all.collect {|p| [ p.name ]}.sort{|a, b| a[0] <=> b[0]}, style: "width: 50%;" %>
             <a onclick="AddUsuarioSala()" class="btn-floating btn waves-effect waves-light blue">
               <i class="material-icons">add</i>
             </a>
@@ -69,16 +71,11 @@
             <a onclick="RemoveTodos()" class="btn-floating btn waves-effect waves-light gray">
               <i class="material-icons">clear</i>
             </a>
-
         </div>
       </div>
-    
-
-      <br><br>  
-    <strong style="color: black;">Usuários Responsáveis:</strong> <br><br>
-    
-      <div class="w3-card-4 w3-round-large" style="width: 70%; margin-left: 15%; background-color: white; ">
-        <br>
+      
+      <strong style="color: black;">Usuários Responsáveis:</strong>
+      <div class="card" style="width: 70%; margin-left: 15%; background: #eeeeee; ">
         <div class="field">
           <div id="user" class="field">
             <%= f.text_area :user, disabled: true, placeholder: 'Selecione os responsaveis abaixo', cols: 60, rows: 2, :id => 'textroom_responsavel'%></div>
@@ -93,18 +90,17 @@
             <a onclick="RemoveTodosResponsaveis()" class="btn-floating btn waves-effect waves-light gray">
               <i class="material-icons">clear</i>
             </a>
-
+          </div>
         </div>
+        <br/>
       </div>
-
-    </p>
-    <br>
-  </div>
   
-  <button type="submit" , class="waves-effect waves-light btn" onclick="AtivaCampo(); AtivaCampoResponsavel();">Salvar</button>
-  <%= link_to 'Voltar', rooms_path, class: "waves-effect waves-light btn" %>
-  <br>
-  <br> 
-    <% end %>
-  </body>
-</html>
+      <div style="display: flex; justify-content: space-around;">
+        <button type="submit" , class="waves-effect waves-light btn" onclick="AtivaCampo(); AtivaCampoResponsavel();">
+          Salvar
+        </button>
+        <%= link_to 'Voltar', rooms_path, class: "waves-effect waves-light btn" %>
+      </div> 
+    </div> 
+  <% end %>
+</div>

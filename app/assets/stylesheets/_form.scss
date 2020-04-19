@@ -2,7 +2,7 @@
     background-color: #990000;
 }
 .cardPoker a:link{
-    border-radius: 8px;
+    margin: 5px;
     background-color: #000066;
 }
 
@@ -151,7 +151,6 @@ input:checked + .slider:before {
 
 /* table das cartas */
 .div-table {
-  margin-left: 22%;
   display: table;
   width: auto;
 }
@@ -162,6 +161,7 @@ input:checked + .slider:before {
   clear: both;
 }
 .div-table-col {
+  margin: 8px;
   float: left;
   display: table-column;
   border: 8px solid #1c154f;

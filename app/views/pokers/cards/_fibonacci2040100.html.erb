@@ -17,7 +17,7 @@
       <% usuario = current_user.name.to_s.force_encoding("UTF-8") %>
     <%end%>
     
-
+    <div style="display: flex; justify-content: center;">
       <div class="div-table">
         <div class="div-table-row">
           <div class="cardpoker div-table-col"><%= link_to_image(carta05, pokers_create_path(:poker => {:value => 0.5, :user => usuario, :room => @salaAtual }, sala: @salaAtual) , method: :post)%></div>
@@ -38,5 +38,4 @@
           <div class= "cardPausa div-table-col" align=center><%= link_to_image(cartaCoffee, pokers_create_path(:poker => {:name => 'Pausa', :user => usuario, :room => @salaAtual} , sala: @salaAtual) , method: :post)%></div>
         </div>
       </div>
-    <br/>
-    <br/>
+    </div>
