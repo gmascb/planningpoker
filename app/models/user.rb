@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.name = auth.info.name
       user.oauth_token = auth.credentials.token
-      user.last_login = DateTime.now
 
       if user.provider != 'github'
         user.oauth_expires_at = Time.at(auth.credentials.expires_at)
