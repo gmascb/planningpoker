@@ -8,19 +8,19 @@ class PokersController < ApplicationController
       
       @sala = Room.find(params[:sala])
       @pokers = Poker.where(room: @sala.id)
-      @chartdataValue = Poker.where(room: @sala).where("VALUE > 0").group(:value).count.sort
+      @chart_data_value = Poker.where(room: @sala).where("VALUE > 0").group(:value).count.sort
       
       if @sala.playersname != nil
-        @playersRoom = @sala.playersname.split(", ")
+        @players_room = @sala.playersname.split(", ")
 
-        @playersRoom.each do |jogador|
+        @players_room.each do |jogador|
           jogador = jogador.strip
         end
       end
 
-      @QuemJaJogou = Array.new
+      @quem_ja_jogou = Array.new
       @pokers.each do |carta|
-        @QuemJaJogou << carta.user
+        @quem_ja_jogou << carta.user
       end
       
       if @players == nil
@@ -43,23 +43,23 @@ class PokersController < ApplicationController
   def new
     
     @poker = Poker.new
-    @salaAtual = params[:sala]
+    @sala_atual = params[:sala]
     @jogando = 1
-    @sala = Room.find(@salaAtual)
+    @sala = Room.find(@sala_atual)
     @cartarepetida= params[:cartarepetida]
     
     if current_user
-      @minhaCarta = Poker.where(user: current_user.name).where(room: @salaAtual).first
-      if @minhaCarta != nil
-        if @minhaCarta.value != nil
-          @minhaCarta = @minhaCarta.value
+      @minha_carta = Poker.where(user: current_user.name).where(room: @sala_atual).first
+      if @minha_carta != nil
+        if @minha_carta.value != nil
+          @minha_carta = @minha_carta.value
         else
-          @minhaCarta = @minhaCarta.name
+          @minha_carta = @minha_carta.name
         end
       end
     end
     
-    validarPermissao
+    validar_permissao
     
   end
 
@@ -71,7 +71,7 @@ class PokersController < ApplicationController
   # POST /pokers
   # POST /pokers.json
   def create
-    @salaAtual = params[:sala]
+    @sala_atual = params[:sala]
     @sala = Room.find(params[:sala])
     @poker = Poker.new(poker_params)
 
@@ -83,12 +83,12 @@ class PokersController < ApplicationController
     end
 
     if current_user != nil
-      qtdCartasDoUsuario = Poker.where(user: current_user.name).where(room: @salaAtual).size     
-      if (qtdCartasDoUsuario >= 1)
-        @poker = Poker.where(user: current_user.name).where(room: @salaAtual).first
+      qtd_cartas_do_usuario = Poker.where(user: current_user.name).where(room: @sala_atual).size     
+      if (qtd_cartas_do_usuario >= 1)
+        @poker = Poker.where(user: current_user.name).where(room: @sala_atual).first
         @poker.name = nome
         @poker.value = valor
-        @cartaAtualizada = 1
+        @carta_atualizada = 1
       else
         @poker = Poker.new(poker_params)
       end
@@ -96,13 +96,13 @@ class PokersController < ApplicationController
       @poker.user == 'Sem Usuario'
     end
 
-    if (@cartaAtualizada && @sala.bloqcartarepet && @sala.players <= Poker.where(room: @salaAtual).size && @sala.players > 0)
-      @cartaAtualizada = -1
-      redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada )
+    if (@carta_atualizada && @sala.bloqcartarepet && @sala.players <= Poker.where(room: @sala_atual).size && @sala.players > 0)
+      @carta_atualizada = -1
+      redirect_to new_poker_path(sala: @sala_atual, cartarepetida: @carta_atualizada )
     else
       respond_to do |format|
         if @poker.save
-          format.html { redirect_to new_poker_path(sala: @salaAtual, cartarepetida: @cartaAtualizada), notice: 'CartaOk' }
+          format.html { redirect_to new_poker_path(sala: @sala_atual, cartarepetida: @carta_atualizada), notice: 'CartaOk' }
           format.json { render :show, status: :created, location: @poker }
         else
           format.html { render :new }
@@ -132,10 +132,10 @@ class PokersController < ApplicationController
     @apaga = true
     @sala = Room.find(params[:sala])
     
-    validarPermissao
+    validar_permissao
 
-    if (@apaga)
-      if (params[:apagouPorFora])
+    if @apaga
+      if params[:apagou_por_fora]
         Poker.where(room: @sala.id).destroy_all
         redirect_to rooms_path
       else
@@ -148,7 +148,7 @@ class PokersController < ApplicationController
 
   private
   
-  def validarPermissao
+  def validar_permissao
     if(current_user) #estou logado
       if (@sala.user) #alguem logado criou a sala
         if(!@sala.user.include?current_user.name) #nao criei a sala / não sou responsável
