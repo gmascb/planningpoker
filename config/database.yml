@@ -23,7 +23,12 @@ default: &default
 
 development:
   <<: *default
-  database: workspace_development
+  # database: workspace_development
+  host: "ec2-50-19-218-160.compute-1.amazonaws.com"
+  username: "rqowdxxeqnzwgo"
+  password: "d444115d250d18460ffbc28450a519afa5e3173beaf00e3d65624f3ba0ff158a"
+  database: "d2d3fv9t67ind7"
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

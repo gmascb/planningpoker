@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.5.7'
+# ruby '2.5.7'
 
 gem 'rails', '6.0.3'
 
@@ -84,3 +84,5 @@ end
 gem 'materialize-sass'
 gem 'material_icons'
 
+gem 'rack-cors'
+gem 'active_model_serializers'
