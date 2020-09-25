@@ -41,50 +41,50 @@
   <%varPausa = @pokers.where(name: 'Pausa').size %>
   <%varNEnt = @pokers.where(name: 'Não Entendi').size %>
   <!-- Soma o número de cartas jogadas -->
-  <% numCartas = var0+var05+var1+var2+var3+var5+var8+var13+var20+var21+var34+var40+var55+var89+var100+varNEnt+varPausa %>
+  <% num_cartas = var0+var05+var1+var2+var3+var5+var8+var13+var20+var21+var34+var40+var55+var89+var100+varNEnt+varPausa %>
 <!-- FIM Manter no Inicio -->
 
 <!--Traz uma listagem de todas as cartas com respectivos usuários-->
 <div style="width: 70%; color: black; float: center; margin-right: 0%; ">
   <div style="float: center; margin-right: 0; ">
-    <% if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 %>
+    <% if @quem_ja_jogou != nil && @players_room != nil && @quem_ja_jogou.size > 0 && @players_room.size > 0 %>
       <br>
-      <% @playersRoom.each do |jogadorDaSala| %>
-        <% if !@QuemJaJogou.include? jogadorDaSala %>
-          <div class="quemNaoJogou" ><%= jogadorDaSala %></div>
+      <% @players_room.each do |jogador_da_sala| %>
+        <% if !@quem_ja_jogou.include? jogador_da_sala %>
+          <div class="quemNaoJogou" ><%= jogador_da_sala %></div>
         <% else %>
-          <div class="quemJaJogou" >
-            <%= jogadorDaSala %>
-            <% if numCartas >= @sala.players %>
-              <% if @pokers.where(user: jogadorDaSala).first.value && @pokers.where(user: jogadorDaSala).first.value > 0%>
-                <%= @pokers.where(user: jogadorDaSala).first.value %>
+          <div class="quem_ja_jogou" >
+            <%= jogador_da_sala %>
+            <% if num_cartas >= @sala.players %>
+              <% if @pokers.where(user: jogador_da_sala).first.value && @pokers.where(user: jogador_da_sala).first.value > 0%>
+                <%= @pokers.where(user: jogador_da_sala).first.value %>
               <%else%>
-                '<%= @pokers.where(user: jogadorDaSala).first.name %>'
+                '<%= @pokers.where(user: jogador_da_sala).first.name %>'
               <%end%>
             <% else %>
               <%= "?" %>
-            <% end %><!-- if numCartas >= @sala.players -->
-          </div><!-- quemNaoJogou X quemJaJogou -->
-        <% end %><!-- @QuemJaJogou.include? jogadoresDaSala -->
-      <% end %><!-- @playersRoom.each -->
-    <% end %><!-- if @QuemJaJogou != nil && @playersRoom != nil && @QuemJaJogou.size > 0 && @playersRoom.size > 0 -->
+            <% end %><!-- if num_cartas >= @sala.players -->
+          </div><!-- quemNaoJogou X quem_ja_jogou -->
+        <% end %><!-- @quem_ja_jogou.include? jogadoresDaSala -->
+      <% end %><!-- @players_room.each -->
+    <% end %><!-- if @quem_ja_jogou != nil && @players_room != nil && @quem_ja_jogou.size > 0 && @players_room.size > 0 -->
   
     
     <!-- Apos Atualizacao foi necessario-->
     <% if @sala.playersname == "" %>
-      <% @QuemJaJogou.each do |jogadorDaSala| %>
-        <div class="quemJaJogou" >
-          <%= jogadorDaSala %>
-          <% if numCartas >= @sala.players %>
-            <% if @pokers.where(user: jogadorDaSala).first.value && @pokers.where(user: jogadorDaSala).first.value > 0 %>
-              <%= @pokers.where(user: jogadorDaSala).first.value %>
+      <% @quem_ja_jogou.each do |jogador_da_sala| %>
+        <div class="quem_ja_jogou" >
+          <%= jogador_da_sala %>
+          <% if num_cartas >= @sala.players %>
+            <% if @pokers.where(user: jogador_da_sala).first.value && @pokers.where(user: jogador_da_sala).first.value > 0 %>
+              <%= @pokers.where(user: jogador_da_sala).first.value %>
             <%else%>
-              '<%= @pokers.where(user: jogadorDaSala).first.name %>'
+              '<%= @pokers.where(user: jogador_da_sala).first.name %>'
             <%end%>
           <% else %>
             <%= "?" %>
-          <% end %><!-- if numCartas >= @sala.players -->
-        </div><!-- quemNaoJogou X quemJaJogou -->
+          <% end %><!-- if num_cartas >= @sala.players -->
+        </div><!-- quemNaoJogou X quem_ja_jogou -->
       <% end %> <!-- fim foreach -->
   <% end %> <!-- fim validacaoNomes na sala-->
   
@@ -92,7 +92,7 @@
 </div><!-- style="color: black; float: right; margin-right: 20%; -->
 
 <!-- Valida se pode mostrar as informações de acordo com o número de jogadores da sala -->
-<% if numCartas > 0 && numCartas >= @sala.players %>
+<% if num_cartas > 0 && num_cartas >= @sala.players %>
   
   <!--Calcula pontos totais para fazer a Média -->
   <% pontosTotais = ((var05*0.5)+(var1*1)+(var2*2)+(var3*3)+(var5*5)+(var8*8)+(var13*13)+(var20*20)+(var40*40)+(var100*100)) %>
@@ -113,7 +113,7 @@
   <div style=" width: 100%; ">
     <!-- Gráfico de Colunas -->
     <div style="margin-left: 16%; float: left;"> 
-      <%= column_chart @chartdataValue , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> 
+      <%= column_chart @chart_data_value , width: "400px", height: "300px", xtitle: "Carta", ytitle: "Quantidade"%> 
     </div>
     
     <!-- Tabela Num Cartas, Média e Moda -->
@@ -125,8 +125,8 @@
           <th>Moda</th>
         </tr>
         <tr>
-          <td><%= numCartas %></td>
-          <td><%= (pontosTotais/numCartas).to_i %></td>
+          <td><%= num_cartas %></td>
+          <td><%= (pontosTotais/num_cartas).to_i %></td>
           <td><%= arrayModa.max_by { |i| arrayModa.count(i) } %></td>
         </tr>
       </table>
