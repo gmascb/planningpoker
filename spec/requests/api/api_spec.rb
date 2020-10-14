@@ -1,7 +1,7 @@
 # rake rswag:specs:swaggerize
 require 'swagger_helper'
 
-describe 'Users API' do
+describe 'Api TechPoker' do
 
   path '/users' do
 
