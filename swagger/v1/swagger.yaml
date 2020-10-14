@@ -1,5 +1,5 @@
 ---
-openapi: 3.0.1
+swagger: '2.0'
 info:
   title: API V1
   version: v1
@@ -9,12 +9,17 @@ paths:
       summary: Get Users
       tags:
       - Users
+      consumes:
+      - application/json
       responses:
         '200':
           description: Users Found
-          content: {}
-servers:
-- url: http://{defaultHost}
-  variables:
-    defaultHost:
-      default: localhost:3000/api
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Steve Jobs
+basePath: "/api"
