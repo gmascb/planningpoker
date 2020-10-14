@@ -10,16 +10,16 @@ describe 'Api TechPoker' do
       consumes 'application/json'
 
       response '200', 'Users Found' do
-          schema type: :array,
-                 items: {
-                     type: :object,
-                     properties: {
-                         name: {
-                                 type: :string,
-                                 example: "Steve Jobs"
-                              }
-                     }
-                 }
+          # schema type: :array,
+          #        items: {
+          #            type: :object,
+          #            properties: {
+          #                name: {
+          #                        type: :string,
+          #                        example: "Steve Jobs"
+          #                     }
+          #            }
+          #        }
   
         run_test!
       end
