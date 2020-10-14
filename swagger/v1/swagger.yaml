@@ -3,6 +3,7 @@ swagger: '2.0'
 info:
   title: API V1
   version: v1
+basePath: "/api"
 paths:
   "/users":
     get:
@@ -14,11 +15,3 @@ paths:
       responses:
         '200':
           description: Users Found
-          schema:
-            type: array
-            items:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: Steve Jobs
