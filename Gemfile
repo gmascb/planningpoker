@@ -86,3 +86,12 @@ gem 'material_icons'
 
 gem 'rack-cors'
 gem 'active_model_serializers'
+
+
+#RSwag
+gem 'rswag-api'
+gem 'rswag-ui'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rswag-specs'
+end
