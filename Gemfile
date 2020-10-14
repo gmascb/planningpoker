@@ -79,7 +79,7 @@ group :production do
   # Já está do lado de fora do grupo do Gemfile.
   # gem 'pg', '~> 0.15' 
   
-  gem 'rails_12factor'
+  # gem 'rails_12factor'
 
 end
 

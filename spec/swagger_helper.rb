@@ -16,12 +16,11 @@ RSpec.configure do |config|
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
     'v1/swagger.yaml' => {
-      swagger: '2.0',
+      openapi: '3.0.1',
       info: {
         title: 'API V1 Techpoker',
         version: 'v1'
       },
-      paths: {},
       # securityDefinitions: {
       #     Authorization: {
       #         description: "Header for Authorization",
@@ -30,17 +29,17 @@ RSpec.configure do |config|
       #         in: :header
       #     }
       # },
-      basePath: "/api",
-      # servers: [
-      #   {
-      #     url: 'http://{defaultHost}',
-      #     variables: {
-      #       defaultHost: {
-      #         default: Rails.env.production? ? 'techpoker.herokuapp.com/api' : "localhost:3000/api",
-      #       }
-      #     }
-      #   }
-      # ]
+      # basePath: "/api",
+      servers: [
+        {
+          url: 'http://{defaultHost}',
+          variables: {
+            defaultHost: {
+              default: Rails.env.production? ? 'techpoker.herokuapp.com/api' : "localhost:3000/api",
+            }
+          }
+        }
+      ]
     }
   }
 
