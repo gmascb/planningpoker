@@ -20,7 +20,7 @@ describe 'Api TechPoker' do
           #                     }
           #            }
           #        }
-  
+
         run_test!
       end
 
