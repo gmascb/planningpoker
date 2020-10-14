@@ -85,10 +85,6 @@ test:
 #
 production:
   <<: *default
-  # database: workspace_production
-  # username: workspace
-  # password: <%= ENV['WORKSPACE_DATABASE_PASSWORD'] %>
-  host: "ec2-50-19-218-160.compute-1.amazonaws.com"
-  username: "rqowdxxeqnzwgo"
-  password: "d444115d250d18460ffbc28450a519afa5e3173beaf00e3d65624f3ba0ff158a"
-  database: "d2d3fv9t67ind7"
+  database: workspace_production
+  username: workspace
+  password: <%= ENV['WORKSPACE_DATABASE_PASSWORD'] %>
