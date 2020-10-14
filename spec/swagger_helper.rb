@@ -18,7 +18,7 @@ RSpec.configure do |config|
     'v1/swagger.yaml' => {
       swagger: '2.0',
       info: {
-        title: 'API V1',
+        title: 'API V1 Techpoker',
         version: 'v1'
       },
       paths: {},
