@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     # Directs /admin/products/* to Admin::ProductsController
     # (app/controllers/admin/products_controller.rb)
     get 'users' => 'api#users'
-    
+    post 'play' => 'api#play'
   end
 
 

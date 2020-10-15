@@ -28,3 +28,54 @@ paths:
         '200':
           description: Users Found
           content: {}
+  "/play":
+    post:
+      summary: Play Card
+      tags:
+      - Play
+      parameters: []
+      responses:
+        '200':
+          description: Poker Created
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Pausa
+                  description: value for a poker card
+                  enum:
+                  - Não Entendi
+                  - Pausa
+                  - Infinito - Epico
+                value:
+                  type: integer
+                  example: 1
+                  description: value for a poker card
+                  enum:
+                  - '1'
+                  - '2'
+                  - '3'
+                  - '5'
+                  - '8'
+                  - '13'
+                  - '20'
+                  - '40'
+                  - '100'
+                user:
+                  type: string
+                  description: Name of player
+                  example: Steve Jobs
+                room:
+                  type: integer
+                  example: 1
+                  description: Number of your room
+              required:
+              - name
+              - value
+              - user
+              - room
