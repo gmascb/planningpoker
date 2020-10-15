@@ -14,62 +14,62 @@ RSpec.configure do |config|
   # By default, the operations defined in spec files are added to the first
   # document below. You can override this behavior by adding a swagger_doc tag to the
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
-  # config.swagger_docs = {
-  #   'v1/swagger.yaml' => {
-  #     openapi: '3.0.1',
-  #     info: {
-  #       title: 'API V1 Techpoker',
-  #       version: 'v1'
-  #     },
-  #     # securityDefinitions: {
-  #     #     Authorization: {
-  #     #         description: "Header for Authorization",
-  #     #         type: :apiKey,
-  #     #         name: 'Authorization',
-  #     #         in: :header
-  #     #     }
-  #     # },
-  #     # basePath: "/api",
-  #     servers: [
-  #       {
-  #         url: 'http://{defaultHost}',
-  #         variables: {
-  #           defaultHost: {
-  #             default: Rails.env.production? ? 'techpoker.herokuapp.com/api' : "localhost:3000/api",
-  #           }
-  #         }
-  #       }
-  #     ]
-  #   }
-  # }
   config.swagger_docs = {
     'v1/swagger.yaml' => {
-      swagger: '2.0',
+      openapi: '3.0.1',
       info: {
-        title: 'API V1',
+        title: 'API V1 Techpoker',
         version: 'v1'
       },
-      basePath: '/api',
-      paths: {},
-      # definitions: {
-      #   contact: {
-      #     type: :object,
-      #     properties: {
-      #       data: {
-      #         type: :object,
-      #         required: %i[name phone email address],
-      #         properties: {
-      #           name: { type: :string, example: 'magmaLabs.io' },
-      #           phone: { type: :string, example: '+52 1 667 317 9035' },
-      #           email: { type: :string, example: 'hello@magmalabs.io' },
-      #           address: { type: :string, example: 'Av. Constitución #2035. Colima, Colima, MX, 28017' }
-      #         }
-      #       }
+      # securityDefinitions: {
+      #     Authorization: {
+      #         description: "Header for Authorization",
+      #         type: :apiKey,
+      #         name: 'Authorization',
+      #         in: :header
       #     }
-      #   }
-      # }
+      # },
+      # basePath: "/api",
+      servers: [
+        {
+          url: 'http://{defaultHost}',
+          variables: {
+            defaultHost: {
+              default: Rails.env.production? ? 'techpoker.herokuapp.com/api' : "localhost:3000/api",
+            }
+          }
+        }
+      ]
     }
   }
+  # config.swagger_docs = {
+  #   'v1/swagger.yaml' => {
+  #     swagger: '2.0',
+  #     info: {
+  #       title: 'API V1',
+  #       version: 'v1'
+  #     },
+  #     basePath: '/api',
+  #     paths: {},
+  #     # definitions: {
+  #     #   contact: {
+  #     #     type: :object,
+  #     #     properties: {
+  #     #       data: {
+  #     #         type: :object,
+  #     #         required: %i[name phone email address],
+  #     #         properties: {
+  #     #           name: { type: :string, example: 'magmaLabs.io' },
+  #     #           phone: { type: :string, example: '+52 1 667 317 9035' },
+  #     #           email: { type: :string, example: 'hello@magmalabs.io' },
+  #     #           address: { type: :string, example: 'Av. Constitución #2035. Colima, Colima, MX, 28017' }
+  #     #         }
+  #     #       }
+  #     #     }
+  #     #   }
+  #     # }
+  #   }
+  # }
 
   # Specify the format of the output Swagger file when running 'rswag:specs:swaggerize'.
   # The swagger_docs configuration option has the filename including format in
