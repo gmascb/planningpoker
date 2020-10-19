@@ -11,7 +11,7 @@ module Api
             room = Room.find_by_id(params[:room])
             
             if room.nil? 
-                render json: { message: "Room doesn't exists" }, status: 404
+                render json: { message: "Room doesn't exists" }, status: 422
             else
 
                 players_name = room.playersname.split(",")
