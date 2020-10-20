@@ -21,18 +21,18 @@ RSpec.configure do |config|
         title: 'API V1 Techpoker',
         version: 'v1'
       },
-      securityDefinitions: {
-          Authorization: {
-              description: "Header for Authorization",
-              type: :apiKey,
-              name: 'Authorization',
-              in: :header
-          }
-      },
+      # securityDefinitions: {
+      #     Authorization: {
+      #         description: "Header for Authorization",
+      #         type: :apiKey,
+      #         name: 'Authorization',
+      #         in: :header
+      #     }
+      # },
       # basePath: "/api",
       servers: [
         {
-          url: 'http://{prodHost}',
+          url: 'https://{prodHost}',
           variables: {
             prodHost: {
               default: 'techpoker.herokuapp.com'
@@ -40,7 +40,7 @@ RSpec.configure do |config|
           }
         },
         {
-          url: 'http://{devHost}',
+          url: 'https://{devHost}',
           variables: {
             devHost: {
               default: "localhost:3000",

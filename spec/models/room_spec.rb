@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Room, type: :model do
 
   before(:each) do
-    @room = Room.new(name: "Nome da sala", players: 5, playersname: "Joao, Maria")
+    @room = Room.new(name: "Nome da sala", players: 5, playersname: "Joao, Maria", card: "Fibonacci")
   end
 
   context "Validando dados da sala" do

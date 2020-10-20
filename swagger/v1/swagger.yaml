@@ -3,23 +3,17 @@ openapi: 3.0.1
 info:
   title: API V1 Techpoker
   version: v1
-securityDefinitions:
-  Authorization:
-    description: Header for Authorization
-    type: apiKey
-    name: Authorization
-    in: header
 servers:
-- url: http://{prodHost}
+- url: https://{prodHost}
   variables:
     prodHost:
-      default: techpoker.herokuapp.com/api
-- url: http://{devHost}
+      default: techpoker.herokuapp.com
+- url: https://{devHost}
   variables:
     devHost:
-      default: localhost:3000/api
+      default: localhost:3000
 paths:
-  "/users":
+  "/api/users":
     get:
       summary: Get Users
       tags:
@@ -28,7 +22,7 @@ paths:
         '200':
           description: Users Found
           content: {}
-  "/play":
+  "/api/play":
     post:
       summary: Play Card
       tags:
@@ -37,6 +31,9 @@ paths:
       responses:
         '200':
           description: Poker Created
+          content: {}
+        '422':
+          description: Room doesn't exists
           content: {}
       requestBody:
         content:
@@ -79,7 +76,7 @@ paths:
               - value
               - user
               - room
-  "/rooms":
+  "/api/rooms":
     get:
       summary: Get Rooms
       tags:
@@ -93,7 +90,7 @@ paths:
         '200':
           description: Rooms Found
           content: {}
-  "/results/{room}":
+  "/api/results/{room}":
     get:
       summary: Get Results
       tags:
