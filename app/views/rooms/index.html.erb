@@ -22,9 +22,9 @@
         <% if @rooms.first.present? %>
           <table class=" centered highlight"> 
             <thead>
-                <td> Nome </td>
-                <td> Jogadores </td>
-                <td style="position: center; " colspan=4> Ações </td>
+                <td></td>
+                <td></td>
+                <td style="position: center;" colspan=4> </t>
             </thead>
             <tbody>
               <% @rooms.each do |room| %>
@@ -34,23 +34,20 @@
                   
                   <td>
                     <%= link_to pokers_path(sala: room.id), class: "waves-effect waves btn blue darken-3" do %>
-                      Entrar 
                       <i class="material-icons right">send</i>
                     <% end %>
                   </td>
                   
                   
-                  <%if true # room.user == "" || (current_user != nil && (room.user.include?current_user.name))%> 
+                  <%if room.user == "" || (current_user != nil && (room.user.include?current_user.name))%> 
                     <td>
                       <%= link_to edit_room_path(room), class: "waves-effect waves btn blue darken-3" do %>
-                        Editar
                         <i class="material-icons right">create</i>
                       <% end %>
                     </td>
 
                     <td>
                       <%= link_to room, method: :delete, data:{confirm: "Apagar sala?"}, class: "waves-effect waves btn red darken-4" do %>
-                        Apagar
                         <i class="material-icons right">delete</i>
                       <% end %>
                     </td>
@@ -61,7 +58,6 @@
                                                        data:{confirm: "Apagar as Cartas de dentro da sala?"}, 
                                                        :method => :delete,
                                                        class: "waves-effect waves btn red darken-4" do %>
-                      Limpar
                       <i class="material-icons right">clear</i>
                       <% end %>
                     </td>
@@ -82,3 +78,9 @@
     </div>
   </body>
 </html>
+
+
+<style lang="css">
+
+
+</style>

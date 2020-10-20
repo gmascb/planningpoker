@@ -1,0 +1,193 @@
+/* line 1, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.cardAlta a:link {
+  background-color: #990000;
+}
+
+/* line 4, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.cardPoker a:link {
+  margin: 5px;
+  background-color: #000066;
+}
+
+/* line 9, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.cardNEntendi a:link {
+  background-color: #585858;
+}
+
+/* line 13, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.responsavel {
+  color: white;
+  width: 55%;
+  margin-left: 23%;
+}
+
+/* line 20, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.cardPausa a:link {
+  background-color: #331100;
+}
+
+/* line 25, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+h1, p, notice {
+  color: black;
+  position: center;
+}
+
+/* line 30, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+h2 {
+  color: black;
+}
+
+/* line 33, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+h4 {
+  color: black;
+  position: center;
+}
+
+/* line 38, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+h3 {
+  color: black;
+}
+
+/* line 43, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+img {
+  width: 50px;
+  /*Largura*/
+  height: 80px;
+  /*Altura*/
+}
+
+/* line 48, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+a:hover {
+  background-color: gray;
+}
+
+/* line 52, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+a:link:active {
+  background-color: gray;
+  transform: translateY(4px);
+}
+
+/* Muda o Fundo de Azul pra branco*/
+/* line 60, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+#select2-room_selectuser-results {
+  background-color: white;
+}
+
+/* line 64, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+#select2-room_selectresponsavel-results {
+  background-color: white;
+}
+
+/* line 69, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+input[type=text], select {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* line 79, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+#room_playersname {
+  width: 40%;
+  height: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* line 91, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.field {
+  color: white;
+}
+
+/* line 95, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* line 102, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.switch input {
+  display: none;
+}
+
+/* line 104, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+/* line 116, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+/* line 128, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+/* line 132, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+/* line 136, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+/* line 143, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.slider.round {
+  border-radius: 34px;
+}
+
+/* line 147, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* table das cartas */
+/* line 153, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.div-table {
+  display: table;
+  width: auto;
+}
+
+/* line 158, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.div-table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+
+/* line 163, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/_form.scss */
+.div-table-col {
+  margin: 8px;
+  float: left;
+  display: table-column;
+  border: 8px solid #1c154f;
+  border-radius: 5px;
+}

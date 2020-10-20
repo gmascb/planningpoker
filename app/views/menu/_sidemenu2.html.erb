@@ -3,7 +3,7 @@
     <div class="indigo darken-4 nav-wrapper">
       <img border="2" src="/assets/icon.png" style="float: right; width: 50px; height: 50px;">
       
-      <% if current_user == nil %>
+      <% if current_user.nil? %>
           <a class="waves-effect waves btn blue darken-4" href="/home" > Home</a> 
           <a class='dropdown-trigger btn blue darken-4' href='#' data-target='dropdown_login'> Login </a>
 
@@ -14,13 +14,29 @@
           </ul>
       <% else %>
         <a class="waves-effect waves btn blue darken-4" href="/rooms?filtrado=1"> Salas </a>
-        <a class="waves-effect waves btn blue darken-4" href="/signout">Sair </a>
-        <a class="waves-effect waves btn blue darken-4" href="/help/index"> Ajuda </a></li>
         <a class="waves-effect waves btn green darken-4" target="_blank" href="/api-docs/index.html">
           <div style=" color:white;">
             { ... }
           </div>
         </a>
+        
+        <a class="waves-effect waves btn teal lighten-5" target="_blank" href="https://techpoker-vue.herokuapp.com">
+          <img src="../assets/favicon_vue.ico" style="margin-top: 5px; width:25px; height: 25px;"></img>
+        </a>
+        
+        <a class="waves-effect waves btn blue darken-4" href="/help/index">
+          <i class="material-icons" style="margin-top: -13px;">
+            help
+          </i>
+        </a>
+        
+        <a class="waves-effect waves btn red darken-4"
+           href="/signout">
+            <i class="material-icons" style="margin-top: -13px;">
+              directions_run
+            </i>
+          </a>
+
       <% end %>
 
     </div>

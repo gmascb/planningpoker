@@ -1,0 +1,12 @@
+/* line 5, /Users/guilhermebarbosa/Documents/planningpoker/app/assets/stylesheets/home.scss */
+h1 {
+  color: black;
+  left: 0;
+  /*  
+    position: absolute;
+  top: 50%;
+    font-size: 18px;
+  */
+  width: 100%;
+  text-align: center;
+}
