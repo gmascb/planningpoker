@@ -79,3 +79,32 @@ paths:
               - value
               - user
               - room
+  "/rooms":
+    get:
+      summary: Get Rooms
+      tags:
+      - Rooms
+      parameters:
+      - name: user
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Rooms Found
+          content: {}
+  "/results/{room}":
+    get:
+      summary: Get Results
+      tags:
+      - Results
+      parameters:
+      - name: room
+        in: path
+        required: true
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Results Found
+          content: {}

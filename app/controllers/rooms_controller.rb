@@ -8,12 +8,7 @@ class RoomsController < ApplicationController
       @rooms = Room.all.order(:name)
     else
       if (current_user != nil)
-        @rooms = Room.all.where("ROOMS.USER LIKE '%#{current_user.name}%'
-        OR ROOMS.USER LIKE ''
-        OR ROOMS.USER IS NULL
-        OR ROOMS.PLAYERSNAME LIKE '%#{current_user.name}%'
-        OR ROOMS.PLAYERSNAME LIKE ''
-        OR ROOMS.PLAYERSNAME IS NULL ").order(:name)
+        @rooms = Room.filtered(current_user.name)
       else
         @requerLogin = 1
         @rooms = Room.all.order(:name)

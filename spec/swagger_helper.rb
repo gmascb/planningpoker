@@ -35,7 +35,7 @@ RSpec.configure do |config|
           url: 'http://{prodHost}',
           variables: {
             prodHost: {
-              default: 'techpoker.herokuapp.com/api'
+              default: 'techpoker.herokuapp.com'
             },
           }
         },
@@ -43,7 +43,7 @@ RSpec.configure do |config|
           url: 'http://{devHost}',
           variables: {
             devHost: {
-              default: "localhost:3000/api",
+              default: "localhost:3000",
             }
           }
         }

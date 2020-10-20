@@ -37,18 +37,14 @@ Rails.application.routes.draw do
   #Usuarios
   match 'users', to: 'users#index', via: [:get]
 
-
-
   namespace :api do
-    # Directs /admin/products/* to Admin::ProductsController
-    # (app/controllers/admin/products_controller.rb)
+
     get 'users' => 'api#users'
     post 'play' => 'api#play'
+    get 'rooms' => 'api#rooms', as: :rooms_user
+    get 'results/:room'=> 'api#results', as: :results_room
+
   end
-
-
-
-
 
 
   # Example of regular route:
