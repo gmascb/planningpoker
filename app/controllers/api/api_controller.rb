@@ -43,9 +43,10 @@ module Api
         end
 
         def play_card
-            poker = Poker.find_or_create_by(room: params[:room], user: params[:user])
-            poker.update_columns(name: params[:name], value: params[:value])
-            poker
+            Poker.play(params[:room], 
+                        params[:user], 
+                        params[:name], 
+                        params[:value])
         end
 
     end

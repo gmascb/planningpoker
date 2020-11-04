@@ -40,7 +40,7 @@ RSpec.configure do |config|
           }
         },
         {
-          url: 'https://{devHost}',
+          url: 'http://{devHost}',
           variables: {
             devHost: {
               default: "localhost:3000",

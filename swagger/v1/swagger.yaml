@@ -8,7 +8,7 @@ servers:
   variables:
     prodHost:
       default: techpoker.herokuapp.com
-- url: https://{devHost}
+- url: http://{devHost}
   variables:
     devHost:
       default: localhost:3000
