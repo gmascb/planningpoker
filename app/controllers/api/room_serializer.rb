@@ -1,5 +1,5 @@
 module Api
     class RoomSerializer < ActiveModel::Serializer
-        attributes :name, :card
+        attributes :id, :name, :card
     end
 end
