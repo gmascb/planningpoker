@@ -25,7 +25,7 @@ module Api
         end
 
         def rooms
-            render json: Room.filtered(params[:user] || ''), each_serializer: RoomSerializer, status: 200
+            render json: Room.filtered(params[:user] || '').order(:name), each_serializer: RoomSerializer, status: 200
         end
 
         def results
