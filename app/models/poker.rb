@@ -10,6 +10,7 @@ class Poker < ActiveRecord::Base
 
         poker.name = name
         poker.value = value
+        poker.api = true
         poker.save
         
         return poker
